@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>About me on Towards a HUGO powered web-site</title>
+    <title>About us on Bolding &amp; Bruggeman (BB)</title>
     <link>http://boldingbruggeman.github.io/about/</link>
-    <description>Recent content in About me on Towards a HUGO powered web-site</description>
+    <description>Recent content in About us on Bolding &amp; Bruggeman (BB)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>&amp;copy;2016 GOTM</copyright>
-    <lastBuildDate>Sat, 05 Nov 2016 21:05:33 +0530</lastBuildDate>
+    <copyright>&amp;copy;2017 BB</copyright>
+    <lastBuildDate>Wed, 23 Sep 2015 10:59:01 +0000</lastBuildDate>
     
 	<atom:link href="http://boldingbruggeman.github.io/about/index.xml" rel="self" type="application/rss+xml" />
     
