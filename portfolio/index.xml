@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Bolding &amp; Bruggeman (BB)</title>
-    <link>http://boldingbruggeman.github.io/</link>
-    <description>Recent content on Bolding &amp; Bruggeman (BB)</description>
+    <title>Portfolios on Bolding &amp; Bruggeman (BB)</title>
+    <link>http://boldingbruggeman.github.io/portfolio/</link>
+    <description>Recent content in Portfolios on Bolding &amp; Bruggeman (BB)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&amp;copy;2017 BB</copyright>
     <lastBuildDate>Wed, 31 May 2017 13:58:54 +0200</lastBuildDate>
     
-	<atom:link href="http://boldingbruggeman.github.io/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://boldingbruggeman.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

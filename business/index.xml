@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Business Model on Bolding &amp; Bruggeman (BB)</title>
+    <link>http://boldingbruggeman.github.io/business/</link>
+    <description>Recent content in Business Model on Bolding &amp; Bruggeman (BB)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&amp;copy;2017 BB</copyright>
+    <lastBuildDate>Wed, 23 Sep 2015 10:59:01 +0000</lastBuildDate>
+    
+	<atom:link href="http://boldingbruggeman.github.io/business/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
