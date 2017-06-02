@@ -86,15 +86,6 @@ script used to generate and manipulate Fortran namelists - based on XML formatte
       <description>&lt;p&gt;The General Ocean Turbulence model is both a state-of-the-art turbulence
 library for flows in natural waters and a 1D water column model.&lt;/p&gt;
 
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#developments-by-bb&#34;&gt;Developments by BB&lt;/a&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#hotstart&#34;&gt;Hotstart&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#assimilation&#34;&gt;Assimilation&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
