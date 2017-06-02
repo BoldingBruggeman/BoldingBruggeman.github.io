@@ -88,6 +88,15 @@
          <p>The General Ocean Turbulence model is both a state-of-the-art turbulence
 library for flows in natural waters and a 1D water column model.</p>
 
+<ul>
+<li><a href="#developments-by-bb">Developments by BB</a>
+
+<ul>
+<li><a href="#hotstart">Hotstart</a></li>
+<li><a href="#assimilation">Assimilation</a></li>
+</ul></li>
+</ul>
+
 <p></p>
 
 <p>GOTM was initiated by Hans Burchard and Karsten Bolding in 1998 and the first
@@ -100,6 +109,128 @@ mailing lists.</p>
 
 <p>GOTM is used as the primary test bed for Framework for Biogeochemical Models
 <a href="portfolio/fabm/">FABM</a>.</p>
+
+<p>GOTM has its own <a href="http://www.gotm.net">web-site</a> where in-depth information can be found.</p>
+
+<p>Here we will just provide some information on new features BB is doing on the core
+GOTM code. This does not include utilities described elsewhere on this site -
+but only changes to the core part of the GOTM source code. This is typically
+new features that requires a significant knowledge of the entire code base - but
+ also quite some resources in terms of implementation and testing time.</p>
+
+<h2 id="developments-by-bb">Developments by BB</h2>
+
+<p>The table below describes the on-going GOTM developments at BB. As described
+<a href="/business/">here</a> it is very difficult to get funding for pure model development.
+On the other hand - to bring things forward - you can&rsquo;t wait for funding agencies
+to be ready.</p>
+
+<p>BB has therefor initiated projects using BB resources - that hopefully someday can be
+released for general use - but it will require funds.</p>
+
+<!--
+| Feature &emsp;&emsp;&emsp;&emsp;&emsp;&emsp; | Status&emsp | Price | 
+| Feature | Status | Price |
+-->
+
+<table>
+<thead>
+<tr>
+<th>Feature&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</th>
+<th align="center">&emsp;&emsp;Status&emsp;&emsp;&emsp;</th>
+<th align="right">&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Price (Euro)</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td><a href="#hotstart">Hotstart</a></td>
+<td align="center">90 % - july 2017</td>
+<td align="right">15.000,-</td>
+</tr>
+
+<tr>
+<td><a href="#assimilation">Assimilation</a></td>
+<td align="center">50 % - july 2017</td>
+<td align="right">75.000,-</td>
+</tr>
+
+<tr>
+<td></td>
+<td align="center"></td>
+<td align="right"></td>
+</tr>
+</tbody>
+</table>
+
+<p><del>Jorn - shall we consider a html table here</del></p>
+
+<hr />
+
+<h3 id="hotstart">Hotstart</h3>
+
+<h4 id="rationale">Rationale</h4>
+
+<p>Even though GOTM simulations typically executes quite fast there are use cases
+where dividing the simulation in parts do make sense. One example is when doing i
+a coupled physical/bio-geochemical simulation. It is desirable to have the i
+physical fields in balance before bio-geochemistry is switched on. A second example i
+is when doing ensemble data-assimilation studies. Here starting the simulation i
+from a analyzed state is mandatory.</p>
+
+<h4 id="implementation-details">Implementation details</h4>
+
+<p>The hotstart feature in GOTM is implemented on top if the <em>field_manager</em> utilising
+the possibility to add attributes to variables. For state variables – and other
+variables necessary to perform a hotstart – an extra attribute state is added during
+registration in the <em>field_manager</em>. The <em>output_manager</em> utilizes the state attribute
+information when creating a list of fields that must be either written to - or read
+from - the hotstart file. The link to the data in the NetCDF formatted hotstart file
+is done through the name variable in <em>the field_manager</em>. Having no hard-coded link
+between variables names in the model code and data in the hotstart file make a very
+flexible and extendable scheme. Bio-geochemical models not even implemented in FABM
+will work seamlessly during hotstart.</p>
+
+<p>The use of the hotstart facility is controlled through two variables in the
+<strong>gotm_run.nml</strong> namelist. A boolean – <strong>hotstart_offline</strong> – and a variable to hold
+the name of the file with the hotstart data – <strong>hotstart_file</strong>. If hotstart_offline
+is true the time information in the time namelist must match the time information
+contained in hotstart_file.</p>
+
+<h4 id="present-status">Present status</h4>
+
+<p>The implementation is 90% finished and only some corner cases still needs to be
+addressed. The correctness of implementation has been tested in the following way:</p>
+
+<ul>
+<li>A full simulation is done and the hotstart file is saved.</li>
+<li>A new simulation is made identical to the original one – but including a hotstart time sometime during the simulation period. The hotstart file from the final part of the simulation is saved.</li>
+<li>The two saved hotstart files are compared using the md5sum algorithm. If the sums are identical so are the hotstart files – and so are the simulations.</li>
+</ul>
+
+<p>Below is shown the result from the Northern North Sea (nns_annual) standard
+test case. A hot-start has been injected at july 1st in the simulation year.</p>
+
+
+<figure >
+    
+        <img src="/portfolio/img/hotstart_md5sum.png" />
+    
+    
+</figure>
+
+
+<hr />
+
+<h3 id="assimilation">Assimilation</h3>
+
+<!--
+#### Rationale
+
+#### Implementation details
+
+#### Present status
+-->
          
       </div>
     </div>

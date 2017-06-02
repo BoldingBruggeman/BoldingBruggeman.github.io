@@ -85,18 +85,77 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>ACPY</h1>
-         <p>ACPy is an auto-calibration utility for
+         <p><strong>ACPy</strong> is an auto-calibration utility for
 <a href="http://www.gotm.net">GOTM</a>
  and
 <a href="http://www.fabm.net">fabm0d</a>
-. ACPy is written in
-<a href="http://www.python.org">python</a>.</p>
+. <strong>ACPy</strong> is written in
+<a href="http://www.python.org">Python</a>.</p>
 
 <p></p>
 
-<p>ACPy is configured via an xml formatted file. The example below is from the
-PROGNOS project, Lake Erken GOTM set-up. The configuration file consists of
-5 sections transports, executable, setup, parameters and observations.</p>
+<p><strong>ACPy</strong> is configured via an xml formatted file. The example below is from the
+PROGNOS project, Lake Kinneret GOTM set-up. The configuration has optimized for
+7 parameters in the model (the 8th is a dummy variable for testing). The y-axis
+is the maximum likelihood value and  the x-axes show the span for
+the different parameters. <strong>ACPy</strong> supports logaritmic parameters - as the
+upper right panel shows.</p>
+
+<!--
+The configuration file consists of 
+5 sections transports, executable, setup, parameters and observations.
+-->
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_example.png" />
+    
+    
+</figure>
+
+
+<hr />
+
+<h2 id="license">License</h2>
+
+<p>A licensed version of <strong>ACPy</strong> can be obtained by contacting BB. The license
+fee is Euro 500,- for a personal license allowing the holder of the license to
+run on any number of computers. The license file is <strong>strictly</strong> personal
+and must under no circumstances be distributed to third parties.</p>
+
+<p>The licensed version of <strong>ACPy</strong> will be provided as a <em>wheel</em> file and must
+be installed on the computer(s) using the command:</p>
+
+<pre><code>pip install &lt;name_of_wheel_file&gt; &lt;--upgrade&gt; &lt;--user&gt;
+
+&lt;--upgrade&gt; &lt;--user&gt; are optional.
+
+&lt;--upgrade&gt; if ACPy is already installed on the system
+&lt;--user&gt; if installation is not system wide
+</code></pre>
+
+<p>The licensed and non-licensed versions of <strong>ACPy</strong> will produce the same
+results when run on the same configuration (except for difference inherent in
+statistical methods where you draw random numbers from distributions).</p>
+
+<p>So what is the difference - and why should I pay for a license:</p>
+
+<ol>
+<li>The presence of a valid license-file will enable <strong>ACPy</strong> running in
+parallel mode - both on shared memory computers (multiple cores) and
+distributed memory computers (clusters).</li>
+<li>Further development of <strong>ACPy</strong> will 100% depend on additional funding.</li>
+<li>Support will require a valid license-file.</li>
+</ol>
+
+<p>The development of <strong>ACPy</strong> has been considerable work and started when Jorn
+Bruggeman worked in Oxford as a personal tool. Since then BB have added new
+features and made it much more generic and user friendly.</p>
+
+<p>The main advantage of a auto-calibration tool is time-saving (and hopefully
+better model simulations). So if time is of any value to you - consider
+buying a license - for the time we have saved you.</p>
          
       </div>
     </div>

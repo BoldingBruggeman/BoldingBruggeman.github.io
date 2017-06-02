@@ -88,7 +88,67 @@
          <p>Fortran-YAML implements a sub-set of the YAML specification in a Fortran
 library.</p>
 
+<p>Used by e.g. <a href="http://www.fabm.net">FABM</a> to read the run-time bio-geochemical
+configuration file <strong>fabm.yaml</strong> and to read output configuration for the
+<em>flexible_output</em> system optionally used in <a href="http://www.gotm.net">GOTM</a> and
+<a href="http://www.getm.eu">GETM</a>.</p>
+
+<p>Figure from <a href="http://svgur.com/s/3m">here</a></p>
+
 <p></p>
+
+<p>Taken from the
+<a href="https://github.com/BoldingBruggeman/fortran-yaml">GitHub</a> repository.</p>
+
+<!--
+# Fortran-YAML
+-->
+
+<p>This is a lightweight <a href="http://yaml.org">YAML</a> parser written in object-oriented Fortran.</p>
+
+<p>The latest source code can be found at <a href="https://github.com/BoldingBruggeman/fortran-yaml">GitHub</a>.</p>
+
+<h2 id="features">Features</h2>
+
+<p>This parser handles a subset of YAML only, currently subject to the following limitations:</p>
+
+<ul>
+<li>Only block style is supported for mappings and sequences; flow style is not.</li>
+<li>All scalars are left as strings; interpreting them as native data types is left to the caller. Thus, keys in the (key : value) pairs of a mapping are strings by definition.</li>
+<li>Use of quotes around strings is not supported.</li>
+<li>Multi-line strings are not supported.</li>
+</ul>
+
+<p>Comments (starting with #) are allowed. As per the YAML specification, indentation must consist of spaces only (no tabs!)</p>
+
+<p>For instance:</p>
+
+<pre><code class="language-yaml">instances:
+  P1:
+    model: pml/ersem/vphyt
+    parameters:
+      mu_max: 2.2
+      K: 1
+    coupling:
+      R: pom/R6
+</code></pre>
+
+<p>While this is not an attempt to write a complete YAML parser in Fortran, it <em>is</em> meant
+to only accept documents that are valid YAML. If you find that this parser
+permits constructs that the YAML specification disallows (but not vice versa),
+please contact the author.</p>
+
+<h2 id="copyright-and-license">Copyright and license</h2>
+
+<p>This software is copyright 2013-2016 Bolding &amp; Bruggeman ApS.</p>
+
+<p>This is free software: you can redistribute it and/or modify it under
+the terms of the GNU General Public License as published by <a href="https://www.gnu.org/licenses/gpl.html">the Free Software
+Foundation</a>.</p>
+
+<p>It is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+PARTICULAR PURPOSE. A copy of the license is provided in the COPYING file.</p>
          
       </div>
     </div>

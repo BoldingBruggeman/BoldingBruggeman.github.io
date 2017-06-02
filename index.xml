@@ -21,6 +21,13 @@
       <description>&lt;p&gt;Fortran-YAML implements a sub-set of the YAML specification in a Fortran
 library.&lt;/p&gt;
 
+&lt;p&gt;Used by e.g. &lt;a href=&#34;http://www.fabm.net&#34;&gt;FABM&lt;/a&gt; to read the run-time bio-geochemical
+configuration file &lt;strong&gt;fabm.yaml&lt;/strong&gt; and to read output configuration for the
+&lt;em&gt;flexible_output&lt;/em&gt; system optionally used in &lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt; and
+&lt;a href=&#34;http://www.getm.eu&#34;&gt;GETM&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Figure from &lt;a href=&#34;http://svgur.com/s/3m&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
     
@@ -60,12 +67,12 @@ script used to generate and manipulate Fortran namelists - based on XML formatte
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
       <guid>http://boldingbruggeman.github.io/portfolio/acpy/</guid>
-      <description>&lt;p&gt;ACPy is an auto-calibration utility for
+      <description>&lt;p&gt;&lt;strong&gt;ACPy&lt;/strong&gt; is an auto-calibration utility for
 &lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt;
  and
 &lt;a href=&#34;http://www.fabm.net&#34;&gt;fabm0d&lt;/a&gt;
-. ACPy is written in
-&lt;a href=&#34;http://www.python.org&#34;&gt;python&lt;/a&gt;.&lt;/p&gt;
+. &lt;strong&gt;ACPy&lt;/strong&gt; is written in
+&lt;a href=&#34;http://www.python.org&#34;&gt;Python&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
@@ -78,6 +85,15 @@ script used to generate and manipulate Fortran namelists - based on XML formatte
       <guid>http://boldingbruggeman.github.io/portfolio/gotm/</guid>
       <description>&lt;p&gt;The General Ocean Turbulence model is both a state-of-the-art turbulence
 library for flows in natural waters and a 1D water column model.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#developments-by-bb&#34;&gt;Developments by BB&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#hotstart&#34;&gt;Hotstart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#assimilation&#34;&gt;Assimilation&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>
