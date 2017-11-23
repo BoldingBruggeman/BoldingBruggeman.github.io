@@ -32,52 +32,6 @@ configuration file &lt;strong&gt;fabm.yaml&lt;/strong&gt; and to read output con
     </item>
     
     <item>
-      <title>PyNcView</title>
-      <link>http://boldingbruggeman.github.io/portfolio/pyncview/</link>
-      <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
-      
-      <guid>http://boldingbruggeman.github.io/portfolio/pyncview/</guid>
-      <description>&lt;p&gt;PyNcView is a stand-alone application for viewing
-&lt;a href=&#34;https://www.unidata.ucar.edu/software/netcdf/&#34;&gt;NetCDF&lt;/a&gt;
-files on Windows, Linux and Mac OS. It is written in
-&lt;a href=&#34;http://www.python.org&#34;&gt;Python&lt;/a&gt;
- and builds upon
-&lt;a href=&#34;https://matplotlib.org/&#34;&gt;MatPlotLib&lt;/a&gt; and
-&lt;a href=&#34;https://www.qt.io/&#34;&gt;Qt&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>EditScenario</title>
-      <link>http://boldingbruggeman.github.io/portfolio/editscenario/</link>
-      <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
-      
-      <guid>http://boldingbruggeman.github.io/portfolio/editscenario/</guid>
-      <description>&lt;p&gt;EditScenario is a
-&lt;a href=&#34;http://www.python.org&#34;&gt;python&lt;/a&gt;
-script used to generate and manipulate Fortran namelists - based on XML formatted configuration file.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>ACPY</title>
-      <link>http://boldingbruggeman.github.io/portfolio/acpy/</link>
-      <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
-      
-      <guid>http://boldingbruggeman.github.io/portfolio/acpy/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;ACPy&lt;/strong&gt; is an auto-calibration utility for
-&lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt;
- and
-&lt;a href=&#34;http://www.fabm.net&#34;&gt;fabm0d&lt;/a&gt;
-. &lt;strong&gt;ACPy&lt;/strong&gt; is written in
-&lt;a href=&#34;http://www.python.org&#34;&gt;Python&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
-    </item>
-    
-    <item>
       <title>GOTM</title>
       <link>http://boldingbruggeman.github.io/portfolio/gotm/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
