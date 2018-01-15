@@ -102,18 +102,191 @@
 
 <p></p>
 
-<p><strong>ACPy</strong> is configured via an xml formatted file. The example below is from the
-PROGNOS project, Lake Kinneret GOTM set-up. The configuration has optimized for
-7 parameters in the model (the 8th is a dummy variable for testing). The y-axis
-is the maximum likelihood value and  the x-axes show the span for
-the different parameters. <strong>ACPy</strong> supports logaritmic parameters - as the
-upper right panel shows.</p>
+<h3 id="introduction">Introduction</h3>
+
+<p>The calibration of complex coupled physical/bio-geochemical numerical models is a very time-consuming task typical requiring a large number of - <em>run model -&gt; compare with observations -&gt; adjust paramters</em> - cycles. The final chosen set of model parameters is the - partly - subjective judgement by the person performing the calibration and do not in anyway assure that even a small part of the global parameter space has been covered. This is mainly due to the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of dimensionality</a> stating that the number of tries becomes so large that it is impossible due to resource limitations on todays computers. As an example - with only 3 model parameters and 10 subdivisions in each paramter space 1000 simulations are needed if a brute force method is applied. For models counting 10&rsquo;s to 100&rsquo;s a systematic search of the optimal set of parameters in the full space is impossible.</p>
+
+<p>The problem sketched above is by no means unique to the field of numerical models of natural waters and a lot of research has been done during the last decades. As it is not possible to guarantee <strong>the</strong> optimal solution statistical methods have been developed. Many of these methods are based on <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo methods</a> - i.e. a statistical method where the optimal solution is based on a choice between a number of tries. The optimal choice is based on the evaluation of an objective function calculating the <em>performance</em> in some way but directly comparable between <strong>model evaluations</strong>. A very important step in the Monte Carlo method is the selection of the parameter sets to be used for the model runs.</p>
+
+<p><strong>ACPy</strong> is a tool written in Python to perform <em>automatic</em> optimization (in the Maximum Likelihood sense) of a selected set of model paramters in a <a href="www.gotm.net">GOTM</a> simulation. The present version of ACPy has two different methods included for finding the maximum likelyhood - Nelder-Mead (simplex) from 1965 and Differential Evolution from 1997. In addition to the actual optimisation ACPy also provides a set of support tools for evaluating the optimization. ACPy stores all tested parameter sets in a data-base together with the maximum-likely hood value for each of the sets. This allows for further analysis - see below for examples.</p>
+
+<p>The limitations of <strong>ACPy</strong> - and any optimization software - must be considered. <strong>ACPy</strong> will in an objective way make an estimate on the optimal value for a set of paramters the user has specified. This is done by evaluating a function comparing model results with observations. <strong>ACPy</strong> can not account for short-comings in the model itself - i.e. does GOTM - actually describe the processes the observations are a result of. Furthermore, <strong>ACPy</strong> can not judge the quality of the observations provided but will use them <em>as is</em>. And lastly - the set of parameters to optimize for provided by the user - are they the right ones.</p>
+
+<p><strong>ACPy</strong> is a statistical method and does not gurantee the <em>correct</em> solution. <strong>ACPy</strong> comes with an estimate of the <em>correct</em> solution. To gain faith in the reults it is a very good idea to run a number of optimizations to see if similar results are optained between them. This behaviour is facilitated with the <em>&ndash;repeat</em> option shown later.</p>
+
+<p><strong>ACPy</strong> can be run in serial and parallel mode. If the Python package <a href="https://www.parallelpython.com/">parallel pythoni - pp</a> is installed the auto-calibration task is automatically spread across available local cores. Additional configuration is possible to run on distributed memory machines as well - see the ParallelPython documentation for configuration. This makes sense only for methods supporting it.</p>
+
+<p><strong>ACPy</strong> combines: 1) a working model (GOTM) setup with 2) a single <a href="https://www.w3.org/XML/">XML</a> formatted configuration file and 3) a set of observations to compute an optimal estimate of the included model parameters.</p>
+
+<p><strong>ACPy</strong> is work in progress and will be extended with new capabillities as they are developed. For specific feature requests please contact the authors.</p>
+
+<h3 id="users-guide">Users guide</h3>
+
+<p>We provide a users guide with the main features of <strong>ACPy</strong> described. This is not an in-depth description of all possible parameter settings. They are best explored with a working setup and in front of a computer. The guide will contain information on how to operate <strong>ACPy</strong> as well as explain the different modules included and their usage.</p>
+
+<p><strong>ACPy</strong> is developed as a command line utility but nothing in the design prevents a GUI-wrapper around the core <strong>ACPy</strong> main python file. This means that for now to get a good workflow the user must be confident working in a terminal window - independent of - being on Windows, Mac or Linux. Typical use will have 2 to 3 terminals open to allow for easy use of different sub-modules.</p>
+
+<p>The user guide is about the use of <strong>ACPy</strong> and <strong>not</strong> about technical issues with e.g. <em>pip</em>. The guide is also not a descrition of optimization methods in general. The purpose of the guide is to allow a user who have a working GOTM setup perform an automatic calibration.</p>
+
+<h4 id="installation">Installation</h4>
+
+<p>ACPy is available from <a href="https://pypi.python.org/pypi">PyPI</a> and can be installed by simply executing the command:</p>
+
+<pre><code>pip install acpy
+</code></pre>
+
+<p>Succes of installation can be tested by:</p>
+
+<pre><code>acpy -h
+</code></pre>
+
+<p>producing</p>
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_h.png" />
+    
+    
+</figure>
+
+
+<p><em>Note that the released version of <strong>ACPy</strong> might not compare 100% to the above figure.</em></p>
+
+<h4 id="acpy-usage">ACPy usage</h4>
+
+<p><strong>ACPy</strong> is a python wrapper around a number of individual python modules. It only provides common configuration between the modules and set up infrastructure. Each of the individual modules - described below - handles their own usage and help. The very modular way <strong>ACPy</strong> is implemented makes it easy to add new functionally to the main program.</p>
+
+<p>All execution of <strong>ACPY</strong> commands is done via the &lsquo;acpy&rsquo; command wrapper - see the figure above.</p>
+
+<h5 id="main-configuration-file">Main configuration file</h5>
+
+<p><strong>ACPy</strong> is configured via a xml formatted file. The example below is from the
+Northern North Sea annual standard set-up. The configuration file contains 5 different sections:</p>
+
+<ol>
+<li><em>transports</em> - how are results communicated and stored</li>
+<li><em>executable path</em> - the full path to the executable - in this case <strong>GOTM</strong></li>
+<li><em>setup path</em> - that path to the basic set-up</li>
+<li><em>parameters</em> - list of parameters to use in the calibration</li>
+<li><em>observations</em> - list of observation files - in the format shown further down</li>
+</ol>
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_config_file.png" />
+    
+    
+</figure>
+
+
+<p>The configuration has optimized for
+7 parameters in the model (the 8th is a dummy variable for testing). The y-axis is the maximum likelihood value and  the x-axes show the span for the different parameters. <strong>ACPy</strong> supports logaritmic parameters - as the specification for <em>k_min</em> shows.</p>
+
+<p>Parameters to optimize can specified via Fortran <em>namelist</em> or YAML-formatted syntax.</p>
+
+<h5 id="database-file">Database file</h5>
+
+<p>The autocalibration module - see the &lsquo;run&rsquo; module - with the configuration above creates a <a href="https://www.sqlite.org/">SQLite</a> formatted database with the results of the autocalibration tools. The specific name of this file is specified in the .xml configuration file. Most other modules with use the database file for futher processing.</p>
+
+<h5 id="observation-file-format">Observation file format</h5>
+
+<p>Observations in <strong>ACPy</strong> are read in from simple ASCII files with one variable in each file. The observation files are listed in the main configuration file and links the file to a output file and model variable. The format is very simple as seen in the figure below. Each observation consists of a time-stamp and a depth (measure from the surface).</p>
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_obs_file.png" />
+    
+    
+</figure>
+
+
+<p>The observations are used to calculate the maximum likelihood function on which the auto-calibration is based.</p>
+
+<h4 id="the-run-module">The &lsquo;run&rsquo; module</h4>
+
+<p>The <strong>run</strong> module is the workhorse of <strong>ACPy</strong> and does the actual auto-calibration. The <strong>run</strong> command takes a large number of commandline parameters of which one is mandatory - the .xml configuration file - and all others are optional.</p>
+
+<p>An overview of all the parameters can be shown using this command:</p>
+
+<pre><code>acpy run -h
+</code></pre>
+
+<p>with this result:</p>
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_run_h.png" />
+    
+    
+</figure>
+
+
+<h4 id="the-plot-module">The &lsquo;plot&rsquo; module</h4>
+
+<p>The plot module gives a graphical overview of the calibration process. A sub-plot is created for each of the parameters from the configuration file. On the x-axis the sub-plots has the range for the parameter in question - and on the y-axis the maximum likelihood value. An example if provided further down.</p>
+
+<pre><code>acpy plot -h
+</code></pre>
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_plot_h.png" />
+    
+    
+</figure>
+
+
+<p>The <em>plot</em> module also takes a relative large number of parameters. Here only one will be mentioned - <em>-u</em>. Giving this option the plot will be autoomatically updated as new results are stored in the database file.</p>
+
+<h4 id="the-plotbest-module">The &lsquo;plotbest&rsquo; module</h4>
+
+<p>The <em>plotbest</em> module re-runs a specific run - default the best one - and provides 3 plots and calculates some statistical parameters.</p>
+
+<pre><code>acpy plotbest -h
+</code></pre>
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_plotbest_h.png" />
+    
+    
+</figure>
+
+
+<h4 id="the-animate-2d-module">The &lsquo;animate_2d&rsquo; module</h4>
+
+<pre><code>acpy animate_2d -h
+</code></pre>
+
+<h4 id="the-summary-module">The &lsquo;summary&rsquo; module</h4>
+
+<pre><code>acpy summary -h
+</code></pre>
+
+
+<figure >
+    
+        <img src="/portfolio/img/acpy_summary_h.png" />
+    
+    
+</figure>
+
 
 <!--
+
+#### Results
+
 The configuration file consists of 
 5 sections transports, executable, setup, parameters and observations.
 -->
 
+<!--
 
 <figure >
     
@@ -122,48 +295,51 @@ The configuration file consists of
     
 </figure>
 
+-->
 
-<hr />
+<!--
 
-<h2 id="license">License</h2>
+-----
 
-<p>A licensed version of <strong>ACPy</strong> can be obtained by contacting BB. The license
+### Support plans
+
+A licensed version of **ACPy** can be obtained by contacting BB. The license 
 fee is Euro 500,- for a personal license allowing the holder of the license to
-run on any number of computers. The license file is <strong>strictly</strong> personal
-and must under no circumstances be distributed to third parties.</p>
+run on any number of computers. The license file is **strictly** personal
+and must under no circumstances be distributed to third parties.
 
-<p>The licensed version of <strong>ACPy</strong> will be provided as a <em>wheel</em> file and must
-be installed on the computer(s) using the command:</p>
+The licensed version of **ACPy** will be provided as a _wheel_ file and must 
+be installed on the computer(s) using the command:
 
-<pre><code>pip install &lt;name_of_wheel_file&gt; &lt;--upgrade&gt; &lt;--user&gt;
+```
+pip install <name_of_wheel_file> <--upgrade> <--user>
 
-&lt;--upgrade&gt; &lt;--user&gt; are optional.
+<--upgrade> <--user> are optional.
 
-&lt;--upgrade&gt; if ACPy is already installed on the system
-&lt;--user&gt; if installation is not system wide
-</code></pre>
+<--upgrade> if ACPy is already installed on the system
+<--user> if installation is not system wide
+```
 
-<p>The licensed and non-licensed versions of <strong>ACPy</strong> will produce the same
+The licensed and non-licensed versions of **ACPy** will produce the same
 results when run on the same configuration (except for difference inherent in
-statistical methods where you draw random numbers from distributions).</p>
+statistical methods where you draw random numbers from distributions).
 
-<p>So what is the difference - and why should I pay for a license:</p>
+So what is the difference - and why should I pay for a license:
 
-<ol>
-<li>The presence of a valid license-file will enable <strong>ACPy</strong> running in
-parallel mode - both on shared memory computers (multiple cores) and
-distributed memory computers (clusters).</li>
-<li>Further development of <strong>ACPy</strong> will 100% depend on additional funding.</li>
-<li>Support will require a valid license-file.</li>
-</ol>
+1. The presence of a valid license-file will enable **ACPy** running in 
+   parallel mode - both on shared memory computers (multiple cores) and
+   distributed memory computers (clusters).
+2. Further development of **ACPy** will 100% depend on additional funding.
+3. Support will require a valid license-file.
 
-<p>The development of <strong>ACPy</strong> has been considerable work and started when Jorn
-Bruggeman worked in Oxford as a personal tool. Since then BB have added new
-features and made it much more generic and user friendly.</p>
+The development of **ACPy** has been considerable work and started when Jorn 
+Bruggeman worked in Oxford as a personal tool. Since then BB have added new 
+features and made it much more generic and user friendly. 
 
-<p>The main advantage of a auto-calibration tool is time-saving (and hopefully
-better model simulations). So if time is of any value to you - consider
-buying a license - for the time we have saved you.</p>
+The main advantage of a auto-calibration tool is time-saving (and hopefully 
+better model simulations). So if time is of any value to you - consider 
+buying a support plan - for the time we have saved you.
+-->
          
          <h6><a href="http://boldingbruggeman.github.io/">Home</a></h6>
       </div>

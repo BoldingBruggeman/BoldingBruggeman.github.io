@@ -32,6 +32,22 @@ configuration file &lt;strong&gt;fabm.yaml&lt;/strong&gt; and to read output con
     </item>
     
     <item>
+      <title>ACPY</title>
+      <link>http://boldingbruggeman.github.io/portfolio/acpy/</link>
+      <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
+      
+      <guid>http://boldingbruggeman.github.io/portfolio/acpy/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;ACPy&lt;/strong&gt; is an auto-calibration utility for
+&lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt;
+ and
+&lt;a href=&#34;http://www.fabm.net&#34;&gt;fabm0d&lt;/a&gt;
+. &lt;strong&gt;ACPy&lt;/strong&gt; is written in
+&lt;a href=&#34;http://www.python.org&#34;&gt;Python&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>GOTM</title>
       <link>http://boldingbruggeman.github.io/portfolio/gotm/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
