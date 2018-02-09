@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>iGOTM</title>
+<meta name="description" content="Describe your website">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="all,follow">
+<meta name="googlebot" content="index,follow,snippet,archive">
+<link rel="stylesheet" href="http://boldingbruggeman.github.io/css/bootstrap.min.css">
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,300,700,400italic">
+<link rel="stylesheet" href="http://boldingbruggeman.github.io/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://boldingbruggeman.github.io/css/owl.carousel.css">
+<link rel="stylesheet" href="http://boldingbruggeman.github.io/css/owl.theme.css">
+
+
+  <link href="http://boldingbruggeman.github.io/css/style.sea.css" rel="stylesheet" id="theme-stylesheet">
+
+
+<link href="http://boldingbruggeman.github.io/css/custom.css" rel="stylesheet">
+<link rel="shortcut icon" href="http://boldingbruggeman.github.io/img/favicon.png">
+
+
+</head>
+<body>
+  <div id="all">
+      <div class="container-fluid">
+          <div class="row row-offcanvas row-offcanvas-left">
+              <div id="sidebar" class="col-xs-6 col-sm-4 col-md-3 sidebar-offcanvas">
+  <div class="sidebar-content">
+    <h1 class="sidebar-heading"><a href="/">Bolding &amp; Bruggeman (BB)</a></h1>
+    
+      <p class="sidebar-p">BB develops and applies advanced numerical models for natual waters.</p>
+    
+      <p class="sidebar-p">Bolding & Bruggeman ApS - BB - (until autumn 2014 Bolding & Burchard ApS) was established by Hans Burchard and Karsten Bolding in Varese, Italy 1999. Hans Burchard and Karsten Bolding were equal partners until 2014, when Jorn Bruggeman replaced Hans Burchard. BB is a research and development company specializing in numerical models for lakes and oceans.</p>
+    
+    <ul class="sidebar-menu">
+      
+      
+        <li><a href="http://boldingbruggeman.github.io/">Home</a></li>
+      
+        <li><a href="http://boldingbruggeman.github.io/portfolio/">Portfolio</a></li>
+      
+        <li><a href="http://boldingbruggeman.github.io/business/">Business</a></li>
+      
+        <li><a href="http://boldingbruggeman.github.io/about/">About</a></li>
+      
+        <li><a href="http://boldingbruggeman.github.io/contact/">Contact</a></li>
+      
+    </ul>
+    <p class="social">
+  
+  
+  
+  
+  
+  <a href="mailto:karsten@bolding-bruggeman.com" data-animate-hover="pulse" class="email">
+    <i class="fa fa-envelope"></i>
+  </a>
+  
+  
+  
+  
+  <a href="https://github.com/boldingbruggeman" data-animate-hover="pulse">
+    <i class="fa fa-github"></i>
+  </a>
+  
+</p>
+
+
+    <div class="copyright">
+      <p class="credit">
+        
+          &copy;2017 BB
+        
+        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+
+&amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
+
+      </p>
+    </div>
+  </div>
+</div>
+
+              
+<div class="col-xs-12 col-sm-8 col-md-9 content-column white-background">
+  <div class="small-navbar visible-xs">
+  <button type="button" data-toggle="offcanvas" class="btn btn-ghost pull-left"> <i class="fa fa-align-left"> </i>Menu</button>
+  <h1 class="small-navbar-heading"><a href="/">Bolding &amp; Bruggeman (BB)</a></h1>
+</div>
+
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="content-column-content">
+         <h1>iGOTM</h1>
+         <p>A GOTM simulation for any point in the world with only 2 clicks.
+Selecting a geographical position using Google Maps and clicking &lsquo;Simulate&rsquo; will make an one year (2016) GOTM simulation with results presented in the browser.</p>
+
+<p>Try it out <a href="https://igotm.bolding-bruggeman.com">here</a>.</p>
+
+<p></p>
+
+<p>iGOTM is built around GOTM and a number of public datasets. After you pick a
+location, the server retrieves the water depth (from ETOPO1), meteorological
+conditions (ERA-Interim) and initial temperature/salinity profiles (World
+Ocean Atlas). It then runs GOTM on our back-end servers to produce plots of
+temperature, salinity and diffusivity. All typically within 10 seconds.</p>
+
+<p>The aim of this service is to show case the capabilities and performance of
+GOTM, the power of python-based tools for web interactivity, and not in the
+least, our company&rsquo;s ability to build web services such as this. ;-)</p>
+
+<p>Any two-click model comes with caveats. The main ones: (1) Regions strongly
+influenced by horizontal transports will not be simulated correctly as iGOTM
+lacks a mechanism to prescribe horizontal gradients or transports; this
+typically affects salinity in regions near rivers (salinity will drift). (2)
+Tides are currently not included, so tidally driven mixing and changes in
+elevation are not accounted for. (3) Regions that are ice covered for part
+of the year will not be simulated correctly as GOTM lacks an ice model
+(instead of ice cover building up you&rsquo;ll typically see strong mixing).</p>
+
+<p>iGOTM currently allows you to simulate one year only (2016). This is a
+conscious decision to reduce the load on our servers. We will expand the
+service in the future with the ability to perform longer simulations
+(ideally the full ERA period, 1979-present) and to include biogeochemistry.
+Given the computational cost of these features, they will be made available
+as a paid, subscription-based service.</p>
+
+<h3 id="the-technical-details">The technical details &hellip;</h3>
+
+<p>iGOTM uses <a href="https://nginx.org/en/">nginx</a> as frontend webserver. Nginx reverse proxies simulation tasks to <a href="http://www.tornadoweb.org/en/stable/">tornado</a> servers which are responsible for the actual GOTM simulation via a <a href="http://www.python.org/">python</a> wrapper around the Fortran based GOTM executable. Plots (created with <a href="https://matplotlib.org/">matplotlib</a>) are fed back to Nginx for presentation.</p>
+
+<p>iGOTM uses a secure connection using <a href="https://letsencrypt.org/">LetsEncrypt</a> issued certificates.</p>
+
+<p>All plots use the <a href="https://matplotlib.org/cmocean/">cmocean</a> color maps.</p>
+
+<h3 id="further-information">Further information</h3>
+
+<p>Bug reports, questions, comments and suggestions are all welcome. Please
+send these to igotm@bolding-bruggeman.com.</p>
+         
+         <h6><a href="http://boldingbruggeman.github.io/">Home</a></h6>
+      </div>
+    </div>
+  </div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  <script src="http://boldingbruggeman.github.io/js/jquery.min.js"></script>
+<script src="http://boldingbruggeman.github.io/js/bootstrap.min.js"></script>
+<script src="http://boldingbruggeman.github.io/js/jquery.cookie.js"> </script>
+<script src="http://boldingbruggeman.github.io/js/ekko-lightbox.js"></script>
+<script src="http://boldingbruggeman.github.io/js/jquery.scrollTo.min.js"></script>
+<script src="http://boldingbruggeman.github.io/js/masonry.pkgd.min.js"></script>
+<script src="http://boldingbruggeman.github.io/js/imagesloaded.pkgd.min.js"></script>
+<script src="http://boldingbruggeman.github.io/js/owl.carousel.min.js"></script>
+<script src="http://boldingbruggeman.github.io/js/front.js"></script>
+
+</body>
+</html>
