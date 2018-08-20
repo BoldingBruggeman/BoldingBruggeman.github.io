@@ -102,8 +102,9 @@ library for flows in natural waters and a 1D water column model.</p>
 <li><a href="#developments-by-bb">Developments by BB</a>
 
 <ul>
-<li><a href="#hotstart">Hotstart</a></li>
+<li><a href="#yaml">YAML configuration</a></li>
 <li><a href="#assimilation">Assimilation</a></li>
+<li><a href="#hotstart">Hotstart</a></li>
 </ul></li>
 </ul>
 
@@ -152,15 +153,21 @@ released for general use - but it will require funds.</p>
 
 <tbody>
 <tr>
-<td><a href="#hotstart">Hotstart</a></td>
-<td align="center">90 % - july 2017</td>
-<td align="right">15.000,-</td>
+<td><a href="#yaml">YAML configuration</a></td>
+<td align="center">50 % - August 2018</td>
+<td align="right">funded</td>
 </tr>
 
 <tr>
 <td><a href="#assimilation">Assimilation</a></td>
 <td align="center">50 % - july 2017</td>
 <td align="right">75.000,-</td>
+</tr>
+
+<tr>
+<td><a href="#hotstart">Hotstart</a></td>
+<td align="center">100 % - March 2018</td>
+<td align="right">funded (15.000,-)</td>
 </tr>
 
 <tr>
@@ -175,9 +182,53 @@ released for general use - but it will require funds.</p>
 
 <hr />
 
-<h3 id="hotstart">Hotstart</h3>
+<h3 id="yaml">YAML</h3>
 
 <h4 id="rationale">Rationale</h4>
+
+<p>Until now GOTM has been configured through a combination of <em>namelists</em> (in a number of files) and text files (scalar time-series and profiles). Namelists - being a standard Fortran feature - has clear advantages and replacing them with a costum configuration system must be carefully evaluated. The main disadvantage of namelists is - they are Fortran only - i.e. any manipulation of the namelists must be done either in an editor or through costum made tools (like <em>editscenario</em>). New use cases of GOTM - e.g. auto-calibration - requires a flexible easy maintainable system for generating ensembles of configurations in a non-interactive way. FABM and the output manager in GOTM already uses YAML as configuration format so replacing namelists with a YAML-formatted configuration file seems the obvious choice.</p>
+
+<h4 id="implementation-details">Implementation details</h4>
+
+<p>The implementation depends on the Fortran YAML library developed by Jorn Bruggeman and briefly described <a href="http://bolding-bruggeman.com/portfolio/yaml/">here</a>.</p>
+
+<p>To ease the transition from namelist based configuration to YAML-based a method for converting namelists to a YAML-file has been implemented via command line options as seen in the figure below.
+
+<figure>
+    
+        <img src="/portfolio/img/yaml_config.png" />
+    
+    
+</figure>
+</p>
+
+<p>The default - calling GOTM executable without any options - will read <em>gotm.yaml</em>. Skipping reading <em>gotm.yaml</em> can be achieved by specifying <em>&ndash;no_read_yaml_file</em>. Reading an existing - working - namelist configuration can be done be specifying <em>&ndash;read_nml_files</em>. Saving the final configuration to a new YAML-formatted file can be done by specifying <em>&ndash;save_yaml <file></em> where file is the name of the target YAML file.</p>
+
+<p>To create a starting point for a new configuration with default parameter settings the following command can be used: <em>gotm &ndash;save_yaml default.yaml</em>.</p>
+
+<p>To convert an existing namelist based configuration use this command: <em>gotm  &ndash;read_nml_files &ndash;save_yaml gotm.yaml</em></p>
+
+<h4 id="present-status">Present status</h4>
+
+<p>The code is presently in a private BB development Gitlab repository. When feature complete the code will be moved to a public branch  of the main GOTM Github repository.</p>
+
+<p>Presently <em>output.yaml</em> has not been merged with <em>gotm.yaml</em> - if it will depends on some further workflow experiences.</p>
+
+<h3 id="assimilation">Assimilation</h3>
+
+<p>Nothing yet</p>
+
+<!--
+#### Rationale
+
+#### Implementation details
+
+#### Present status
+-->
+
+<h3 id="hotstart">Hotstart</h3>
+
+<h4 id="rationale-1">Rationale</h4>
 
 <p>Even though GOTM simulations typically executes quite fast there are use cases
 where dividing the simulation in parts do make sense. One example is when doing i
@@ -186,7 +237,7 @@ physical fields in balance before bio-geochemistry is switched on. A second exam
 is when doing ensemble data-assimilation studies. Here starting the simulation i
 from a analyzed state is mandatory.</p>
 
-<h4 id="implementation-details">Implementation details</h4>
+<h4 id="implementation-details-1">Implementation details</h4>
 
 <p>The hotstart feature in GOTM is implemented on top if the <em>field_manager</em> utilising
 the possibility to add attributes to variables. For state variables – and other
@@ -205,10 +256,9 @@ the name of the file with the hotstart data – <strong>hotstart_file</strong>. 
 is true the time information in the time namelist must match the time information
 contained in hotstart_file.</p>
 
-<h4 id="present-status">Present status</h4>
+<h4 id="present-status-1">Present status</h4>
 
-<p>The implementation is 90% finished and only some corner cases still needs to be
-addressed. The correctness of implementation has been tested in the following way:</p>
+<p>The implementation is finished. The correctness of implementation has been tested in the following way:</p>
 
 <ul>
 <li>A full simulation is done and the hotstart file is saved.</li>
@@ -220,7 +270,7 @@ addressed. The correctness of implementation has been tested in the following wa
 test case. A hot-start has been injected at july 1st in the simulation year.</p>
 
 
-<figure >
+<figure>
     
         <img src="/portfolio/img/hotstart_md5sum.png" />
     
@@ -229,16 +279,6 @@ test case. A hot-start has been injected at july 1st in the simulation year.</p>
 
 
 <hr />
-
-<h3 id="assimilation">Assimilation</h3>
-
-<!--
-#### Rationale
-
-#### Implementation details
-
-#### Present status
--->
          
          <h6><a href="http://boldingbruggeman.github.io/">Home</a></h6>
       </div>
