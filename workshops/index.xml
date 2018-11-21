@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GOTM/FABM workshop on Bolding &amp; Bruggeman (BB)</title>
+    <link>http://boldingbruggeman.github.io/workshops/</link>
+    <description>Recent content in GOTM/FABM workshop on Bolding &amp; Bruggeman (BB)</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 23 Sep 2015 10:59:01 +0000</lastBuildDate>
+    
+	<atom:link href="http://boldingbruggeman.github.io/workshops/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+  </channel>
+</rss>
