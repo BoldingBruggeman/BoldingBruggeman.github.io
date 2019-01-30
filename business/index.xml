@@ -2,13 +2,13 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Business on Bolding &amp; Bruggeman (BB)</title>
-    <link>http://boldingbruggeman.github.io/business/</link>
+    <link>https://boldingbruggeman.github.io/business/</link>
     <description>Recent content in Business on Bolding &amp; Bruggeman (BB)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 23 Sep 2015 10:59:01 +0000</lastBuildDate>
     
-	<atom:link href="http://boldingbruggeman.github.io/business/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://boldingbruggeman.github.io/business/index.xml" rel="self" type="application/rss+xml" />
     
     
   </channel>

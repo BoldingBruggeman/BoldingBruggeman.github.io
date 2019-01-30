@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Portfolios on Bolding &amp; Bruggeman (BB)</title>
-    <link>http://boldingbruggeman.github.io/portfolio/</link>
+    <link>https://boldingbruggeman.github.io/portfolio/</link>
     <description>Recent content in Portfolios on Bolding &amp; Bruggeman (BB)</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 31 May 2017 13:58:54 +0200</lastBuildDate>
     
-	<atom:link href="http://boldingbruggeman.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://boldingbruggeman.github.io/portfolio/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Fortran-YAML</title>
-      <link>http://boldingbruggeman.github.io/portfolio/yaml/</link>
+      <link>https://boldingbruggeman.github.io/portfolio/yaml/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
-      <guid>http://boldingbruggeman.github.io/portfolio/yaml/</guid>
+      <guid>https://boldingbruggeman.github.io/portfolio/yaml/</guid>
       <description>&lt;p&gt;Fortran-YAML implements a sub-set of the YAML specification in a Fortran
 library.&lt;/p&gt;
 
@@ -32,10 +32,10 @@ configuration file &lt;strong&gt;fabm.yaml&lt;/strong&gt; and to read output con
     
     <item>
       <title>iGOTM</title>
-      <link>http://boldingbruggeman.github.io/portfolio/igotm/</link>
+      <link>https://boldingbruggeman.github.io/portfolio/igotm/</link>
       <pubDate>Fri, 09 Feb 2018 00:00:00 +0200</pubDate>
       
-      <guid>http://boldingbruggeman.github.io/portfolio/igotm/</guid>
+      <guid>https://boldingbruggeman.github.io/portfolio/igotm/</guid>
       <description>&lt;p&gt;A GOTM simulation for any point in the world with only 2 clicks.
 Selecting a geographical position using Google Maps and clicking &amp;lsquo;Simulate&amp;rsquo; will make an one year (2016) GOTM simulation with results presented in the browser.&lt;/p&gt;
 
@@ -46,10 +46,10 @@ Selecting a geographical position using Google Maps and clicking &amp;lsquo;Simu
     
     <item>
       <title>ACPY</title>
-      <link>http://boldingbruggeman.github.io/portfolio/acpy/</link>
+      <link>https://boldingbruggeman.github.io/portfolio/acpy/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
-      <guid>http://boldingbruggeman.github.io/portfolio/acpy/</guid>
+      <guid>https://boldingbruggeman.github.io/portfolio/acpy/</guid>
       <description>&lt;p&gt;&lt;strong&gt;ACPy&lt;/strong&gt; is an auto-calibration utility for
 &lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt;
  and
@@ -62,10 +62,10 @@ Selecting a geographical position using Google Maps and clicking &amp;lsquo;Simu
     
     <item>
       <title>GOTM</title>
-      <link>http://boldingbruggeman.github.io/portfolio/gotm/</link>
+      <link>https://boldingbruggeman.github.io/portfolio/gotm/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
-      <guid>http://boldingbruggeman.github.io/portfolio/gotm/</guid>
+      <guid>https://boldingbruggeman.github.io/portfolio/gotm/</guid>
       <description>&lt;p&gt;The General Ocean Turbulence model is both a state-of-the-art turbulence
 library for flows in natural waters and a 1D water column model.&lt;/p&gt;
 
@@ -74,10 +74,10 @@ library for flows in natural waters and a 1D water column model.&lt;/p&gt;
     
     <item>
       <title>GETM</title>
-      <link>http://boldingbruggeman.github.io/portfolio/getm/</link>
+      <link>https://boldingbruggeman.github.io/portfolio/getm/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
-      <guid>http://boldingbruggeman.github.io/portfolio/getm/</guid>
+      <guid>https://boldingbruggeman.github.io/portfolio/getm/</guid>
       <description>&lt;p&gt;The General Estuarine Transport Model &lt;a href=&#34;http://www.getm.eu&#34;&gt;GETM&lt;/a&gt; is a primitive
 equation numerical model for ocean and lake simulations.&lt;/p&gt;
 
@@ -86,10 +86,10 @@ equation numerical model for ocean and lake simulations.&lt;/p&gt;
     
     <item>
       <title>FABM</title>
-      <link>http://boldingbruggeman.github.io/portfolio/fabm/</link>
+      <link>https://boldingbruggeman.github.io/portfolio/fabm/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
-      <guid>http://boldingbruggeman.github.io/portfolio/fabm/</guid>
+      <guid>https://boldingbruggeman.github.io/portfolio/fabm/</guid>
       <description>&lt;p&gt;The Framework for Aquatic Biogeochemical Models (FABM) provides a generic, easy
 to use, high performance coupling layer that connects a hydrodynamic model
 (e.g., 1D water column, 3D world ocean) with multiple biogeochemical submodels.&lt;/p&gt;
