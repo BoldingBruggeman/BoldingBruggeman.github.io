@@ -104,8 +104,8 @@ Selecting a geographical position using Google Maps and clicking &lsquo;Simulate
 
 <p>iGOTM is built around GOTM and a number of public datasets. After you pick a
 location, the server retrieves the water depth (from ETOPO1), meteorological
-conditions (ERA-Interim) and initial temperature/salinity profiles (World
-Ocean Atlas). It then runs GOTM on our back-end servers to produce plots of
+conditions (ERA-Interim), initial temperature/salinity profiles (World
+Ocean Atlas) and tides (TPXO9). It then runs GOTM on our back-end servers to produce plots of
 temperature, salinity and diffusivity. All typically within 10 seconds.</p>
 
 <p>The aim of this service is to show case the capabilities and performance of
@@ -115,9 +115,8 @@ least, our company&rsquo;s ability to build web services such as this. ;-)</p>
 <p>Any two-click model comes with caveats. The main ones: (1) Regions strongly
 influenced by horizontal transports will not be simulated correctly as iGOTM
 lacks a mechanism to prescribe horizontal gradients or transports; this
-typically affects salinity in regions near rivers (salinity will drift). (2)
-Tides are currently not included, so tidally driven mixing and changes in
-elevation are not accounted for. (3) Regions that are ice covered for part
+typically affects salinity in regions near rivers (salinity will drift).
+(2) Regions that are ice covered for part
 of the year will not be simulated correctly as GOTM lacks an ice model
 (instead of ice cover building up you&rsquo;ll typically see strong mixing).</p>
 
@@ -130,7 +129,7 @@ as a paid, subscription-based service.</p>
 
 <h3 id="the-technical-details">The technical details &hellip;</h3>
 
-<p>iGOTM uses <a href="https://nginx.org/en/">nginx</a> as frontend webserver. Nginx reverse proxies simulation tasks to <a href="http://www.tornadoweb.org/en/stable/">tornado</a> servers which are responsible for the actual GOTM simulation via a <a href="http://www.python.org/">python</a> wrapper around the Fortran based GOTM executable. Plots (created with <a href="https://matplotlib.org/">matplotlib</a>) are fed back to Nginx for presentation.</p>
+<p>iGOTM uses <a href="https://nginx.org/en/">nginx</a> as frontend webserver. Nginx reverse proxies simulation tasks to <a href="http://www.tornadoweb.org/en/stable/">tornado</a> servers which are responsible for the actual GOTM simulation via a <a href="http://www.python.org/">python</a> wrapper around the Fortran based GOTM executable. Plots (created with <a href="https://plot.ly/javascript/">Plotly</a>) are fed back to Nginx for presentation.</p>
 
 <p>iGOTM uses a secure connection using <a href="https://letsencrypt.org/">LetsEncrypt</a> issued certificates.</p>
 
