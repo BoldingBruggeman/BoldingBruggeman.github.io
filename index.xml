@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>FlexOut</title>
+      <link>https://boldingbruggeman.github.io/portfolio/flexout/</link>
+      <pubDate>Mon, 01 Jul 2019 12:00:00 +0200</pubDate>
+      
+      <guid>https://boldingbruggeman.github.io/portfolio/flexout/</guid>
+      <description>&lt;p&gt;Fortran-based flexible output manager with support for NetCDF and text formats for numerical models.&lt;/p&gt;
+
+&lt;p&gt;&lt;/p&gt;</description>
+    </item>
+    
+    <item>
       <title>Fortran-YAML</title>
       <link>https://boldingbruggeman.github.io/portfolio/yaml/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
@@ -25,7 +36,7 @@ configuration file &lt;strong&gt;fabm.yaml&lt;/strong&gt; and to read output con
 &lt;em&gt;flexible_output&lt;/em&gt; system optionally used in &lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt; and
 &lt;a href=&#34;http://www.getm.eu&#34;&gt;GETM&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;Figure from &lt;a href=&#34;http://svgur.com/s/3m&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The YAML figure is taken from &lt;a href=&#34;http://svgur.com/s/3m&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
     </item>

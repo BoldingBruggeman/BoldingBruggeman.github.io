@@ -1,0 +1,2831 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="Fortran-based flexible output manager with support for NetCDF and text formats">
+    
+    <meta name="author" content="Jorn Bruggeman" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>output_manager &ndash; Fortran Program</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Fortran Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>output_manager 
+    <small>Module</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="17.0% of total for modules and submodules.">492 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/output_manager.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/output_manager.f90.html'>output_manager.F90</a></li>
+    
+  
+     <li class="active">output_manager</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#variable-first_file%7E2">first_file</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#variable-files_initialized">files_initialized</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#variable-allow_missing_fields">allow_missing_fields</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-0">Interfaces</a></h3></div>
+  <div id="inters-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#interface-output_manager_save">output_manager_save</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-0">Derived Types</a></h3></div>
+  <div id="types-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_file_populator">type_file_populator</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_operator_populator">type_operator_populator</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_group_populator">type_group_populator</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_variable_populator">type_variable_populator</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-0">Functions</a></h3></div>
+  <div id="funcs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-in_window">in_window</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-0">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-0" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_init">output_manager_init</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_clean">output_manager_clean</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-populate">populate</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_start">output_manager_start</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-set_next_output">set_next_output</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_save1">output_manager_save1</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_prepare_save">output_manager_prepare_save</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_save2">output_manager_save2</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-configure_from_yaml">configure_from_yaml</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_add_file">output_manager_add_file</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-process_file">process_file</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-configure_group">configure_group</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-create_group_settings">create_group_settings</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-create_operator_settings">create_operator_settings</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-create_variable_settings">create_variable_settings</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+    
+      <br>
+    
+  
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Uses</h3>
+      </div>
+      <ul class="list-group">
+      
+      <li class="list-group-item">
+  <ul class="list-inline">
+    
+    <li><a href='../module/field_manager.html'>field_manager</a></li>
+    
+    <li><a href='../module/output_manager_core.html'>output_manager_core</a></li>
+    
+    <li><a href='../module/netcdf_output.html'>netcdf_output</a></li>
+    
+    <li><a href='../module/text_output.html'>text_output</a></li>
+    
+    <li><a href='../module/output_operators_library.html'>output_operators_library</a></li>
+    
+    <li><a href='../module/output_operators_time_average.html'>output_operators_time_average</a></li>
+    
+    <li><a href='../module/output_operators_slice.html'>output_operators_slice</a></li>
+    
+    <li>yaml_settings</li>
+    
+  </ul>
+      </li>
+      
+      
+      
+      <li class="list-group-item">
+  <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: module~~output_manager~~UsesGraph Pages: 1 -->
+<svg id="moduleoutput_managerUsesGraph" width="641pt" height="262pt"
+ viewBox="0.00 0.00 641.00 262.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="module~~output_manager~~UsesGraph" class="graph" transform="scale(.6278 .6278) rotate(0) translate(4 413.3174)">
+<title>module~~output_manager~~UsesGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-413.3174 1017,-413.3174 1017,4 -4,4"/>
+<!-- module~output_manager -->
+<g id="module~~output_manager~~UsesGraph_node1" class="node">
+<title>module~output_manager</title>
+<polygon fill="none" stroke="#000000" points="1013,-240 922,-240 922,-216 1013,-216 1013,-240"/>
+<text text-anchor="middle" x="967.5" y="-225.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">output_manager</text>
+</g>
+<!-- module~output_operators_library -->
+<g id="module~~output_manager~~UsesGraph_node2" class="node">
+<title>module~output_operators_library</title>
+<g id="a_module~~output_manager~~UsesGraph_node2"><a xlink:href=".././module/output_operators_library.html" xlink:title="output_operators_library">
+<polygon fill="#337ab7" stroke="#337ab7" points="886,-240 756,-240 756,-216 886,-216 886,-240"/>
+<text text-anchor="middle" x="821" y="-225.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">output_operators_library</text>
+</a>
+</g>
+</g>
+<!-- module~output_manager&#45;&gt;module~output_operators_library -->
+<g id="module~~output_manager~~UsesGraph_edge1" class="edge">
+<title>module~output_manager&#45;&gt;module~output_operators_library</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M921.9495,-228C913.7994,-228 905.1127,-228 896.3856,-228"/>
+<polygon fill="#000000" stroke="#000000" points="896.1519,-224.5001 886.1519,-228 896.1518,-231.5001 896.1519,-224.5001"/>
+</g>
+<!-- module~netcdf_output -->
+<g id="module~~output_manager~~UsesGraph_node3" class="node">
+<title>module~netcdf_output</title>
+<g id="a_module~~output_manager~~UsesGraph_node3"><a xlink:href=".././module/netcdf_output.html" xlink:title="netcdf_output">
+<polygon fill="#337ab7" stroke="#337ab7" points="495,-58 417,-58 417,-34 495,-34 495,-58"/>
+<text text-anchor="middle" x="456" y="-43.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">netcdf_output</text>
+</a>
+</g>
+</g>
+<!-- module~output_manager&#45;&gt;module~netcdf_output -->
+<g id="module~~output_manager~~UsesGraph_edge2" class="edge">
+<title>module~output_manager&#45;&gt;module~netcdf_output</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M956.0334,-215.9807C933.0718,-192.9596 878.6822,-143.5491 821,-128"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M821,-128C740.1965,-106.2183 720.4592,-94.1814 637,-88"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M637,-88C590.5389,-84.5589 538.8941,-71.6333 502.7012,-61.0198"/>
+<polygon fill="#000000" stroke="#000000" points="503.5033,-57.6066 492.9198,-58.0973 501.4993,-64.3136 503.5033,-57.6066"/>
+</g>
+<!-- module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_node4" class="node">
+<title>module~field_manager</title>
+<g id="a_module~~output_manager~~UsesGraph_node4"><a xlink:href=".././module/field_manager.html" xlink:title="field_manager">
+<polygon fill="#337ab7" stroke="#337ab7" points="204,-180 123,-180 123,-156 204,-156 204,-180"/>
+<text text-anchor="middle" x="163.5" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">field_manager</text>
+</a>
+</g>
+</g>
+<!-- module~output_manager&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge3" class="edge">
+<title>module~output_manager&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M952.4618,-240.1874C915.5389,-269.331 816.3889,-342.9315 720,-374 607.864,-410.1441 572.9877,-411.9563 456,-398"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-398C378.8384,-390.519 367.5515,-358.2017 299,-322"/>
+</g>
+<!-- module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_node5" class="node">
+<title>module~output_manager_core</title>
+<g id="a_module~~output_manager~~UsesGraph_node5"><a xlink:href=".././module/output_manager_core.html" xlink:title="output_manager_core">
+<polygon fill="#337ab7" stroke="#337ab7" points="358,-180 240,-180 240,-156 358,-156 358,-180"/>
+<text text-anchor="middle" x="299" y="-165.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">output_manager_core</text>
+</a>
+</g>
+</g>
+<!-- module~output_manager&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge4" class="edge">
+<title>module~output_manager&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M637,-88C599.2603,-85.2048 589.0945,-92.8411 554,-107 506.8527,-126.0217 506.5623,-160.6951 456,-166"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-166C427.3933,-169.0014 395.6953,-169.8683 368.3146,-169.8504"/>
+<polygon fill="#000000" stroke="#000000" points="368.0636,-166.3493 358.0475,-169.8028 368.0311,-173.3492 368.0636,-166.3493"/>
+</g>
+<!-- module~text_output -->
+<g id="module~~output_manager~~UsesGraph_node6" class="node">
+<title>module~text_output</title>
+<g id="a_module~~output_manager~~UsesGraph_node6"><a xlink:href=".././module/text_output.html" xlink:title="text_output">
+<polygon fill="#337ab7" stroke="#337ab7" points="489,-100 423,-100 423,-76 489,-76 489,-100"/>
+<text text-anchor="middle" x="456" y="-85.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">text_output</text>
+</a>
+</g>
+</g>
+<!-- module~output_manager&#45;&gt;module~text_output -->
+<g id="module~~output_manager~~UsesGraph_edge5" class="edge">
+<title>module~output_manager&#45;&gt;module~text_output</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M637,-88C590.0809,-84.525 536.1325,-85.1146 499.4254,-86.2032"/>
+<polygon fill="#000000" stroke="#000000" points="498.9644,-82.7162 489.0824,-86.5367 499.1901,-89.7125 498.9644,-82.7162"/>
+</g>
+<!-- module~output_operators_time_average -->
+<g id="module~~output_manager~~UsesGraph_node7" class="node">
+<title>module~output_operators_time_average</title>
+<g id="a_module~~output_manager~~UsesGraph_node7"><a xlink:href=".././module/output_operators_time_average.html" xlink:title="output_operators_time_average">
+<polygon fill="#337ab7" stroke="#337ab7" points="720,-220 554,-220 554,-196 720,-196 720,-220"/>
+<text text-anchor="middle" x="637" y="-205.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">output_operators_time_average</text>
+</a>
+</g>
+</g>
+<!-- module~output_manager&#45;&gt;module~output_operators_time_average -->
+<g id="module~~output_manager~~UsesGraph_edge6" class="edge">
+<title>module~output_manager&#45;&gt;module~output_operators_time_average</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M821,-128C789.9933,-119.6417 708.1993,-164.8247 664.8626,-190.7585"/>
+<polygon fill="#000000" stroke="#000000" points="662.9796,-187.8068 656.2308,-195.9741 666.5998,-193.7981 662.9796,-187.8068"/>
+</g>
+<!-- yaml_settings -->
+<g id="module~~output_manager~~UsesGraph_node8" class="node">
+<title>yaml_settings</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="202.5,-222 124.5,-222 124.5,-198 202.5,-198 202.5,-222"/>
+<text text-anchor="middle" x="163.5" y="-207.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">yaml_settings</text>
+</g>
+<!-- module~output_manager&#45;&gt;yaml_settings -->
+<g id="module~~output_manager~~UsesGraph_edge7" class="edge">
+<title>module~output_manager&#45;&gt;yaml_settings</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-398C386.7135,-389.7343 362.913,-426.0011 299,-398"/>
+</g>
+<!-- module~output_operators_slice -->
+<g id="module~~output_manager~~UsesGraph_node9" class="node">
+<title>module~output_operators_slice</title>
+<g id="a_module~~output_manager~~UsesGraph_node9"><a xlink:href=".././module/output_operators_slice.html" xlink:title="output_operators_slice">
+<polygon fill="#337ab7" stroke="#337ab7" points="697.5,-140 576.5,-140 576.5,-116 697.5,-116 697.5,-140"/>
+<text text-anchor="middle" x="637" y="-125.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">output_operators_slice</text>
+</a>
+</g>
+</g>
+<!-- module~output_manager&#45;&gt;module~output_operators_slice -->
+<g id="module~~output_manager~~UsesGraph_edge8" class="edge">
+<title>module~output_manager&#45;&gt;module~output_operators_slice</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M821,-128C784.5059,-118.1625 742.4403,-117.4186 707.7493,-119.4638"/>
+<polygon fill="#000000" stroke="#000000" points="707.4442,-115.9763 697.704,-120.1449 707.9179,-122.9603 707.4442,-115.9763"/>
+</g>
+<!-- module~output_operators_library&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge11" class="edge">
+<title>module~output_operators_library&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M810.5261,-240.0038C784.6437,-268.5396 714.1493,-339.571 637,-360"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M637,-360C585.5206,-373.6316 570.9132,-352.0118 518,-346 469.3549,-340.4731 342.7628,-343.9478 299,-322"/>
+</g>
+<!-- module~output_operators_library&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge12" class="edge">
+<title>module~output_operators_library&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M797.1967,-215.9047C777.1518,-206.3202 747.4387,-193.4969 720,-187 605.463,-159.88 572.9947,-153.0975 456,-166"/>
+</g>
+<!-- module~output_operators_library&#45;&gt;module~output_operators_time_average -->
+<g id="module~~output_manager~~UsesGraph_edge13" class="edge">
+<title>module~output_operators_library&#45;&gt;module~output_operators_time_average</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M755.8695,-220.9206C747.5474,-220.016 738.9037,-219.0765 730.2452,-218.1354"/>
+<polygon fill="#000000" stroke="#000000" points="730.4123,-214.633 720.0926,-217.0318 729.6558,-221.592 730.4123,-214.633"/>
+</g>
+<!-- module~output_operators_library&#45;&gt;yaml_settings -->
+<g id="module~~output_manager~~UsesGraph_edge14" class="edge">
+<title>module~output_operators_library&#45;&gt;yaml_settings</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M637,-360C559.2357,-380.5918 534.5595,-342.6879 456,-360"/>
+</g>
+<!-- module~output_operators_library&#45;&gt;module~output_operators_slice -->
+<g id="module~~output_manager~~UsesGraph_edge15" class="edge">
+<title>module~output_operators_library&#45;&gt;module~output_operators_slice</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M807.5782,-215.8925C789.079,-199.7618 754.1451,-171.2564 720,-154 712.0687,-149.9916 703.3975,-146.4521 694.7459,-143.3778"/>
+<polygon fill="#000000" stroke="#000000" points="695.6207,-139.9793 685.0266,-140.1042 693.3863,-146.6132 695.6207,-139.9793"/>
+</g>
+<!-- module~output_operators_interp -->
+<g id="module~~output_manager~~UsesGraph_node11" class="node">
+<title>module~output_operators_interp</title>
+<g id="a_module~~output_manager~~UsesGraph_node11"><a xlink:href=".././module/output_operators_interp.html" xlink:title="output_operators_interp">
+<polygon fill="#337ab7" stroke="#337ab7" points="700.5,-300 573.5,-300 573.5,-276 700.5,-276 700.5,-300"/>
+<text text-anchor="middle" x="637" y="-285.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">output_operators_interp</text>
+</a>
+</g>
+</g>
+<!-- module~output_operators_library&#45;&gt;module~output_operators_interp -->
+<g id="module~~output_manager~~UsesGraph_edge10" class="edge">
+<title>module~output_operators_library&#45;&gt;module~output_operators_interp</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M785.5368,-240.1423C766.1976,-246.7123 741.8192,-254.9109 720,-262 709.0036,-265.5728 697.1599,-269.3343 685.9596,-272.8521"/>
+<polygon fill="#000000" stroke="#000000" points="684.8175,-269.542 676.3199,-275.8698 686.9089,-276.2223 684.8175,-269.542"/>
+</g>
+<!-- module~output_operators_base -->
+<g id="module~~output_manager~~UsesGraph_node12" class="node">
+<title>module~output_operators_base</title>
+<g id="a_module~~output_manager~~UsesGraph_node12"><a xlink:href=".././module/output_operators_base.html" xlink:title="output_operators_base">
+<polygon fill="#337ab7" stroke="#337ab7" points="518,-256 394,-256 394,-232 518,-232 518,-256"/>
+<text text-anchor="middle" x="456" y="-241.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">output_operators_base</text>
+</a>
+</g>
+</g>
+<!-- module~output_operators_library&#45;&gt;module~output_operators_base -->
+<g id="module~~output_manager~~UsesGraph_edge9" class="edge">
+<title>module~output_operators_library&#45;&gt;module~output_operators_base</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M755.7453,-230.8605C691.9035,-233.659 594.8662,-237.9127 528.6125,-240.817"/>
+<polygon fill="#000000" stroke="#000000" points="528.0905,-237.3364 518.2534,-241.2711 528.3971,-244.3297 528.0905,-237.3364"/>
+</g>
+<!-- module~netcdf_output&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge16" class="edge">
+<title>module~netcdf_output&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416.9536,-41.8439C384.5778,-39.7203 337.7498,-39.7417 299,-52"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299,-52C272.0096,-60.5382 262.8453,-59.2825 240,-76 213.1061,-95.6802 189.8763,-126.8249 176.2802,-147.336"/>
+<polygon fill="#000000" stroke="#000000" points="173.2141,-145.6323 170.7326,-155.9324 179.0958,-149.4279 173.2141,-145.6323"/>
+</g>
+<!-- module~netcdf_output&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge17" class="edge">
+<title>module~netcdf_output&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416.9476,-55.9742C409.0189,-58.879 400.9787,-62.5141 394,-67 389.3957,-69.9596 343.372,-119.7051 317.1138,-148.2556"/>
+<polygon fill="#000000" stroke="#000000" points="314.4716,-145.9583 310.2827,-155.6898 319.626,-150.6946 314.4716,-145.9583"/>
+</g>
+<!-- module~netcdf_output&#45;&gt;yaml_settings -->
+<g id="module~~output_manager~~UsesGraph_edge19" class="edge">
+<title>module~netcdf_output&#45;&gt;yaml_settings</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M417.2912,-58.0941C409.4975,-60.8127 401.4229,-63.8367 394,-67 323.0455,-97.2374 300.4245,-99.0655 240,-147 220.7392,-162.2796 223.2666,-173.7277 204,-189 202.4638,-190.2177 200.8461,-191.3962 199.177,-192.5318"/>
+<polygon fill="#000000" stroke="#000000" points="197.2328,-189.6184 190.5427,-197.8338 200.8958,-195.5835 197.2328,-189.6184"/>
+</g>
+<!-- netcdf -->
+<g id="module~~output_manager~~UsesGraph_node10" class="node">
+<title>netcdf</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="326,-24 272,-24 272,0 326,0 326,-24"/>
+<text text-anchor="middle" x="299" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">netcdf</text>
+</g>
+<!-- module~netcdf_output&#45;&gt;netcdf -->
+<g id="module~~output_manager~~UsesGraph_edge18" class="edge">
+<title>module~netcdf_output&#45;&gt;netcdf</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M416.7873,-37.5081C392.151,-32.1728 360.559,-25.3312 336.296,-20.0768"/>
+<polygon fill="#000000" stroke="#000000" points="336.9022,-16.6271 326.388,-17.9312 335.4206,-23.4685 336.9022,-16.6271"/>
+</g>
+<!-- iso_fortran_env -->
+<g id="module~~output_manager~~UsesGraph_node13" class="node">
+<title>iso_fortran_env</title>
+<g id="a_module~~output_manager~~UsesGraph_node13"><a xlink:href="http://fortranwiki.org/fortran/show/ISO_FORTRAN_ENV" xlink:title="iso_fortran_env">
+<polygon fill="#337ab7" stroke="#337ab7" points="87,-160 0,-160 0,-136 87,-136 87,-160"/>
+<text text-anchor="middle" x="43.5" y="-145.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">iso_fortran_env</text>
+</a>
+</g>
+</g>
+<!-- module~field_manager&#45;&gt;iso_fortran_env -->
+<g id="module~~output_manager~~UsesGraph_edge20" class="edge">
+<title>module~field_manager&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M122.8735,-161.2289C114.6632,-159.8605 105.9108,-158.4018 97.3285,-156.9714"/>
+<polygon fill="#000000" stroke="#000000" points="97.814,-153.5041 87.3746,-155.3124 96.6631,-160.4089 97.814,-153.5041"/>
+</g>
+<!-- module~output_manager_core&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge21" class="edge">
+<title>module~output_manager_core&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M239.9619,-168C231.3425,-168 222.5319,-168 214.1005,-168"/>
+<polygon fill="#000000" stroke="#000000" points="214.0426,-164.5001 204.0426,-168 214.0426,-171.5001 214.0426,-164.5001"/>
+</g>
+<!-- module~output_manager_core&#45;&gt;yaml_settings -->
+<g id="module~~output_manager~~UsesGraph_edge22" class="edge">
+<title>module~output_manager_core&#45;&gt;yaml_settings</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M260.1711,-180.0355C245.1464,-184.6926 227.7854,-190.0739 211.9572,-194.9801"/>
+<polygon fill="#000000" stroke="#000000" points="210.85,-191.6589 202.3345,-197.9627 212.9225,-198.3451 210.85,-191.6589"/>
+</g>
+<!-- module~output_manager_core&#45;&gt;iso_fortran_env -->
+<g id="module~~output_manager~~UsesGraph_edge23" class="edge">
+<title>module~output_manager_core&#45;&gt;iso_fortran_env</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M253.9113,-155.9298C238.2341,-152.2957 220.4555,-148.7971 204,-147 168.2128,-143.0917 158.9993,-146.7736 123,-147 114.7571,-147.0518 106.0337,-147.1339 97.5026,-147.2293"/>
+<polygon fill="#000000" stroke="#000000" points="97.1948,-143.7326 87.237,-147.3511 97.2779,-150.7321 97.1948,-143.7326"/>
+</g>
+<!-- module~text_output&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge24" class="edge">
+<title>module~text_output&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M422.766,-76.2293C383.8241,-63.1659 321.7294,-44.8097 299,-52"/>
+</g>
+<!-- module~text_output&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge25" class="edge">
+<title>module~text_output&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M432.1551,-100.1503C405.3731,-113.7972 361.7413,-136.0299 331.7679,-151.303"/>
+<polygon fill="#000000" stroke="#000000" points="329.8758,-148.3389 322.5549,-155.9975 333.0539,-154.5758 329.8758,-148.3389"/>
+</g>
+<!-- module~output_operators_time_average&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge27" class="edge">
+<title>module~output_operators_time_average&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-204C386.3329,-199.6871 367.4869,-221.4774 299,-208"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299,-208C267.9502,-201.8898 233.7813,-191.7787 207.5235,-183.2514"/>
+<polygon fill="#000000" stroke="#000000" points="208.4634,-179.8761 197.8704,-180.0724 206.2738,-186.5248 208.4634,-179.8761"/>
+</g>
+<!-- module~output_operators_time_average&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge26" class="edge">
+<title>module~output_operators_time_average&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M553.5904,-207.5417C522.8872,-207.0081 487.8418,-205.9712 456,-204"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-204C418.2222,-201.6613 376.5039,-191.7321 345.5723,-182.8926"/>
+<polygon fill="#000000" stroke="#000000" points="346.5078,-179.5197 335.9273,-180.072 344.5429,-186.2383 346.5078,-179.5197"/>
+</g>
+<!-- module~output_operators_time_average&#45;&gt;module~output_operators_base -->
+<g id="module~~output_manager~~UsesGraph_edge28" class="edge">
+<title>module~output_operators_time_average&#45;&gt;module~output_operators_base</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M576.478,-220.0375C560.478,-223.2198 543.0688,-226.6824 526.5867,-229.9607"/>
+<polygon fill="#000000" stroke="#000000" points="525.5901,-226.5902 516.465,-231.9738 526.9557,-233.4558 525.5901,-226.5902"/>
+</g>
+<!-- module~output_operators_slice&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge30" class="edge">
+<title>module~output_operators_slice&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M576.3812,-126.7811C498.1506,-126.1479 358.0603,-128.2059 240,-147 230.41,-148.5266 220.2996,-150.8053 210.6828,-153.306"/>
+<polygon fill="#000000" stroke="#000000" points="209.614,-149.9695 200.8823,-155.9701 211.4503,-156.7243 209.614,-149.9695"/>
+</g>
+<!-- module~output_operators_slice&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge29" class="edge">
+<title>module~output_operators_slice&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M591.6463,-140.0794C555.2734,-149.1444 502.7557,-160.8437 456,-166"/>
+</g>
+<!-- module~output_operators_slice&#45;&gt;module~output_operators_base -->
+<g id="module~~output_manager~~UsesGraph_edge31" class="edge">
+<title>module~output_operators_slice&#45;&gt;module~output_operators_base</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M618.8392,-140.1899C601.784,-151.805 575.7126,-169.9938 554,-187 537.3772,-200.0196 535.9565,-206.8918 518,-218 512.1978,-221.5893 505.8128,-224.8951 499.4138,-227.8596"/>
+<polygon fill="#000000" stroke="#000000" points="497.8432,-224.7266 490.0945,-231.9521 500.6578,-231.1358 497.8432,-224.7266"/>
+</g>
+<!-- module~output_operators_interp&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge33" class="edge">
+<title>module~output_operators_interp&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-284C384.8394,-274.4948 363.1743,-354.1844 299,-322"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299,-322C267.4918,-306.1981 260.7918,-297.4635 240,-269 217.0015,-237.5156 230.7943,-217.3242 204,-189 202.9795,-187.9212 201.8911,-186.8877 200.7505,-185.8988"/>
+<polygon fill="#000000" stroke="#000000" points="202.7764,-183.0446 192.6257,-180.0092 198.668,-188.7121 202.7764,-183.0446"/>
+</g>
+<!-- module~output_operators_interp&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge32" class="edge">
+<title>module~output_operators_interp&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M573.4922,-290.0191C538.6573,-290.2687 494.7875,-289.181 456,-284"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-284C427.4333,-280.1842 416.0533,-283.5545 394,-265 366.9272,-242.2224 383.6861,-218.3306 358,-194 354.4294,-190.6178 350.3465,-187.6307 346.0323,-185.0027"/>
+<polygon fill="#000000" stroke="#000000" points="347.4051,-181.7667 336.942,-180.1012 344.0828,-187.9281 347.4051,-181.7667"/>
+</g>
+<!-- module~output_operators_interp&#45;&gt;yaml_settings -->
+<g id="module~~output_manager~~UsesGraph_edge34" class="edge">
+<title>module~output_operators_interp&#45;&gt;yaml_settings</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M613.7705,-300.0872C580.0546,-316.9619 515.1168,-346.9725 456,-360"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M456,-360C420.9448,-367.7251 331.8792,-412.4048 299,-398"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299,-398C227.3182,-366.5953 186.3388,-274.3756 170.7893,-231.8897"/>
+<polygon fill="#000000" stroke="#000000" points="174.0081,-230.4931 167.3807,-222.227 167.4068,-232.8218 174.0081,-230.4931"/>
+</g>
+<!-- module~output_operators_interp&#45;&gt;module~output_operators_base -->
+<g id="module~~output_manager~~UsesGraph_edge35" class="edge">
+<title>module~output_operators_interp&#45;&gt;module~output_operators_base</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M587.541,-275.9768C565.194,-270.5444 538.6114,-264.0823 515.2114,-258.3939"/>
+<polygon fill="#000000" stroke="#000000" points="515.943,-254.9699 505.3992,-256.0087 514.2895,-261.7718 515.943,-254.9699"/>
+</g>
+<!-- module~output_operators_base&#45;&gt;module~field_manager -->
+<g id="module~~output_manager~~UsesGraph_edge37" class="edge">
+<title>module~output_operators_base&#45;&gt;module~field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M407.0211,-231.9439C376.1356,-224.5467 335.3555,-215.1543 299,-208"/>
+</g>
+<!-- module~output_operators_base&#45;&gt;module~output_manager_core -->
+<g id="module~~output_manager~~UsesGraph_edge36" class="edge">
+<title>module~output_operators_base&#45;&gt;module~output_manager_core</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M423.9162,-231.912C414.1303,-227.8638 403.4619,-223.0778 394,-218 377.0561,-208.907 374.8614,-203.2451 358,-194 351.8672,-190.6374 345.2132,-187.3673 338.6579,-184.3449"/>
+<polygon fill="#000000" stroke="#000000" points="339.7538,-181.0009 329.1964,-180.1121 336.8952,-187.3907 339.7538,-181.0009"/>
+</g>
+<!-- yaml_types -->
+<g id="module~~output_manager~~UsesGraph_node14" class="node">
+<title>yaml_types</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="332.5,-260 265.5,-260 265.5,-236 332.5,-236 332.5,-260"/>
+<text text-anchor="middle" x="299" y="-245.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">yaml_types</text>
+</g>
+<!-- module~output_operators_base&#45;&gt;yaml_types -->
+<g id="module~~output_manager~~UsesGraph_edge38" class="edge">
+<title>module~output_operators_base&#45;&gt;yaml_types</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M393.9494,-245.5809C376.7938,-246.018 358.5407,-246.483 342.67,-246.8874"/>
+<polygon fill="#000000" stroke="#000000" points="342.5278,-243.3898 332.6202,-247.1434 342.7062,-250.3875 342.5278,-243.3898"/>
+</g>
+</g>
+</svg>
+</div><script>var panmoduleoutput_managerUsesGraph = svgPanZoom('#moduleoutput_managerUsesGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="490pt" height="32pt"
+ viewBox="0.00 0.00 489.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 485.5,-28 485.5,4 -4,4"/>
+<!-- Module -->
+<g id="node1" class="node">
+<title>Module</title>
+<polygon fill="#337ab7" stroke="#337ab7" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Module</text>
+</g>
+<!-- Submodule -->
+<g id="node2" class="node">
+<title>Submodule</title>
+<polygon fill="#5bc0de" stroke="#5bc0de" points="139.5,-24 72.5,-24 72.5,0 139.5,0 139.5,-24"/>
+<text text-anchor="middle" x="106" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Submodule</text>
+</g>
+<!-- Subroutine -->
+<g id="node3" class="node">
+<title>Subroutine</title>
+<polygon fill="#d9534f" stroke="#d9534f" points="222,-24 158,-24 158,0 222,0 222,-24"/>
+<text text-anchor="middle" x="190" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Subroutine</text>
+</g>
+<!-- Function -->
+<g id="node4" class="node">
+<title>Function</title>
+<polygon fill="#d94e8f" stroke="#d94e8f" points="294,-24 240,-24 240,0 294,0 294,-24"/>
+<text text-anchor="middle" x="267" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Function</text>
+</g>
+<!-- Program -->
+<g id="node5" class="node">
+<title>Program</title>
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="366,-24 312,-24 312,0 366,0 366,-24"/>
+<text text-anchor="middle" x="339" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Program</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node6" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="481.5,-24 384.5,-24 384.5,0 481.5,0 481.5,-24"/>
+<text text-anchor="middle" x="433" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a submodule to the (sub)module which it is
+    descended from. Dashed arrows point from a module or program unit to 
+    modules which it uses.
+    </p>
+    </div></div></div></div>
+      </li>
+      
+      </ul>
+    </div>
+    
+
+    
+    
+
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#variable-first_file%7E2">first_file</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#variable-files_initialized">files_initialized</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#variable-allow_missing_fields">allow_missing_fields</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#inters-1">Interfaces</a></h3></div>
+  <div id="inters-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#interface-output_manager_save">output_manager_save</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#types-1">Derived Types</a></h3></div>
+  <div id="types-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_file_populator">type_file_populator</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_operator_populator">type_operator_populator</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_group_populator">type_group_populator</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#type-type_variable_populator">type_variable_populator</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#funcs-1">Functions</a></h3></div>
+  <div id="funcs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-in_window">in_window</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#subs-1">Subroutines</a></h3></div>
+  <div class="list-group">
+    <div id="subs-1" class="panel-collapse collapse">
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_init">output_manager_init</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_clean">output_manager_clean</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-populate">populate</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_start">output_manager_start</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-set_next_output">set_next_output</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_save1">output_manager_save1</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_prepare_save">output_manager_prepare_save</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_save2">output_manager_save2</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-configure_from_yaml">configure_from_yaml</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-output_manager_add_file">output_manager_add_file</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-process_file">process_file</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-configure_group">configure_group</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-create_group_settings">create_group_settings</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-create_operator_settings">create_operator_settings</a>
+      
+      <a class="list-group-item" href="../module/output_manager.html#proc-create_variable_settings">create_variable_settings</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+
+    
+    <section>
+    <h2>Variables</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-first_file%7E2"></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  
+  <td>private,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>first_file</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-files_initialized"></span>logical,</td>
+  
+  <td>private</td>
+  <td></td><td>::</td>
+  <td><strong>files_initialized</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-allow_missing_fields"></span>logical,</td>
+  
+  <td>public,</td>
+  <td>save</td><td>::</td>
+  <td><strong>allow_missing_fields</strong></td><td> =</td><td>.false.</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    <section>
+   <h2>Interfaces</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="interface-output_manager_save"></span><h3>public interface <a href='../interface/output_manager_save.html'>output_manager_save</a>
+    
+  </h3></div>
+  
+  <ul class="list-group">
+  
+  
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private subroutine <a href='../proc/output_manager_save1.html'>output_manager_save1</a>(julianday, secondsofday, n)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+    </li>
+  
+    <li class="list-group-item">
+    
+    
+    <h3>
+private subroutine <a href='../proc/output_manager_save2.html'>output_manager_save2</a>(julianday, secondsofday, microseconds, n)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>microseconds</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+    </li>
+  
+  
+  </ul>
+</div>
+
+    
+    </section>
+  <br>
+    
+
+    
+    
+    
+    <section>
+     <h2>Derived Types</h2>
+   
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-type_file_populator"></span><h3>type, private, extends(type_dictionary_populator) :: <a href='../type/type_file_populator.html'>type_file_populator</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-fm"></span>type(<a href='../type/type_field_manager.html'>type_field_manager</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>fm</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-title%7E2"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>title</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-postfix%7E3"></span>character(len=:),</td>
+  
+  <td>public,</td>
+  <td>allocatable</td><td>::</td>
+  <td><strong>postfix</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/type_file_populator.html#boundprocedure-create'>create</a></strong>  => process_file </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-type_operator_populator"></span><h3>type, private, extends(type_list_populator) :: <a href='../type/type_operator_populator.html'>type_operator_populator</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-field_manager%7E2"></span>type(<a href='../type/type_field_manager.html'>type_field_manager</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>field_manager</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-variable_settings"></span>class(<a href='../type/type_output_variable_settings.html'>type_output_variable_settings</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>variable_settings</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/type_operator_populator.html#boundprocedure-create%7E2'>create</a></strong>  => create_operator_settings </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-type_group_populator"></span><h3>type, private, extends(type_list_populator) :: <a href='../type/type_group_populator.html'>type_group_populator</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-file"></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>file</strong></td><td></td><td></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-variable_settings%7E2"></span>class(<a href='../type/type_output_variable_settings.html'>type_output_variable_settings</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>variable_settings</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/type_group_populator.html#boundprocedure-create%7E3'>create</a></strong>  => create_group_settings </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="type-type_variable_populator"></span><h3>type, private, extends(type_list_populator) :: <a href='../type/type_variable_populator.html'>type_variable_populator</a>
+    
+  </h3></div>
+  <div class="panel-body">
+    
+     
+     <h4>Components</h4>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-file%7E2"></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>file</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-variable_settings%7E3"></span>class(<a href='../type/type_output_variable_settings.html'>type_output_variable_settings</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>variable_settings</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+     
+     
+          
+     
+     <h4>Type-Bound Procedures</h4>
+      <table class="table table-striped varlist">
+      <tbody>
+      
+       <tr><td>procedure, public :: <strong><a href='../type/type_variable_populator.html#boundprocedure-create%7E4'>create</a></strong>  => create_variable_settings </td>
+       <td></td></tr>
+      
+       </tbody>
+       </table>
+     
+  </div>
+</div>
+
+     
+    </section>
+  <br>
+    
+    
+     
+    <section>
+    <h2>Functions</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-in_window"></span><h3>
+private function <a href='../proc/in_window.html'>in_window</a>(self, julianday, secondsofday, microseconds, n)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>microseconds</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+
+  </div>
+  </div>
+
+    
+    </section>
+    <br>
+    
+
+    
+    <section>
+    <h2>Subroutines</h2>
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-output_manager_init"></span><h3>
+public subroutine <a href='../proc/output_manager_init.html'>output_manager_init</a>(field_manager, title, postfix, settings)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/type_field_manager.html'>type_field_manager</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>field_manager</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>title</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>postfix</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(type_settings),</td>
+  <td></td>
+  <td>optional</td>
+  
+  <td>pointer</td><td>::</td>
+  <td><strong>settings</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-output_manager_clean"></span><h3>
+public subroutine <a href='../proc/output_manager_clean.html'>output_manager_clean</a>()
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      <em>None</em>
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-populate"></span><h3>
+private subroutine <a href='../proc/populate.html'>populate</a>(file)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>file</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-output_manager_start"></span><h3>
+public subroutine <a href='../proc/output_manager_start.html'>output_manager_start</a>(julianday, secondsofday, microseconds, n)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>microseconds</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-set_next_output"></span><h3>
+private subroutine <a href='../proc/set_next_output.html'>set_next_output</a>(self, julianday, secondsofday, microseconds, n)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>microseconds</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-output_manager_save1"></span><h3>
+private subroutine <a href='../proc/output_manager_save1.html'>output_manager_save1</a>(julianday, secondsofday, n)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-output_manager_prepare_save"></span><h3>
+public subroutine <a href='../proc/output_manager_prepare_save.html'>output_manager_prepare_save</a>(julianday, secondsofday, microseconds, n)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>microseconds</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-output_manager_save2"></span><h3>
+private subroutine <a href='../proc/output_manager_save2.html'>output_manager_save2</a>(julianday, secondsofday, microseconds, n)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>julianday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>secondsofday</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>microseconds</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>n</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-configure_from_yaml"></span><h3>
+private subroutine <a href='../proc/configure_from_yaml.html'>configure_from_yaml</a>(field_manager, title, postfix, settings)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/type_field_manager.html'>type_field_manager</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>field_manager</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>title</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>postfix</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(type_settings),</td>
+  <td></td>
+  <td>optional</td>
+  
+  <td>pointer</td><td>::</td>
+  <td><strong>settings</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-output_manager_add_file"></span><h3>
+public subroutine <a href='../proc/output_manager_add_file.html'>output_manager_add_file</a>(field_manager, file)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(<a href='../type/type_field_manager.html'>type_field_manager</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>field_manager</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>file</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-process_file"></span><h3>
+private subroutine <a href='../proc/process_file.html'>process_file</a>(self, pair)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_file_populator.html'>type_file_populator</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(type_key_value_pair),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>pair</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-configure_group"></span><h3>
+private recursive subroutine <a href='../proc/configure_group.html'>configure_group</a>(file, settings, default_variable_settings)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_file.html'>type_file</a>),</td>
+  <td>intent(inout),</td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>file</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(type_settings),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>settings</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_output_variable_settings.html'>type_output_variable_settings</a>),</td>
+  <td>intent(in),</td>
+  <td>optional</td>
+  
+  <td></td><td>::</td>
+  <td><strong>default_variable_settings</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-create_group_settings"></span><h3>
+private recursive subroutine <a href='../proc/create_group_settings.html'>create_group_settings</a>(self, index, item)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_group_populator.html'>type_group_populator</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>index</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(type_list_item),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-create_operator_settings"></span><h3>
+private recursive subroutine <a href='../proc/create_operator_settings.html'>create_operator_settings</a>(self, index, item)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_operator_populator.html'>type_operator_populator</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>index</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(type_list_item),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    
+  <div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="proc-create_variable_settings"></span><h3>
+private recursive subroutine <a href='../proc/create_variable_settings.html'>create_variable_settings</a>(self, index, item)
+    
+    
+   
+</h3></div>
+  <div class="panel-body">
+       
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_variable_populator.html'>type_variable_populator</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>index</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>type(type_list_item),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>item</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  </div>
+  </div>
+
+    
+    </section>    
+    <br>
+    
+    
+    
+    </div>
+  </div>
+
+  
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Fortran Program was developed by Jorn Bruggeman</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

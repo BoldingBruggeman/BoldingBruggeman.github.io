@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="Fortran-based flexible output manager with support for NetCDF and text formats">
+    
+    <meta name="author" content="Jorn Bruggeman" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>type_output_field_pointer &ndash; Fortran Program </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Fortran Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>type_output_field_pointer
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 0.8% of total for derived types.</p>Including implementation: 3 statements,  0.1% of total for derived types.">3 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/output_manager_core.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/output_manager_core.f90.html'>output_manager_core.F90</a></li>
+    
+     <li><a href='../module/output_manager_core.html'>output_manager_core</a></li>
+    
+  
+     <li class="active">type_output_field_pointer</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_output_field_pointer.html#variable-p%7E2">p</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, private :: type_output_field_pointer</h2>
+    
+    <br>
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Inherits</h3>
+      </div>
+      <div class="panel-body">
+    <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: type~~type_output_field_pointer~~InheritsGraph Pages: 1 -->
+<svg id="typetype_output_field_pointerInheritsGraph" width="641pt" height="67pt"
+ viewBox="0.00 0.00 641.00 66.65" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~type_output_field_pointer~~InheritsGraph" class="graph" transform="scale(.8228 .8228) rotate(0) translate(4 77)">
+<title>type~~type_output_field_pointer~~InheritsGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-77 775,-77 775,4 -4,4"/>
+<!-- type~type_output_field_pointer -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_node1" class="node">
+<title>type~type_output_field_pointer</title>
+<polygon fill="none" stroke="#000000" points="771,-45 638,-45 638,-21 771,-21 771,-45"/>
+<text text-anchor="middle" x="704.5" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">type_output_field_pointer</text>
+</g>
+<!-- type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_node2" class="node">
+<title>type~type_base_output_field</title>
+<g id="a_type~~type_output_field_pointer~~InheritsGraph_node2"><a xlink:href=".././type/type_base_output_field.html" xlink:title="type_base_output_field">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="553,-45 429,-45 429,-21 553,-21 553,-45"/>
+<text text-anchor="middle" x="491" y="-30.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_base_output_field</text>
+</a>
+</g>
+</g>
+<!-- type~type_output_field_pointer&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_edge1" class="edge">
+<title>type~type_output_field_pointer&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M637.8255,-33C614.166,-33 587.4341,-33 563.3255,-33"/>
+<polygon fill="#000000" stroke="#000000" points="563.1705,-29.5001 553.1705,-33 563.1704,-36.5001 563.1705,-29.5001"/>
+<text text-anchor="middle" x="595.5" y="-35.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">p</text>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_output_field_pointer -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_edge4" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_output_field_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M553.3145,-21.0206C559.2742,-20.1992 565.2407,-19.5001 571,-19 592.6961,-17.1159 598.2956,-17.2142 620,-19 622.6861,-19.221 625.4155,-19.4809 628.1685,-19.7731"/>
+<polygon fill="#000000" stroke="#000000" points="627.8631,-23.2613 638.205,-20.9603 628.6854,-16.3097 627.8631,-23.2613"/>
+<text text-anchor="middle" x="595.5" y="-21.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">coordinates</text>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_edge5" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M506.873,-45.0139C512.416,-53.9717 507.125,-63 491,-63 481.1738,-63 475.3707,-59.6474 473.5907,-55.0013"/>
+<polygon fill="#000000" stroke="#000000" points="477.0659,-55.4298 475.127,-45.0139 470.1472,-54.3655 477.0659,-55.4298"/>
+<text text-anchor="middle" x="491" y="-65.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_nd_data_pointer -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_node3" class="node">
+<title>type~type_nd_data_pointer</title>
+<g id="a_type~~type_output_field_pointer~~InheritsGraph_node3"><a xlink:href=".././type/type_nd_data_pointer.html" xlink:title="type_nd_data_pointer">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="340,-66 223,-66 223,-42 340,-42 340,-66"/>
+<text text-anchor="middle" x="281.5" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_nd_data_pointer</text>
+</a>
+</g>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_nd_data_pointer -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_edge3" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_nd_data_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M428.9934,-39.2155C404.2846,-41.6922 375.7459,-44.5529 350.3938,-47.0942"/>
+<polygon fill="#000000" stroke="#000000" points="349.7158,-43.6445 340.1148,-48.1245 350.414,-50.6096 349.7158,-43.6445"/>
+<text text-anchor="middle" x="394" y="-46.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">data</text>
+</g>
+<!-- type~type_output_variable_settings -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_node4" class="node">
+<title>type~type_output_variable_settings</title>
+<g id="a_type~~type_output_field_pointer~~InheritsGraph_node4"><a xlink:href=".././type/type_output_variable_settings.html" xlink:title="type_output_variable_settings">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="359,-24 204,-24 204,0 359,0 359,-24"/>
+<text text-anchor="middle" x="281.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_output_variable_settings</text>
+</a>
+</g>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_output_variable_settings -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_edge2" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_output_variable_settings</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M428.5922,-24.0533C422.6518,-23.3119 416.7152,-22.613 411,-22 397.5588,-20.5582 383.3112,-19.2434 369.372,-18.075"/>
+<polygon fill="#000000" stroke="#000000" points="369.5447,-14.5775 359.2926,-17.2504 368.9739,-21.5542 369.5447,-14.5775"/>
+<text text-anchor="middle" x="394" y="-24.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">settings</text>
+</g>
+<!-- type~type_base_operator -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_node5" class="node">
+<title>type~type_base_operator</title>
+<g id="a_type~~type_output_field_pointer~~InheritsGraph_node5"><a xlink:href=".././type/type_base_operator.html" xlink:title="type_base_operator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="109,-24 0,-24 0,0 109,0 109,-24"/>
+<text text-anchor="middle" x="54.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_base_operator</text>
+</a>
+</g>
+</g>
+<!-- type~type_output_variable_settings&#45;&gt;type~type_base_operator -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_edge6" class="edge">
+<title>type~type_output_variable_settings&#45;&gt;type~type_base_operator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M203.6971,-12C176.2777,-12 145.7637,-12 119.5118,-12"/>
+<polygon fill="#000000" stroke="#000000" points="119.3,-8.5001 109.3,-12 119.3,-15.5001 119.3,-8.5001"/>
+<text text-anchor="middle" x="156.5" y="-14.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">final_operator</text>
+</g>
+<!-- type~type_base_operator&#45;&gt;type~type_base_operator -->
+<g id="type~~type_output_field_pointer~~InheritsGraph_edge7" class="edge">
+<title>type~type_base_operator&#45;&gt;type~type_base_operator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M71.3651,-24.0139C77.2545,-32.9717 71.6328,-42 54.5,-42 44.0597,-42 37.8939,-38.6474 36.0026,-34.0013"/>
+<polygon fill="#000000" stroke="#000000" points="39.476,-34.4475 37.6349,-24.0139 32.5677,-33.3184 39.476,-34.4475"/>
+<text text-anchor="middle" x="54.5" y="-44.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">previous</text>
+</g>
+</g>
+</svg>
+</div><script>var pantypetype_output_field_pointerInheritsGraph = svgPanZoom('#typetype_output_field_pointerInheritsGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="178pt" height="32pt"
+ viewBox="0.00 0.00 177.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 173.5,-28 173.5,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="169.5,-24 72.5,-24 72.5,0 169.5,0 169.5,-24"/>
+<text text-anchor="middle" x="121" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a derived type to the parent type which it
+    extends. Dashed arrows point from a derived type to the other
+    types it contains as a components, with a label listing the name(s) of
+    said component(s).
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Inherited by</h3>
+      </div>
+      <div class="panel-body">
+     <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: type~~type_output_field_pointer~~InheritedByGraph Pages: 1 -->
+<svg id="typetype_output_field_pointerInheritedByGraph" width="641pt" height="250pt"
+ viewBox="0.00 0.00 641.00 250.22" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~type_output_field_pointer~~InheritedByGraph" class="graph" transform="scale(.7723 .7723) rotate(0) translate(4 320)">
+<title>type~~type_output_field_pointer~~InheritedByGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-320 826,-320 826,4 -4,4"/>
+<!-- type~type_output_field_pointer -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node1" class="node">
+<title>type~type_output_field_pointer</title>
+<polygon fill="none" stroke="#000000" points="393.5,-308 260.5,-308 260.5,-284 393.5,-284 393.5,-308"/>
+<text text-anchor="middle" x="327" y="-293.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">type_output_field_pointer</text>
+</g>
+<!-- type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node2" class="node">
+<title>type~type_base_output_field</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node2"><a xlink:href=".././type/type_base_output_field.html" xlink:title="type_base_output_field">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="124,-173 0,-173 0,-149 124,-149 124,-173"/>
+<text text-anchor="middle" x="62" y="-158.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_base_output_field</text>
+</a>
+</g>
+</g>
+<!-- type~type_output_field_pointer&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge3" class="edge">
+<title>type~type_output_field_pointer&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M260.3101,-300.8665C223.1109,-300.5762 177.305,-294.9978 142,-274 106.4357,-252.848 82.5266,-209.0454 70.6794,-182.6201"/>
+<polygon fill="#000000" stroke="#000000" points="73.7585,-180.9197 66.6001,-173.109 67.3253,-183.679 73.7585,-180.9197"/>
+<text text-anchor="middle" x="176.5" y="-298.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">p</text>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_output_field_pointer -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge1" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_output_field_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M71.3089,-173.1294C85.0451,-190.2665 112.34,-221.5316 142,-240 169.5623,-257.1622 181.6466,-250.122 211,-264 219.476,-268.0074 220.2926,-271.524 229,-275 235.9103,-277.7586 243.2464,-280.1816 250.6733,-282.3041"/>
+<polygon fill="#000000" stroke="#000000" points="249.8958,-285.7191 260.4607,-284.9242 251.706,-278.9572 249.8958,-285.7191"/>
+<text text-anchor="middle" x="176.5" y="-266.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">coordinates</text>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge2" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M80.8492,-173.0139C87.4315,-181.9717 81.1484,-191 62,-191 50.3314,-191 43.4402,-187.6474 41.3264,-183.0013"/>
+<polygon fill="#000000" stroke="#000000" points="44.7968,-183.4801 43.1508,-173.0139 37.9108,-182.2222 44.7968,-183.4801"/>
+<text text-anchor="middle" x="62" y="-193.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_single_text_file_with_1d_variable -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node3" class="node">
+<title>type~type_single_text_file_with_1d_variable</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node3"><a xlink:href=".././type/type_single_text_file_with_1d_variable.html" xlink:title="type_single_text_file_with_1d_variable">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="425,-266 229,-266 229,-242 425,-242 425,-266"/>
+<text text-anchor="middle" x="327" y="-251.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_single_text_file_with_1d_variable</text>
+</a>
+</g>
+</g>
+<!-- type~type_single_text_file_with_1d_variable&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge6" class="edge">
+<title>type~type_single_text_file_with_1d_variable&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M262.2142,-241.9974C251.0376,-239.3935 239.6084,-236.3874 229,-233 181.0945,-217.7033 128.1539,-193.5696 94.9882,-177.5167"/>
+<polygon fill="#000000" stroke="#000000" points="96.2903,-174.2576 85.7685,-173.0153 93.2191,-180.5479 96.2903,-174.2576"/>
+<text text-anchor="middle" x="176.5" y="-228.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field, coordinate</text>
+</g>
+<!-- type~type_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node4" class="node">
+<title>type~type_file</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node4"><a xlink:href=".././type/type_file.html" xlink:title="type_file">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="354,-196 300,-196 300,-172 354,-172 354,-196"/>
+<text text-anchor="middle" x="327" y="-181.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_file</text>
+</a>
+</g>
+</g>
+<!-- type~type_file&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge4" class="edge">
+<title>type~type_file&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M299.6385,-181.6252C260.9215,-178.2649 188.7781,-172.0034 134.0969,-167.2575"/>
+<polygon fill="#000000" stroke="#000000" points="134.3672,-163.7679 124.102,-166.39 133.7618,-170.7416 134.3672,-163.7679"/>
+<text text-anchor="middle" x="176.5" y="-175.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first_field</text>
+</g>
+<!-- type~type_file&#45;&gt;type~type_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge11" class="edge">
+<title>type~type_file&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M351.8016,-196.0139C360.4625,-204.9717 352.1953,-214 327,-214 311.6466,-214 302.5793,-210.6474 299.798,-206.0013"/>
+<polygon fill="#000000" stroke="#000000" points="303.2645,-206.5549 302.1984,-196.0139 296.4583,-204.9191 303.2645,-206.5549"/>
+<text text-anchor="middle" x="327" y="-216.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_scalar -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node5" class="node">
+<title>type~type_scalar</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node5"><a xlink:href=".././type/type_scalar.html" xlink:title="type_scalar">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="360.5,-154 293.5,-154 293.5,-130 360.5,-130 360.5,-154"/>
+<text text-anchor="middle" x="327" y="-139.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_scalar</text>
+</a>
+</g>
+</g>
+<!-- type~type_scalar&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge5" class="edge">
+<title>type~type_scalar&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M293.4958,-141.7937C256.3723,-141.8659 194.7747,-142.8777 142,-148 139.4878,-148.2438 136.9349,-148.5173 134.3593,-148.8151"/>
+<polygon fill="#000000" stroke="#000000" points="133.8363,-145.3532 124.3508,-150.0729 134.7092,-152.2986 133.8363,-145.3532"/>
+<text text-anchor="middle" x="176.5" y="-150.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field</text>
+</g>
+<!-- type~type_operator_result -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node6" class="node">
+<title>type~type_operator_result</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node6"><a xlink:href=".././type/type_operator_result.html" xlink:title="type_operator_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="383,-66 271,-66 271,-42 383,-42 383,-66"/>
+<text text-anchor="middle" x="327" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_operator_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_operator_result&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge7" class="edge">
+<title>type~type_operator_result&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M270.7628,-51.7863C232.5606,-52.498 181.9206,-57.9019 142,-78 113.4768,-92.3601 89.4308,-121.0639 75.3618,-140.6521"/>
+<polygon fill="#000000" stroke="#000000" points="72.4456,-138.7154 69.6195,-148.9264 78.1964,-142.7065 72.4456,-138.7154"/>
+<text text-anchor="middle" x="176.5" y="-80.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">source</text>
+</g>
+<!-- type~type_operator_result&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge10" class="edge">
+<title>type~type_operator_result&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" d="M289.9147,-41.9312C258.2823,-33.8227 212.3656,-27.3521 176.5,-44"/>
+</g>
+<!-- type~type_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node7" class="node">
+<title>type~type_output_field</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node7"><a xlink:href=".././type/type_output_field.html" xlink:title="type_output_field">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="374,-24 280,-24 280,0 374,0 374,-24"/>
+<text text-anchor="middle" x="327" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_output_field</text>
+</a>
+</g>
+</g>
+<!-- type~type_output_field&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge9" class="edge">
+<title>type~type_output_field&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" d="M279.8393,-16.5129C249.2739,-20.7483 209.2099,-28.8169 176.5,-44"/>
+<path fill="none" stroke="#000000" d="M176.5,-44C161.4904,-50.9671 155.1938,-48.0124 142,-58 112.145,-80.6 87.4775,-116.984 73.7542,-139.9119"/>
+<polygon fill="#000000" stroke="#000000" points="70.566,-138.4318 68.5596,-148.835 76.6155,-141.9537 70.566,-138.4318"/>
+</g>
+<!-- type~type_result -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node8" class="node">
+<title>type~type_result</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node8"><a xlink:href=".././type/type_result.html" xlink:title="type_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="665.5,-106 600.5,-106 600.5,-82 665.5,-82 665.5,-106"/>
+<text text-anchor="middle" x="633" y="-91.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_result&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge8" class="edge">
+<title>type~type_result&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M485.5,-102C371.5615,-96.5214 341.5583,-92.4899 229,-111 184.9676,-118.2411 136.2583,-133.7274 102.8663,-145.5591"/>
+<polygon fill="#000000" stroke="#000000" points="101.6719,-142.2691 93.4446,-148.9447 104.0391,-148.8567 101.6719,-142.2691"/>
+<text text-anchor="middle" x="327" y="-113.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">source_coordinate, offset</text>
+</g>
+<!-- type~type_result&#45;&gt;type~type_operator_result -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge18" class="edge">
+<title>type~type_result&#45;&gt;type~type_operator_result</title>
+<path fill="none" stroke="#000000" d="M600.4897,-97.673C570.6068,-100.5952 525.0762,-103.903 485.5,-102"/>
+<path fill="none" stroke="#000000" d="M485.5,-102C456.9215,-100.6258 452.2991,-88.5659 425,-80 412.3525,-76.0315 398.6659,-72.1479 385.6458,-68.6428"/>
+<polygon fill="#000000" stroke="#000000" points="386.4108,-65.2247 375.8475,-66.041 384.6143,-71.9902 386.4108,-65.2247"/>
+</g>
+<!-- type~type_group_populator -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node9" class="node">
+<title>type~type_group_populator</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node9"><a xlink:href=".././type/type_group_populator.html" xlink:title="type_group_populator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="692,-316 574,-316 574,-292 692,-292 692,-316"/>
+<text text-anchor="middle" x="633" y="-301.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_group_populator</text>
+</a>
+</g>
+</g>
+<!-- type~type_group_populator&#45;&gt;type~type_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge12" class="edge">
+<title>type~type_group_populator&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M580.3925,-291.958C569.0109,-289.1698 557.0709,-286.1051 546,-283 499.7162,-270.0184 484.3911,-274.4437 443,-250 433.525,-244.4045 434.0178,-239.306 425,-233 405.9299,-219.6647 382.7072,-207.8851 363.6552,-199.2194"/>
+<polygon fill="#000000" stroke="#000000" points="364.9555,-195.9672 354.3961,-195.1014 362.1108,-202.3632 364.9555,-195.9672"/>
+<text text-anchor="middle" x="485.5" y="-279.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">file</text>
+</g>
+<!-- type~type_variable_populator -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node10" class="node">
+<title>type~type_variable_populator</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node10"><a xlink:href=".././type/type_variable_populator.html" xlink:title="type_variable_populator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="696.5,-274 569.5,-274 569.5,-250 696.5,-250 696.5,-274"/>
+<text text-anchor="middle" x="633" y="-259.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_variable_populator</text>
+</a>
+</g>
+</g>
+<!-- type~type_variable_populator&#45;&gt;type~type_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge13" class="edge">
+<title>type~type_variable_populator&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M582.8515,-249.9066C570.7826,-246.9931 557.9305,-243.8878 546,-241 500.2152,-229.9178 488.5997,-227.8205 443,-216 416.5193,-209.1356 386.7787,-200.9211 364.0414,-194.5337"/>
+<polygon fill="#000000" stroke="#000000" points="364.6987,-191.0827 354.1242,-191.739 362.8,-197.8203 364.6987,-191.0827"/>
+<text text-anchor="middle" x="485.5" y="-238.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">file</text>
+</g>
+<!-- type~type_netcdf_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node11" class="node">
+<title>type~type_netcdf_file</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node11"><a xlink:href=".././type/type_netcdf_file.html" xlink:title="type_netcdf_file">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="677,-232 589,-232 589,-208 677,-208 677,-232"/>
+<text text-anchor="middle" x="633" y="-217.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_netcdf_file</text>
+</a>
+</g>
+</g>
+<!-- type~type_netcdf_file&#45;&gt;type~type_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge14" class="edge">
+<title>type~type_netcdf_file&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" d="M588.9341,-212.8672C559.6951,-208.5682 520.4182,-203.6204 485.5,-202"/>
+</g>
+<!-- type~type_single_text_file_with_scalars -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node12" class="node">
+<title>type~type_single_text_file_with_scalars</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node12"><a xlink:href=".././type/type_single_text_file_with_scalars.html" xlink:title="type_single_text_file_with_scalars">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="720,-148 546,-148 546,-124 720,-124 720,-148"/>
+<text text-anchor="middle" x="633" y="-133.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_single_text_file_with_scalars</text>
+</a>
+</g>
+</g>
+<!-- type~type_single_text_file_with_scalars&#45;&gt;type~type_scalar -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge16" class="edge">
+<title>type~type_single_text_file_with_scalars&#45;&gt;type~type_scalar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M545.7222,-137.7113C488.5263,-138.8328 416.2013,-140.251 370.7549,-141.1421"/>
+<polygon fill="#000000" stroke="#000000" points="370.5733,-137.6449 360.6439,-141.3403 370.7106,-144.6435 370.5733,-137.6449"/>
+<text text-anchor="middle" x="485.5" y="-141.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">variables, constants</text>
+</g>
+<!-- type~type_universal_operator_result -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node13" class="node">
+<title>type~type_universal_operator_result</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node13"><a xlink:href=".././type/type_universal_operator_result.html" xlink:title="type_universal_operator_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="713,-64 553,-64 553,-40 713,-40 713,-64"/>
+<text text-anchor="middle" x="633" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_universal_operator_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_universal_operator_result&#45;&gt;type~type_operator_result -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge17" class="edge">
+<title>type~type_universal_operator_result&#45;&gt;type~type_operator_result</title>
+<path fill="none" stroke="#000000" d="M552.6021,-52.5255C502.946,-52.85 440.0077,-53.2614 393.2324,-53.5671"/>
+<polygon fill="#000000" stroke="#000000" points="393.1855,-50.0672 383.2086,-53.6326 393.2313,-57.0671 393.1855,-50.0672"/>
+</g>
+<!-- type~type_text_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node14" class="node">
+<title>type~type_text_file</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node14"><a xlink:href=".././type/type_text_file.html" xlink:title="type_text_file">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="671,-190 595,-190 595,-166 671,-166 671,-190"/>
+<text text-anchor="middle" x="633" y="-175.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_text_file</text>
+</a>
+</g>
+</g>
+<!-- type~type_text_file&#45;&gt;type~type_file -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge15" class="edge">
+<title>type~type_text_file&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" d="M594.7438,-188.6816C565.1165,-195.8673 522.9494,-203.7378 485.5,-202"/>
+<path fill="none" stroke="#000000" d="M485.5,-202C443.8682,-200.0681 396.411,-194.1874 364.3636,-189.668"/>
+<polygon fill="#000000" stroke="#000000" points="364.513,-186.1536 354.1167,-188.1953 363.5171,-193.0824 364.513,-186.1536"/>
+</g>
+<!-- type~type_result~2 -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_node15" class="node">
+<title>type~type_result~2</title>
+<g id="a_type~~type_output_field_pointer~~InheritedByGraph_node15"><a xlink:href=".././type/type_result%7E2.html" xlink:title="type_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="822,-64 757,-64 757,-40 822,-40 822,-64"/>
+<text text-anchor="middle" x="789.5" y="-49.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_result~2&#45;&gt;type~type_universal_operator_result -->
+<g id="type~~type_output_field_pointer~~InheritedByGraph_edge19" class="edge">
+<title>type~type_result~2&#45;&gt;type~type_universal_operator_result</title>
+<path fill="none" stroke="#000000" d="M756.6925,-52C746.6791,-52 735.1463,-52 723.2341,-52"/>
+<polygon fill="#000000" stroke="#000000" points="723.1635,-48.5001 713.1635,-52 723.1635,-55.5001 723.1635,-48.5001"/>
+</g>
+</g>
+</svg>
+</div><script>var pantypetype_output_field_pointerInheritedByGraph = svgPanZoom('#typetype_output_field_pointerInheritedByGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="178pt" height="32pt"
+ viewBox="0.00 0.00 177.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 173.5,-28 173.5,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="169.5,-24 72.5,-24 72.5,0 169.5,0 169.5,-24"/>
+<text text-anchor="middle" x="121" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a derived type to the parent type which it
+    extends. Dashed arrows point from a derived type to the other
+    types it contains as a components, with a label listing the name(s) of
+    said component(s).
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_output_field_pointer.html#variable-p%7E2">p</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-p%7E2"></span>class(<a href='../type/type_base_output_field.html'>type_base_output_field</a>),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>p</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Fortran Program was developed by Jorn Bruggeman</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

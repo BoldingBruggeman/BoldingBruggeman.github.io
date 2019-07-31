@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="A lightweight YAML parser written in object-oriented Fortran">
+    
+    <meta name="author" content="Jorn Bruggeman" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>type_node &ndash; Fortran Program </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Fortran Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            <li><a href="../program/test_yaml.html">Program</a></li>
+      
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../program/test_yaml.html">Program</a></li>
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>type_node
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 3.6% of total for derived types.</p>Including implementation: 15 statements,  0.8% of total for derived types.">7 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/yaml_types.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/yaml_types.f90.html'>yaml_types.F90</a></li>
+    
+     <li><a href='../module/yaml_types.html'>yaml_types</a></li>
+    
+  
+     <li class="active">type_node</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_node.html#variable-path">path</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_node.html#boundprocedure-dump">dump</a>
+      
+      <a class="list-group-item" href="../type/type_node.html#boundprocedure-set_path">set_path</a>
+      
+      <a class="list-group-item" href="../type/type_node.html#boundprocedure-finalize">finalize</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public, abstract :: type_node</h2>
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Inherited by</h3>
+      </div>
+      <div class="panel-body">
+     <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: type~~type_node~~InheritedByGraph Pages: 1 -->
+<svg id="typetype_nodeInheritedByGraph" width="378pt" height="290pt"
+ viewBox="0.00 0.00 378.00 290.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~type_node~~InheritedByGraph" class="graph" transform="scale(1 1) rotate(0) translate(4 286)">
+<title>type~~type_node~~InheritedByGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-286 374,-286 374,4 -4,4"/>
+<!-- type~type_node -->
+<g id="type~~type_node~~InheritedByGraph_node1" class="node">
+<title>type~type_node</title>
+<polygon fill="none" stroke="#000000" points="63,-133 0,-133 0,-109 63,-109 63,-133"/>
+<text text-anchor="middle" x="31.5" y="-118.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">type_node</text>
+</g>
+<!-- type~type_null -->
+<g id="type~~type_node~~InheritedByGraph_node2" class="node">
+<title>type~type_null</title>
+<g id="a_type~~type_node~~InheritedByGraph_node2"><a xlink:href=".././type/type_null.html" xlink:title="type_null">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="205,-282 150,-282 150,-258 205,-258 205,-282"/>
+<text text-anchor="middle" x="177.5" y="-267.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_null</text>
+</a>
+</g>
+</g>
+<!-- type~type_null&#45;&gt;type~type_node -->
+<g id="type~~type_node~~InheritedByGraph_edge6" class="edge">
+<title>type~type_null&#45;&gt;type~type_node</title>
+<path fill="none" stroke="#000000" d="M149.8773,-260.3672C132.4236,-253.4964 109.9528,-243.1535 92.5,-230"/>
+</g>
+<!-- type~type_list -->
+<g id="type~~type_node~~InheritedByGraph_node3" class="node">
+<title>type~type_list</title>
+<g id="a_type~~type_node~~InheritedByGraph_node3"><a xlink:href=".././type/type_list.html" xlink:title="type_list">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="354.5,-225 300.5,-225 300.5,-201 354.5,-201 354.5,-225"/>
+<text text-anchor="middle" x="327.5" y="-210.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_list</text>
+</a>
+</g>
+</g>
+<!-- type~type_list&#45;&gt;type~type_node -->
+<g id="type~~type_node~~InheritedByGraph_edge3" class="edge">
+<title>type~type_list&#45;&gt;type~type_node</title>
+<path fill="none" stroke="#000000" d="M300.0999,-219.3398C245.259,-231.3445 124.5134,-254.1272 92.5,-230"/>
+<path fill="none" stroke="#000000" d="M92.5,-230C63.7736,-207.5935 46.4801,-167.6532 37.9852,-142.8418"/>
+<polygon fill="#000000" stroke="#000000" points="41.2838,-141.667 34.8756,-133.2299 34.6237,-143.8217 41.2838,-141.667"/>
+</g>
+<!-- type~type_list_item -->
+<g id="type~~type_node~~InheritedByGraph_node6" class="node">
+<title>type~type_list_item</title>
+<g id="a_type~~type_node~~InheritedByGraph_node6"><a xlink:href=".././type/type_list_item.html" xlink:title="type_list_item">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="216.5,-174 138.5,-174 138.5,-150 216.5,-150 216.5,-174"/>
+<text text-anchor="middle" x="177.5" y="-159.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_list_item</text>
+</a>
+</g>
+</g>
+<!-- type~type_list&#45;&gt;type~type_list_item -->
+<g id="type~~type_node~~InheritedByGraph_edge10" class="edge">
+<title>type~type_list&#45;&gt;type~type_list_item</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M300.3361,-203.7643C278.7219,-196.4154 248.0104,-185.9735 222.7037,-177.3693"/>
+<polygon fill="#000000" stroke="#000000" points="223.5399,-173.9568 212.9455,-174.0515 221.2865,-180.5843 223.5399,-173.9568"/>
+<text text-anchor="middle" x="259" y="-194.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first</text>
+</g>
+<!-- type~type_scalar -->
+<g id="type~~type_node~~InheritedByGraph_node4" class="node">
+<title>type~type_scalar</title>
+<g id="a_type~~type_node~~InheritedByGraph_node4"><a xlink:href=".././type/type_scalar.html" xlink:title="type_scalar">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="211,-132 144,-132 144,-108 211,-108 211,-132"/>
+<text text-anchor="middle" x="177.5" y="-117.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_scalar</text>
+</a>
+</g>
+</g>
+<!-- type~type_scalar&#45;&gt;type~type_node -->
+<g id="type~~type_node~~InheritedByGraph_edge4" class="edge">
+<title>type~type_scalar&#45;&gt;type~type_node</title>
+<path fill="none" stroke="#000000" d="M150.1223,-107.8709C133.5533,-101.9561 111.9377,-96.7478 92.5,-100"/>
+</g>
+<!-- type~type_key_value_pair -->
+<g id="type~~type_node~~InheritedByGraph_node5" class="node">
+<title>type~type_key_value_pair</title>
+<g id="a_type~~type_node~~InheritedByGraph_node5"><a xlink:href=".././type/type_key_value_pair.html" xlink:title="type_key_value_pair">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="233,-24 122,-24 122,0 233,0 233,-24"/>
+<text text-anchor="middle" x="177.5" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_key_value_pair</text>
+</a>
+</g>
+</g>
+<!-- type~type_key_value_pair&#45;&gt;type~type_node -->
+<g id="type~~type_node~~InheritedByGraph_edge1" class="edge">
+<title>type~type_key_value_pair&#45;&gt;type~type_node</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M157.2971,-24.1428C137.3359,-36.4275 106.2177,-56.3592 81,-76 70.6531,-84.0587 59.8031,-93.7636 50.9069,-102.0945"/>
+<polygon fill="#000000" stroke="#000000" points="48.4925,-99.5606 43.6538,-108.986 53.3142,-104.6352 48.4925,-99.5606"/>
+<text text-anchor="middle" x="92.5" y="-78.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">value</text>
+</g>
+<!-- type~type_key_value_pair&#45;&gt;type~type_key_value_pair -->
+<g id="type~~type_node~~InheritedByGraph_edge7" class="edge">
+<title>type~type_key_value_pair&#45;&gt;type~type_key_value_pair</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M190.7275,-24.0139C195.3467,-32.9717 190.9375,-42 177.5,-42 169.3115,-42 164.4756,-38.6474 162.9922,-34.0013"/>
+<polygon fill="#000000" stroke="#000000" points="166.4725,-34.3778 164.2725,-24.0139 159.5293,-33.4877 166.4725,-34.3778"/>
+<text text-anchor="middle" x="177.5" y="-44.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_list_item&#45;&gt;type~type_node -->
+<g id="type~~type_node~~InheritedByGraph_edge2" class="edge">
+<title>type~type_list_item&#45;&gt;type~type_node</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M138.3747,-151.0128C118.1951,-145.3459 93.578,-138.4328 73.0582,-132.6705"/>
+<polygon fill="#000000" stroke="#000000" points="73.9253,-129.2786 63.3515,-129.9446 72.0327,-136.018 73.9253,-129.2786"/>
+<text text-anchor="middle" x="92.5" y="-142.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">node</text>
+</g>
+<!-- type~type_list_item&#45;&gt;type~type_list_item -->
+<g id="type~~type_node~~InheritedByGraph_edge9" class="edge">
+<title>type~type_list_item&#45;&gt;type~type_list_item</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M190.7275,-174.0139C195.3467,-182.9717 190.9375,-192 177.5,-192 169.3115,-192 164.4756,-188.6474 162.9922,-184.0013"/>
+<polygon fill="#000000" stroke="#000000" points="166.4725,-184.3778 164.2725,-174.0139 159.5293,-183.4877 166.4725,-184.3778"/>
+<text text-anchor="middle" x="177.5" y="-194.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_dictionary -->
+<g id="type~~type_node~~InheritedByGraph_node7" class="node">
+<title>type~type_dictionary</title>
+<g id="a_type~~type_node~~InheritedByGraph_node7"><a xlink:href=".././type/type_dictionary.html" xlink:title="type_dictionary">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="370,-80 285,-80 285,-56 370,-56 370,-80"/>
+<text text-anchor="middle" x="327.5" y="-65.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_dictionary</text>
+</a>
+</g>
+</g>
+<!-- type~type_dictionary&#45;&gt;type~type_node -->
+<g id="type~~type_node~~InheritedByGraph_edge5" class="edge">
+<title>type~type_dictionary&#45;&gt;type~type_node</title>
+<path fill="none" stroke="#000000" d="M284.9291,-73.0058C237.762,-78.7361 159.5075,-88.7888 92.5,-100"/>
+<path fill="none" stroke="#000000" d="M92.5,-100C84.6264,-101.1278 76.427,-103.2458 68.6885,-105.718"/>
+<polygon fill="#000000" stroke="#000000" points="67.5058,-102.4235 59.192,-108.991 69.7867,-109.0415 67.5058,-102.4235"/>
+</g>
+<!-- type~type_dictionary&#45;&gt;type~type_key_value_pair -->
+<g id="type~~type_node~~InheritedByGraph_edge8" class="edge">
+<title>type~type_dictionary&#45;&gt;type~type_key_value_pair</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M295.3212,-55.9866C273.153,-47.7104 243.4785,-36.632 219.4567,-27.6638"/>
+<polygon fill="#000000" stroke="#000000" points="220.4766,-24.3087 209.884,-24.09 218.0283,-30.8666 220.4766,-24.3087"/>
+<text text-anchor="middle" x="259" y="-48.4" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first</text>
+</g>
+</g>
+</svg>
+</div><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="178pt" height="32pt"
+ viewBox="0.00 0.00 177.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 173.5,-28 173.5,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="169.5,-24 72.5,-24 72.5,0 169.5,0 169.5,-24"/>
+<text text-anchor="middle" x="121" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a derived type to the parent type which it
+    extends. Dashed arrows point from a derived type to the other
+    types it contains as a components, with a label listing the name(s) of
+    said component(s).
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_node.html#variable-path">path</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_node.html#boundprocedure-dump">dump</a>
+      
+      <a class="list-group-item" href="../type/type_node.html#boundprocedure-set_path">set_path</a>
+      
+      <a class="list-group-item" href="../type/type_node.html#boundprocedure-finalize">finalize</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-path"></span>character(len=string_length),</td>
+  
+  <td>public</td>
+  <td></td><td>::</td>
+  <td><strong>path</strong></td><td> =</td><td>''</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+     
+    <section>
+    <h2>Type-Bound Procedures</h2>
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-dump"></span><h3>procedure(<a href='../interface/node_dump.html'>node_dump</a>), public, deferred :: <strong>dump</strong>  
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+subroutine node_dump(self, unit, indent)
+    
+    
+   
+<small>Prototype</small></h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_node.html'>type_node</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>unit</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>indent</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set_path"></span><h3>procedure, public :: <strong>set_path</strong>  => <a href='../proc/node_set_path.html'>node_set_path</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private recursive subroutine <a href='../proc/node_set_path.html'>node_set_path</a>(self, path)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_node.html'>type_node</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>character(len=*),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>path</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-finalize"></span><h3>procedure, public :: <strong>finalize</strong>  => <a href='../proc/node_finalize.html'>node_finalize</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/node_finalize.html'>node_finalize</a>(self)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_node.html'>type_node</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+    </section>
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Fortran Program was developed by Jorn Bruggeman</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>

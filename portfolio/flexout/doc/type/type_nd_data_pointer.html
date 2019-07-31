@@ -1,0 +1,1837 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   
+   <meta name="description" content="Fortran-based flexible output manager with support for NetCDF and text formats">
+    
+    <meta name="author" content="Jorn Bruggeman" >
+    <link rel="icon" href="../favicon.png">
+
+    <title>type_nd_data_pointer &ndash; Fortran Program </title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/pygments.css" rel="stylesheet">
+    <link href="../css/font-awesome.min.css" rel="stylesheet">
+    <link href="../css/local.css" rel="stylesheet">
+    
+    <link  href="../tipuesearch/tipuesearch.css" rel="stylesheet">
+    
+    
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <script src="../js/jquery-2.1.3.min.js"></script>
+    <script src="../js/svg-pan-zoom.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html">Fortran Program </a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+        
+            <li class="dropdown hidden-xs visible-sm visible-md hidden-lg">
+              <a href="#" class="dropdown-toggle"
+              data-toggle="dropdown" role="button"
+              aria-haspopup="true"
+     aria-expanded="false">Contents <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          
+              
+            <li><a href="../lists/files.html">Source Files</a></li>
+        
+        
+        
+            <li><a href="../lists/modules.html">Modules</a></li>
+        
+            
+                                
+            <li><a href="../lists/procedures.html">Procedures</a></li>
+        
+        
+            <li><a href="../lists/absint.html">Abstract Interfaces</a></li>
+               
+            <li><a href="../lists/types.html">Derived Types</a></li>
+        
+        
+            </ul>
+            </li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/files.html">Source Files</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/modules.html">Modules</a></li>
+
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/procedures.html">Procedures</a></li>
+
+
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/absint.html">Abstract Interfaces</a></li>
+                             
+<li class="visible-xs hidden-sm visible-lg"><a href="../lists/types.html">Derived Types</a></li>
+
+
+          </ul>
+        
+        <form action="../search.html" class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search" name="q" id="tipue_search_input" autocomplete="off" required>
+        </div>
+<!--
+        <button type="submit" class="btn btn-default">Submit</button>
+-->
+        </form>
+        
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+    
+  
+  <div class="row">
+    <h1>type_nd_data_pointer
+    <small>Derived Type</small>
+    
+    </h1>
+    
+<div class="row">
+  <div class="col-lg-12">
+<div class="well well-sm">
+  <ul class="list-inline" style="margin-bottom:0px;display:inline">
+     
+     
+     
+     
+    
+    
+     <li><i class="fa fa-list-ol"></i>
+       <a data-toggle="tooltip"
+    data-placement="bottom" data-html="true"
+    title="<p> 3.7% of total for derived types.</p>Including implementation: 116 statements,  4.7% of total for derived types.">14 statements</a>
+     </li> 
+     
+     
+     
+    <li><i class="fa fa-code"></i><a href="../src/field_manager.F90"> Source File</a></li>
+     
+     
+  </ul>
+  <ol class="breadcrumb in-well text-right">
+  
+    
+     <li><a href='../sourcefile/field_manager.f90.html'>field_manager.F90</a></li>
+    
+     <li><a href='../module/field_manager.html'>field_manager</a></li>
+    
+  
+     <li class="active">type_nd_data_pointer</li>
+  </ol>
+</div>
+</div>
+</div>
+<script>
+  $(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
+
+  </div>
+  
+  <div class="row">
+    <div class="col-md-3 hidden-xs hidden-sm visible-md visible-lg">
+    
+<div id="sidebar">
+  
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-0">Variables</a></h3></div>
+  <div id="vars-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p0d">p0d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p1d">p1d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p2d">p2d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p3d">p3d</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-0">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-0" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_0d">set_0d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_1d">set_1d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_2d">set_2d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_3d">set_3d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set%7E2">set</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-get_extents">get_extents</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-is_empty">is_empty</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+</div>
+
+    </div>
+    
+    <div class="col-md-9" id='text'>
+      <h2>type, public :: type_nd_data_pointer</h2>
+    
+    <br>
+    
+    
+    <div class="panel panel-default">
+      <div class="panel-heading">
+  <h3 class="panel-title">Inherited by</h3>
+      </div>
+      <div class="panel-body">
+     <div class="depgraph"><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: type~~type_nd_data_pointer~~InheritedByGraph Pages: 1 -->
+<svg id="typetype_nd_data_pointerInheritedByGraph" width="641pt" height="255pt"
+ viewBox="0.00 0.00 641.00 255.47" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="type~~type_nd_data_pointer~~InheritedByGraph" class="graph" transform="scale(.4427 .4427) rotate(0) translate(4 573.102)">
+<title>type~~type_nd_data_pointer~~InheritedByGraph</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-573.102 1444,-573.102 1444,4 -4,4"/>
+<!-- type~type_nd_data_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node1" class="node">
+<title>type~type_nd_data_pointer</title>
+<polygon fill="none" stroke="#000000" points="125,-444.102 8,-444.102 8,-420.102 125,-420.102 125,-444.102"/>
+<text text-anchor="middle" x="66.5" y="-429.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">type_nd_data_pointer</text>
+</g>
+<!-- type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node2" class="node">
+<title>type~type_base_output_field</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node2"><a xlink:href=".././type/type_base_output_field.html" xlink:title="type_base_output_field">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="342,-494.102 218,-494.102 218,-470.102 342,-470.102 342,-494.102"/>
+<text text-anchor="middle" x="280" y="-479.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_base_output_field</text>
+</a>
+</g>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_nd_data_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge2" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_nd_data_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M228.5897,-470.0622C198.3058,-462.9699 159.8088,-453.9542 127.932,-446.4889"/>
+<polygon fill="#000000" stroke="#000000" points="128.3685,-442.9965 117.8338,-444.124 126.7723,-449.8121 128.3685,-442.9965"/>
+<text text-anchor="middle" x="175.5" y="-464.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">data</text>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge3" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M297.1958,-494.1159C303.2007,-503.0737 297.4688,-512.102 280,-512.102 269.355,-512.102 263.0683,-508.7495 261.1399,-504.1033"/>
+<polygon fill="#000000" stroke="#000000" points="264.6128,-504.5552 262.8042,-494.1159 257.708,-503.4046 264.6128,-504.5552"/>
+<text text-anchor="middle" x="280" y="-514.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_output_field_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node5" class="node">
+<title>type~type_output_field_pointer</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node5"><a xlink:href=".././type/type_output_field_pointer.html" xlink:title="type_output_field_pointer">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="133,-510.102 0,-510.102 0,-486.102 133,-486.102 133,-510.102"/>
+<text text-anchor="middle" x="66.5" y="-495.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_output_field_pointer</text>
+</a>
+</g>
+</g>
+<!-- type~type_base_output_field&#45;&gt;type~type_output_field_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge25" class="edge">
+<title>type~type_base_output_field&#45;&gt;type~type_output_field_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M217.6156,-491.2886C211.6703,-491.9806 205.7263,-492.6024 200,-493.102 181.6744,-494.7011 161.8899,-495.7893 143.3094,-496.5296"/>
+<polygon fill="#000000" stroke="#000000" points="142.9915,-493.0389 133.1277,-496.9062 143.2503,-500.0341 142.9915,-493.0389"/>
+<text text-anchor="middle" x="175.5" y="-498.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">coordinates</text>
+</g>
+<!-- type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node3" class="node">
+<title>type~type_field</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node3"><a xlink:href=".././type/type_field.html" xlink:title="type_field">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="309,-199.102 251,-199.102 251,-175.102 309,-175.102 309,-199.102"/>
+<text text-anchor="middle" x="280" y="-184.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_field</text>
+</a>
+</g>
+</g>
+<!-- type~type_field&#45;&gt;type~type_nd_data_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge1" class="edge">
+<title>type~type_field&#45;&gt;type~type_nd_data_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M269.4125,-199.2516C235.0517,-238.6821 126.4154,-363.3467 83.8485,-412.1939"/>
+<polygon fill="#000000" stroke="#000000" points="81.0825,-410.0406 77.1514,-419.8791 86.3599,-414.6394 81.0825,-410.0406"/>
+<text text-anchor="middle" x="175.5" y="-333.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">data</text>
+</g>
+<!-- type~type_field&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge12" class="edge">
+<title>type~type_field&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M297.1958,-199.1159C303.2007,-208.0737 297.4688,-217.102 280,-217.102 269.355,-217.102 263.0683,-213.7495 261.1399,-209.1033"/>
+<polygon fill="#000000" stroke="#000000" points="264.6128,-209.5552 262.8042,-199.1159 257.708,-208.4046 264.6128,-209.5552"/>
+<text text-anchor="middle" x="280" y="-219.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_dimension_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node21" class="node">
+<title>type~type_dimension_pointer</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node21"><a xlink:href=".././type/type_dimension_pointer.html" xlink:title="type_dimension_pointer">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="130,-106.102 3,-106.102 3,-82.102 130,-82.102 130,-106.102"/>
+<text text-anchor="middle" x="66.5" y="-91.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_dimension_pointer</text>
+</a>
+</g>
+</g>
+<!-- type~type_field&#45;&gt;type~type_dimension_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge40" class="edge">
+<title>type~type_field&#45;&gt;type~type_dimension_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M252.0886,-174.9439C214.0235,-158.3629 145.7411,-128.6192 103.4604,-110.2019"/>
+<polygon fill="#000000" stroke="#000000" points="104.6457,-106.9006 94.0799,-106.1158 101.8501,-113.3182 104.6457,-106.9006"/>
+<text text-anchor="middle" x="175.5" y="-154.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">dimensions</text>
+</g>
+<!-- type~type_dimension -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node4" class="node">
+<title>type~type_dimension</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node4"><a xlink:href=".././type/type_dimension.html" xlink:title="type_dimension">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="663,-123.102 575,-123.102 575,-99.102 663,-99.102 663,-123.102"/>
+<text text-anchor="middle" x="619" y="-108.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_dimension</text>
+</a>
+</g>
+</g>
+<!-- type~type_dimension&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge13" class="edge">
+<title>type~type_dimension&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M590.5872,-123.1313C575.5063,-129.0715 556.5163,-135.8567 539,-140.102 461.0472,-158.995 438.4538,-146.411 360,-163.102 346.4375,-165.9875 331.8449,-170.0659 318.884,-174.0436"/>
+<polygon fill="#000000" stroke="#000000" points="317.8258,-170.7073 309.335,-177.0443 319.9243,-177.3854 317.8258,-170.7073"/>
+<text text-anchor="middle" x="449.5" y="-165.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">coordinate</text>
+</g>
+<!-- type~type_dimension&#45;&gt;type~type_dimension -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge21" class="edge">
+<title>type~type_dimension&#45;&gt;type~type_dimension</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M639.8334,-123.1159C647.1085,-132.0737 640.1641,-141.102 619,-141.102 606.1031,-141.102 598.4866,-137.7495 596.1503,-133.1033"/>
+<polygon fill="#000000" stroke="#000000" points="599.6184,-133.6108 598.1666,-123.1159 592.7568,-132.2255 599.6184,-133.6108"/>
+<text text-anchor="middle" x="619" y="-143.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_output_field_pointer&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge4" class="edge">
+<title>type~type_output_field_pointer&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M127.2594,-486.0591C135.2175,-484.8519 143.2848,-483.8116 151,-483.102 169.3472,-481.4145 189.2239,-480.7083 207.7525,-480.527"/>
+<polygon fill="#000000" stroke="#000000" points="207.9065,-484.0264 217.8893,-480.4773 207.8722,-477.0265 207.9065,-484.0264"/>
+<text text-anchor="middle" x="175.5" y="-485.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">p</text>
+</g>
+<!-- type~type_output_item -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node6" class="node">
+<title>type~type_output_item</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node6"><a xlink:href=".././type/type_output_item.html" xlink:title="type_output_item">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="794,-378.102 699,-378.102 699,-354.102 794,-354.102 794,-378.102"/>
+<text text-anchor="middle" x="746.5" y="-363.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_output_item</text>
+</a>
+</g>
+</g>
+<!-- type~type_output_item&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge17" class="edge">
+<title>type~type_output_item&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M735.1347,-353.9152C722.9213,-341.5487 702.3675,-322.7536 681,-312.102 615.3481,-279.3749 427.9062,-262.8505 360,-235.102 340.5728,-227.1635 320.3174,-214.9646 305.0488,-204.8517"/>
+<polygon fill="#000000" stroke="#000000" points="306.9223,-201.8934 296.6792,-199.1863 302.9985,-207.6903 306.9223,-201.8934"/>
+<text text-anchor="middle" x="619" y="-314.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field</text>
+</g>
+<!-- type~type_output_item&#45;&gt;type~type_output_item -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge26" class="edge">
+<title>type~type_output_item&#45;&gt;type~type_output_item</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M767.3334,-378.1159C774.6085,-387.0737 767.6641,-396.102 746.5,-396.102 733.6031,-396.102 725.9866,-392.7495 723.6503,-388.1033"/>
+<polygon fill="#000000" stroke="#000000" points="727.1184,-388.6108 725.6666,-378.1159 720.2568,-387.2255 727.1184,-388.6108"/>
+<text text-anchor="middle" x="746.5" y="-398.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_interp_operator -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node7" class="node">
+<title>type~type_interp_operator</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node7"><a xlink:href=".././type/type_interp_operator.html" xlink:title="type_interp_operator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="966,-199.102 854,-199.102 854,-175.102 966,-175.102 966,-199.102"/>
+<text text-anchor="middle" x="910" y="-184.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_interp_operator</text>
+</a>
+</g>
+</g>
+<!-- type~type_interp_operator&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge19" class="edge">
+<title>type~type_interp_operator&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M853.8148,-187.102C728.1679,-187.102 427.0555,-187.102 319.235,-187.102"/>
+<polygon fill="#000000" stroke="#000000" points="319.1205,-183.6021 309.1205,-187.102 319.1204,-190.6021 319.1205,-183.6021"/>
+<text text-anchor="middle" x="619" y="-189.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">source_field, offset_field</text>
+</g>
+<!-- type~type_interp_operator&#45;&gt;type~type_dimension -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge24" class="edge">
+<title>type~type_interp_operator&#45;&gt;type~type_dimension</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M863.8902,-175.0596C812.1412,-161.5444 728.2618,-139.6378 673.3621,-125.2997"/>
+<polygon fill="#000000" stroke="#000000" points="674.0225,-121.8549 663.4626,-122.7143 672.2536,-128.6277 674.0225,-121.8549"/>
+<text text-anchor="middle" x="746.5" y="-158.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">target_dimension</text>
+</g>
+<!-- type~type_single_text_file_with_1d_variable -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node8" class="node">
+<title>type~type_single_text_file_with_1d_variable</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node8"><a xlink:href=".././type/type_single_text_file_with_1d_variable.html" xlink:title="type_single_text_file_with_1d_variable">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1008,-322.102 812,-322.102 812,-298.102 1008,-298.102 1008,-322.102"/>
+<text text-anchor="middle" x="910" y="-307.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_single_text_file_with_1d_variable</text>
+</a>
+</g>
+</g>
+<!-- type~type_single_text_file_with_1d_variable&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge7" class="edge">
+<title>type~type_single_text_file_with_1d_variable&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M815.8137,-322.1021C778.5914,-328.6828 735.9641,-338.5608 699,-353.102 690.2753,-356.5343 689.8626,-361.0433 681,-364.102 583.0814,-397.8965 547.9353,-358.8435 449.5,-391.102"/>
+<text text-anchor="middle" x="619" y="-380.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field, coordinate</text>
+</g>
+<!-- type~type_single_text_file_with_1d_variable&#45;&gt;type~type_dimension -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge23" class="edge">
+<title>type~type_single_text_file_with_1d_variable&#45;&gt;type~type_dimension</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M851.3838,-298.0396C837.008,-292.7126 822.6958,-285.0648 812,-274.102 794.6274,-256.2959 810.0786,-240.0848 794,-221.102 763.0271,-184.5347 739.498,-195.7224 699,-170.102 679.1884,-157.5686 657.8762,-141.7235 642.2344,-129.6105"/>
+<polygon fill="#000000" stroke="#000000" points="644.2077,-126.7106 634.1735,-123.3097 639.8968,-132.2257 644.2077,-126.7106"/>
+<text text-anchor="middle" x="746.5" y="-223.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">dimension</text>
+</g>
+<!-- type~type_field_node -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node9" class="node">
+<title>type~type_field_node</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node9"><a xlink:href=".././type/type_field_node.html" xlink:title="type_field_node">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="663,-39.102 575,-39.102 575,-15.102 663,-15.102 663,-39.102"/>
+<text text-anchor="middle" x="619" y="-24.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_field_node</text>
+</a>
+</g>
+</g>
+<!-- type~type_field_node&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge14" class="edge">
+<title>type~type_field_node&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M574.6682,-31.0035C520.4709,-37.4712 427.6287,-54.1719 360,-96.102 331.0331,-114.0616 306.6874,-145.7395 292.7165,-166.5769"/>
+<polygon fill="#000000" stroke="#000000" points="289.733,-164.7447 287.2143,-175.0358 295.6009,-168.5615 289.733,-164.7447"/>
+<text text-anchor="middle" x="449.5" y="-98.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field</text>
+</g>
+<!-- type~type_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node10" class="node">
+<title>type~type_file</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node10"><a xlink:href=".././type/type_file.html" xlink:title="type_file">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1211.5,-378.102 1157.5,-378.102 1157.5,-354.102 1211.5,-354.102 1211.5,-378.102"/>
+<text text-anchor="middle" x="1184.5" y="-363.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_file</text>
+</a>
+</g>
+</g>
+<!-- type~type_file&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge5" class="edge">
+<title>type~type_file&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1157.406,-371.0465C1042.2732,-391.9139 592.9755,-471.8584 449.5,-475.102"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M449.5,-475.102C417.7538,-474.9152 382.6909,-476.1267 352.7326,-477.5921"/>
+<polygon fill="#000000" stroke="#000000" points="352.1721,-474.116 342.3627,-478.1192 352.5275,-481.107 352.1721,-474.116"/>
+<text text-anchor="middle" x="746.5" y="-447.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first_field</text>
+</g>
+<!-- type~type_file&#45;&gt;type~type_output_item -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge27" class="edge">
+<title>type~type_file&#45;&gt;type~type_output_item</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1157.4317,-366.102C1087.5194,-366.102 899.7195,-366.102 804.1183,-366.102"/>
+<polygon fill="#000000" stroke="#000000" points="804.0454,-362.6021 794.0454,-366.102 804.0453,-369.6021 804.0454,-362.6021"/>
+<text text-anchor="middle" x="1056.5" y="-368.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first_item</text>
+</g>
+<!-- type~type_file&#45;&gt;type~type_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge29" class="edge">
+<title>type~type_file&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1201.6958,-378.1159C1207.7007,-387.0737 1201.9688,-396.102 1184.5,-396.102 1173.855,-396.102 1167.5683,-392.7495 1165.6399,-388.1033"/>
+<polygon fill="#000000" stroke="#000000" points="1169.1128,-388.5552 1167.3042,-378.1159 1162.208,-387.4046 1169.1128,-388.5552"/>
+<text text-anchor="middle" x="1184.5" y="-398.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_field_manager -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node24" class="node">
+<title>type~type_field_manager</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node24"><a xlink:href=".././type/type_field_manager.html" xlink:title="type_field_manager">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="963.5,-114.102 856.5,-114.102 856.5,-90.102 963.5,-90.102 963.5,-114.102"/>
+<text text-anchor="middle" x="910" y="-99.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_field_manager</text>
+</a>
+</g>
+</g>
+<!-- type~type_file&#45;&gt;type~type_field_manager -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge43" class="edge">
+<title>type~type_file&#45;&gt;type~type_field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1170.3706,-353.9966C1140.8222,-328.1638 1071.4768,-264.7817 1026,-201.102 1015.8342,-186.8672 1019.7124,-179.0942 1008,-166.102 990.3012,-146.4694 965.2866,-130.2644 944.9602,-119.0725"/>
+<polygon fill="#000000" stroke="#000000" points="946.4645,-115.9081 935.9941,-114.2888 943.1694,-122.0841 946.4645,-115.9081"/>
+<text text-anchor="middle" x="1056.5" y="-275.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field_manager</text>
+</g>
+<!-- type~type_scalar -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node11" class="node">
+<title>type~type_scalar</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node11"><a xlink:href=".././type/type_scalar.html" xlink:title="type_scalar">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="652.5,-569.102 585.5,-569.102 585.5,-545.102 652.5,-545.102 652.5,-569.102"/>
+<text text-anchor="middle" x="619" y="-554.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_scalar</text>
+</a>
+</g>
+</g>
+<!-- type~type_scalar&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge6" class="edge">
+<title>type~type_scalar&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M585.158,-555.7893C534.9914,-553.0908 438.3825,-544.993 360,-521.102 342.541,-515.7805 324.161,-507.0664 309.4272,-499.2235"/>
+<polygon fill="#000000" stroke="#000000" points="310.7706,-495.9689 300.3178,-494.2398 307.4108,-502.11 310.7706,-495.9689"/>
+<text text-anchor="middle" x="449.5" y="-554.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field</text>
+</g>
+<!-- type~type_dictionary_bin -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node12" class="node">
+<title>type~type_dictionary_bin</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node12"><a xlink:href=".././type/type_dictionary_bin.html" xlink:title="type_dictionary_bin">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="671.5,-81.102 566.5,-81.102 566.5,-57.102 671.5,-57.102 671.5,-81.102"/>
+<text text-anchor="middle" x="619" y="-66.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_dictionary_bin</text>
+</a>
+</g>
+</g>
+<!-- type~type_dictionary_bin&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge15" class="edge">
+<title>type~type_dictionary_bin&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M575.568,-81.1281C569.1353,-83.6658 562.7451,-86.6449 557,-90.102 547.5715,-95.7757 548.9579,-102.4194 539,-107.102 466.4655,-141.2112 434.5899,-99.7587 360,-129.102 337.3708,-138.0043 315.274,-154.8305 300.0581,-168.0762"/>
+<polygon fill="#000000" stroke="#000000" points="297.4561,-165.7086 292.353,-174.9934 302.1324,-170.9175 297.4561,-165.7086"/>
+<text text-anchor="middle" x="449.5" y="-131.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first_field</text>
+</g>
+<!-- type~type_field_set_member -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node13" class="node">
+<title>type~type_field_set_member</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node13"><a xlink:href=".././type/type_field_set_member.html" xlink:title="type_field_set_member">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="681,-239.102 557,-239.102 557,-215.102 681,-215.102 681,-239.102"/>
+<text text-anchor="middle" x="619" y="-224.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_field_set_member</text>
+</a>
+</g>
+</g>
+<!-- type~type_field_set_member&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge16" class="edge">
+<title>type~type_field_set_member&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M556.8357,-222.1476C504.2754,-217.651 427.0431,-210.3208 360,-201.102 346.6633,-199.2682 332.147,-196.8549 319.1859,-194.5494"/>
+<polygon fill="#000000" stroke="#000000" points="319.6408,-191.0749 309.1771,-192.7367 318.3933,-197.9629 319.6408,-191.0749"/>
+<text text-anchor="middle" x="449.5" y="-223.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field</text>
+</g>
+<!-- type~type_field_set_member&#45;&gt;type~type_field_set_member -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge36" class="edge">
+<title>type~type_field_set_member&#45;&gt;type~type_field_set_member</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M639.8334,-239.1159C647.1085,-248.0737 640.1641,-257.102 619,-257.102 606.1031,-257.102 598.4866,-253.7495 596.1503,-249.1033"/>
+<polygon fill="#000000" stroke="#000000" points="599.6184,-249.6108 598.1666,-239.1159 592.7568,-248.2255 599.6184,-249.6108"/>
+<text text-anchor="middle" x="619" y="-259.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">next</text>
+</g>
+<!-- type~type_operator_result -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node14" class="node">
+<title>type~type_operator_result</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node14"><a xlink:href=".././type/type_operator_result.html" xlink:title="type_operator_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="675,-527.102 563,-527.102 563,-503.102 675,-503.102 675,-527.102"/>
+<text text-anchor="middle" x="619" y="-512.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_operator_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_operator_result&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge8" class="edge">
+<title>type~type_operator_result&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M562.6405,-509.6157C505.035,-504.0081 415.3433,-495.2771 352.4861,-489.1582"/>
+<polygon fill="#000000" stroke="#000000" points="352.5401,-485.647 342.248,-488.1616 351.8618,-492.6141 352.5401,-485.647"/>
+<text text-anchor="middle" x="449.5" y="-509.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">source</text>
+</g>
+<!-- type~type_operator_result&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge11" class="edge">
+<title>type~type_operator_result&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" d="M588.8783,-503.0306C555.3688,-490.7778 499.3708,-473.7783 449.5,-475.102"/>
+</g>
+<!-- type~type_operator_result&#45;&gt;type~type_dimension_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge42" class="edge">
+<title>type~type_operator_result&#45;&gt;type~type_dimension_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M572.9256,-503.0445C567.205,-500.3489 561.7184,-497.0739 557,-493.102 544.5162,-482.5936 551.745,-471.2921 539,-461.102 398.4226,-348.7052 280.4287,-470.1751 151,-345.102 117.1285,-312.3703 83.349,-171.258 71.21,-116.2115"/>
+<polygon fill="#000000" stroke="#000000" points="74.5614,-115.1514 69.0163,-106.1235 67.7212,-116.6389 74.5614,-115.1514"/>
+<text text-anchor="middle" x="280" y="-409.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">dimensions</text>
+</g>
+<!-- type~type_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node15" class="node">
+<title>type~type_output_field</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node15"><a xlink:href=".././type/type_output_field.html" xlink:title="type_output_field">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="666,-355.102 572,-355.102 572,-331.102 666,-331.102 666,-355.102"/>
+<text text-anchor="middle" x="619" y="-340.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_output_field</text>
+</a>
+</g>
+</g>
+<!-- type~type_output_field&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge10" class="edge">
+<title>type~type_output_field&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" d="M572.6508,-355.1342C538.4076,-364.288 490.7701,-377.5773 449.5,-391.102"/>
+<path fill="none" stroke="#000000" d="M449.5,-391.102C395.2487,-408.8809 337.8782,-443.4873 305.74,-464.5238"/>
+<polygon fill="#000000" stroke="#000000" points="303.7702,-461.6304 297.368,-470.0721 307.6371,-467.4653 303.7702,-461.6304"/>
+</g>
+<!-- type~type_output_field&#45;&gt;type~type_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge18" class="edge">
+<title>type~type_output_field&#45;&gt;type~type_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M571.5279,-350.2331C516.3209,-355.9985 424.5325,-357.5244 360,-317.102 320.0213,-292.0599 296.9598,-238.9863 286.6191,-208.9735"/>
+<polygon fill="#000000" stroke="#000000" points="289.9234,-207.8172 283.4851,-199.4031 283.271,-209.9957 289.9234,-207.8172"/>
+<text text-anchor="middle" x="449.5" y="-355.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">source</text>
+</g>
+<!-- type~type_result -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node16" class="node">
+<title>type~type_result</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node16"><a xlink:href=".././type/type_result.html" xlink:title="type_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="942.5,-485.102 877.5,-485.102 877.5,-461.102 942.5,-461.102 942.5,-485.102"/>
+<text text-anchor="middle" x="910" y="-470.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_result&#45;&gt;type~type_base_output_field -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge9" class="edge">
+<title>type~type_result&#45;&gt;type~type_base_output_field</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M877.3617,-472.1288C844.3124,-471.4656 791.7602,-471.2952 746.5,-475.102"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M746.5,-475.102C614.9645,-486.1656 581.4535,-471.5996 449.5,-475.102"/>
+<text text-anchor="middle" x="619" y="-481.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">source_coordinate, offset</text>
+</g>
+<!-- type~type_result&#45;&gt;type~type_operator_result -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge39" class="edge">
+<title>type~type_result&#45;&gt;type~type_operator_result</title>
+<path fill="none" stroke="#000000" d="M746.5,-475.102C714.6628,-477.7799 680.181,-489.1528 655.1138,-499.0905"/>
+<polygon fill="#000000" stroke="#000000" points="653.5942,-495.9303 645.6572,-502.9484 656.2384,-502.4117 653.5942,-495.9303"/>
+</g>
+<!-- type~type_text_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node17" class="node">
+<title>type~type_text_file</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node17"><a xlink:href=".././type/type_text_file.html" xlink:title="type_text_file">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1414.5,-441.102 1338.5,-441.102 1338.5,-417.102 1414.5,-417.102 1414.5,-441.102"/>
+<text text-anchor="middle" x="1376.5" y="-426.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_text_file</text>
+</a>
+</g>
+</g>
+<!-- type~type_text_file&#45;&gt;type~type_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge33" class="edge">
+<title>type~type_text_file&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" d="M1339.4805,-416.955C1305.3624,-405.76 1255.0172,-389.2405 1221.0493,-378.0948"/>
+<polygon fill="#000000" stroke="#000000" points="1222.093,-374.7537 1211.5002,-374.9615 1219.9106,-381.4048 1222.093,-374.7537"/>
+</g>
+<!-- type~type_coordinate_list_populator -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node18" class="node">
+<title>type~type_coordinate_list_populator</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node18"><a xlink:href=".././type/type_coordinate_list_populator.html" xlink:title="type_coordinate_list_populator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1264,-199.102 1105,-199.102 1105,-175.102 1264,-175.102 1264,-199.102"/>
+<text text-anchor="middle" x="1184.5" y="-184.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_coordinate_list_populator</text>
+</a>
+</g>
+</g>
+<!-- type~type_coordinate_list_populator&#45;&gt;type~type_interp_operator -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge28" class="edge">
+<title>type~type_coordinate_list_populator&#45;&gt;type~type_interp_operator</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1104.7345,-187.102C1064.0478,-187.102 1015.1351,-187.102 976.5093,-187.102"/>
+<polygon fill="#000000" stroke="#000000" points="976.4139,-183.6021 966.4139,-187.102 976.4139,-190.6021 976.4139,-183.6021"/>
+<text text-anchor="middle" x="1056.5" y="-189.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">operator</text>
+</g>
+<!-- type~type_group_populator -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node19" class="node">
+<title>type~type_group_populator</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node19"><a xlink:href=".././type/type_group_populator.html" xlink:title="type_group_populator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1435.5,-399.102 1317.5,-399.102 1317.5,-375.102 1435.5,-375.102 1435.5,-399.102"/>
+<text text-anchor="middle" x="1376.5" y="-384.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_group_populator</text>
+</a>
+</g>
+</g>
+<!-- type~type_group_populator&#45;&gt;type~type_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge30" class="edge">
+<title>type~type_group_populator&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1317.327,-380.63C1286.2001,-377.2255 1248.9848,-373.1551 1221.8759,-370.19"/>
+<polygon fill="#000000" stroke="#000000" points="1221.9738,-366.6799 1211.6525,-369.0718 1221.2126,-373.6384 1221.9738,-366.6799"/>
+<text text-anchor="middle" x="1288.5" y="-379.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">file</text>
+</g>
+<!-- type~type_field_set -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node20" class="node">
+<title>type~type_field_set</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node20"><a xlink:href=".././type/type_field_set.html" xlink:title="type_field_set">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="949.5,-265.102 870.5,-265.102 870.5,-241.102 949.5,-241.102 949.5,-265.102"/>
+<text text-anchor="middle" x="910" y="-250.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_field_set</text>
+</a>
+</g>
+</g>
+<!-- type~type_field_set&#45;&gt;type~type_field_set_member -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge37" class="edge">
+<title>type~type_field_set&#45;&gt;type~type_field_set_member</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M870.4516,-249.5685C824.4931,-245.4622 747.7315,-238.6038 691.086,-233.5427"/>
+<polygon fill="#000000" stroke="#000000" points="691.3831,-230.0554 681.1113,-232.6515 690.7601,-237.0276 691.3831,-230.0554"/>
+<text text-anchor="middle" x="746.5" y="-245.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first</text>
+</g>
+<!-- type~type_dimension_pointer&#45;&gt;type~type_dimension -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge20" class="edge">
+<title>type~type_dimension_pointer&#45;&gt;type~type_dimension</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M113.5639,-82.0415C200.2266,-62.07 389.8239,-28.8653 539,-77.102 548.3896,-80.1382 548.2289,-85.5798 557,-90.102 560.5354,-91.9248 564.2629,-93.6417 568.0641,-95.2476"/>
+<polygon fill="#000000" stroke="#000000" points="567.0099,-98.5941 577.5966,-99.0078 569.5785,-92.0824 567.0099,-98.5941"/>
+<text text-anchor="middle" x="280" y="-65.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">p</text>
+</g>
+<!-- type~type_netcdf_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node22" class="node">
+<title>type~type_netcdf_file</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node22"><a xlink:href=".././type/type_netcdf_file.html" xlink:title="type_netcdf_file">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1420.5,-357.102 1332.5,-357.102 1332.5,-333.102 1420.5,-333.102 1420.5,-357.102"/>
+<text text-anchor="middle" x="1376.5" y="-342.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_netcdf_file</text>
+</a>
+</g>
+</g>
+<!-- type~type_netcdf_file&#45;&gt;type~type_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge32" class="edge">
+<title>type~type_netcdf_file&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" d="M1332.4513,-349.9199C1299.0299,-353.5753 1253.587,-358.5456 1221.9166,-362.0096"/>
+<polygon fill="#000000" stroke="#000000" points="1221.3016,-358.5559 1211.7414,-363.1225 1222.0627,-365.5144 1221.3016,-358.5559"/>
+</g>
+<!-- type~type_single_text_file_with_scalars -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node23" class="node">
+<title>type~type_single_text_file_with_scalars</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node23"><a xlink:href=".././type/type_single_text_file_with_scalars.html" xlink:title="type_single_text_file_with_scalars">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="997,-569.102 823,-569.102 823,-545.102 997,-545.102 997,-569.102"/>
+<text text-anchor="middle" x="910" y="-554.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_single_text_file_with_scalars</text>
+</a>
+</g>
+</g>
+<!-- type~type_single_text_file_with_scalars&#45;&gt;type~type_scalar -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge34" class="edge">
+<title>type~type_single_text_file_with_scalars&#45;&gt;type~type_scalar</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M822.6904,-557.102C769.908,-557.102 704.8934,-557.102 662.7259,-557.102"/>
+<polygon fill="#000000" stroke="#000000" points="662.519,-553.6021 652.519,-557.102 662.5189,-560.6021 662.519,-553.6021"/>
+<text text-anchor="middle" x="746.5" y="-559.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">variables, constants</text>
+</g>
+<!-- type~type_field_manager&#45;&gt;type~type_dimension -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge22" class="edge">
+<title>type~type_field_manager&#45;&gt;type~type_dimension</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M856.287,-103.7633C804.2485,-105.3727 725.7341,-107.801 673.448,-109.4181"/>
+<polygon fill="#000000" stroke="#000000" points="673.2431,-105.9226 663.3562,-109.7302 673.4596,-112.9193 673.2431,-105.9226"/>
+<text text-anchor="middle" x="746.5" y="-111.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">first_dimension</text>
+</g>
+<!-- type~type_field_manager&#45;&gt;type~type_dictionary_bin -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge35" class="edge">
+<title>type~type_field_manager&#45;&gt;type~type_dictionary_bin</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M856.287,-96.0109C807.0197,-90.4239 734.0215,-82.1457 682.0166,-76.2483"/>
+<polygon fill="#000000" stroke="#000000" points="682.2395,-72.7512 671.9088,-75.102 681.4507,-79.7066 682.2395,-72.7512"/>
+<text text-anchor="middle" x="746.5" y="-91.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field_table</text>
+</g>
+<!-- type~type_field_manager&#45;&gt;type~type_dimension_pointer -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge41" class="edge">
+<title>type~type_field_manager&#45;&gt;type~type_dimension_pointer</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M889.1273,-89.9905C849.9252,-68.0237 761.9331,-22.3799 681,-6.102 557.333,18.7708 244.6805,-44.8262 218,-49.102 188.0491,-53.902 180.1783,-53.8118 151,-62.102 135.4294,-66.526 118.6823,-72.5826 104.237,-78.237"/>
+<polygon fill="#000000" stroke="#000000" points="102.6384,-75.1064 94.6468,-82.0623 105.2319,-81.6082 102.6384,-75.1064"/>
+<text text-anchor="middle" x="449.5" y="-27.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">prepend_dimensions, append_dimensions</text>
+</g>
+<!-- type~type_universal_operator_result -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node25" class="node">
+<title>type~type_universal_operator_result</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node25"><a xlink:href=".././type/type_universal_operator_result.html" xlink:title="type_universal_operator_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="990,-527.102 830,-527.102 830,-503.102 990,-503.102 990,-527.102"/>
+<text text-anchor="middle" x="910" y="-512.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_universal_operator_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_universal_operator_result&#45;&gt;type~type_operator_result -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge38" class="edge">
+<title>type~type_universal_operator_result&#45;&gt;type~type_operator_result</title>
+<path fill="none" stroke="#000000" d="M829.7127,-515.102C784.2351,-515.102 728.0405,-515.102 685.1235,-515.102"/>
+<polygon fill="#000000" stroke="#000000" points="685.0701,-511.6021 675.07,-515.102 685.07,-518.6021 685.0701,-511.6021"/>
+</g>
+<!-- type~type_variable_populator -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node26" class="node">
+<title>type~type_variable_populator</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node26"><a xlink:href=".././type/type_variable_populator.html" xlink:title="type_variable_populator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1440,-315.102 1313,-315.102 1313,-291.102 1440,-291.102 1440,-315.102"/>
+<text text-anchor="middle" x="1376.5" y="-300.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_variable_populator</text>
+</a>
+</g>
+</g>
+<!-- type~type_variable_populator&#45;&gt;type~type_file -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge31" class="edge">
+<title>type~type_variable_populator&#45;&gt;type~type_file</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1339.4805,-315.2491C1305.3624,-326.444 1255.0172,-342.9636 1221.0493,-354.1093"/>
+<polygon fill="#000000" stroke="#000000" points="1219.9106,-350.7993 1211.5002,-357.2426 1222.093,-357.4504 1219.9106,-350.7993"/>
+<text text-anchor="middle" x="1288.5" y="-334.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">file</text>
+</g>
+<!-- type~type_result~2 -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node27" class="node">
+<title>type~type_result~2</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node27"><a xlink:href=".././type/type_result%7E2.html" xlink:title="type_result">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1217,-527.102 1152,-527.102 1152,-503.102 1217,-503.102 1217,-527.102"/>
+<text text-anchor="middle" x="1184.5" y="-512.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_result</text>
+</a>
+</g>
+</g>
+<!-- type~type_result~2&#45;&gt;type~type_universal_operator_result -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge46" class="edge">
+<title>type~type_result~2&#45;&gt;type~type_universal_operator_result</title>
+<path fill="none" stroke="#000000" d="M1151.9333,-515.102C1114.7872,-515.102 1052.4541,-515.102 1000.3626,-515.102"/>
+<polygon fill="#000000" stroke="#000000" points="1000.0914,-511.6021 990.0914,-515.102 1000.0914,-518.6021 1000.0914,-511.6021"/>
+</g>
+<!-- type~type_operator_populator -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node28" class="node">
+<title>type~type_operator_populator</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node28"><a xlink:href=".././type/type_operator_populator.html" xlink:title="type_operator_populator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1249.5,-112.102 1119.5,-112.102 1119.5,-88.102 1249.5,-88.102 1249.5,-112.102"/>
+<text text-anchor="middle" x="1184.5" y="-97.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_operator_populator</text>
+</a>
+</g>
+</g>
+<!-- type~type_operator_populator&#45;&gt;type~type_field_manager -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge45" class="edge">
+<title>type~type_operator_populator&#45;&gt;type~type_field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1119.4473,-100.576C1075.4148,-100.8968 1017.5229,-101.3186 973.7643,-101.6375"/>
+<polygon fill="#000000" stroke="#000000" points="973.5012,-98.1392 963.527,-101.712 973.5523,-105.139 973.5012,-98.1392"/>
+<text text-anchor="middle" x="1056.5" y="-104.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">field_manager</text>
+</g>
+<!-- type~type_file_populator -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_node29" class="node">
+<title>type~type_file_populator</title>
+<g id="a_type~~type_nd_data_pointer~~InheritedByGraph_node29"><a xlink:href=".././type/type_file_populator.html" xlink:title="type_file_populator">
+<polygon fill="#5cb85c" stroke="#5cb85c" points="1236,-154.102 1133,-154.102 1133,-130.102 1236,-130.102 1236,-154.102"/>
+<text text-anchor="middle" x="1184.5" y="-139.702" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">type_file_populator</text>
+</a>
+</g>
+</g>
+<!-- type~type_file_populator&#45;&gt;type~type_field_manager -->
+<g id="type~~type_nd_data_pointer~~InheritedByGraph_edge44" class="edge">
+<title>type~type_file_populator&#45;&gt;type~type_field_manager</title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M1132.8686,-134.5783C1087.7763,-128.0075 1022.155,-118.4452 973.7891,-111.3974"/>
+<polygon fill="#000000" stroke="#000000" points="974.1441,-107.9122 963.7439,-109.9336 973.1347,-114.839 974.1441,-107.9122"/>
+<text text-anchor="middle" x="1056.5" y="-129.502" font-family="Helvetica,sans-Serif" font-size="9.50" fill="#000000">fm</text>
+</g>
+</g>
+</svg>
+</div><script>var pantypetype_nd_data_pointerInheritedByGraph = svgPanZoom('#typetype_nd_data_pointerInheritedByGraph', {zoomEnabled: true,controlIconsEnabled: true, fit: true, center: true,}); </script><div><a type="button" class="graph-help" data-toggle="modal" href="#graph-help-text">Help</a></div><div class="modal fade" id="graph-help-text" tabindex="-1" role="dialog"><div class="modal-dialog modal-lg" role="document"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title" id="-graph-help-label">Graph Key</h4></div><div class="modal-body">
+    <p>Nodes of different colours represent the following: </p>
+    <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 2.40.1 (20161225.0304)
+ -->
+<!-- Title: Graph Key Pages: 1 -->
+<svg width="178pt" height="32pt"
+ viewBox="0.00 0.00 177.50 32.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 28)">
+<title>Graph Key</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-28 173.5,-28 173.5,4 -4,4"/>
+<!-- Type -->
+<g id="node1" class="node">
+<title>Type</title>
+<polygon fill="#5cb85c" stroke="#5cb85c" points="54,-24 0,-24 0,0 54,0 54,-24"/>
+<text text-anchor="middle" x="27" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#ffffff">Type</text>
+</g>
+<!-- This Page&#39;s Entity -->
+<g id="node2" class="node">
+<title>This Page&#39;s Entity</title>
+<polygon fill="none" stroke="#000000" points="169.5,-24 72.5,-24 72.5,0 169.5,0 169.5,-24"/>
+<text text-anchor="middle" x="121" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="#000000">This Page&#39;s Entity</text>
+</g>
+</g>
+</svg>
+
+    
+    <p>Solid arrows point from a derived type to the parent type which it
+    extends. Dashed arrows point from a derived type to the other
+    types it contains as a components, with a label listing the name(s) of
+    said component(s).
+    </p>
+    </div></div></div></div>
+      </div>
+    </div>
+    
+    <br>
+
+    <section class="visible-xs visible-sm hidden-md">
+      
+<h3>Contents</h3>
+ 
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#vars-1">Variables</a></h3></div>
+  <div id="vars-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p0d">p0d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p1d">p1d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p2d">p2d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#variable-p3d">p3d</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="panel panel-primary">
+  <div class="panel-heading text-left"><h3 class="panel-title"><a data-toggle="collapse" href="#boundprocs-1">Type-Bound Procedures</a></h3></div>
+  <div id="boundprocs-1" class="panel-collapse collapse">
+    <div class="list-group">
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_0d">set_0d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_1d">set_1d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_2d">set_2d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set_3d">set_3d</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-set%7E2">set</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-get_extents">get_extents</a>
+      
+      <a class="list-group-item" href="../type/type_nd_data_pointer.html#boundprocedure-is_empty">is_empty</a>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+    </section>
+    <br class="visible-xs visible-sm hidden-md">
+
+    
+    <section>
+    <h2>Components</h2>
+    
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th><th>Visibility</th>
+
+<th>Attributes</th><th></th><th>Name</th><th></th><th>Initial</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-p0d"></span>real(kind=rk),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>p0d</strong></td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-p1d"></span>real(kind=rk),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>p1d</strong>(:)</td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-p2d"></span>real(kind=rk),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>p2d</strong>(:,:)</td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" id="variable-p3d"></span>real(kind=rk),</td>
+  
+  <td>public,</td>
+  <td>pointer</td><td>::</td>
+  <td><strong>p3d</strong>(:,:,:)</td><td>=> </td><td>null()</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+    </section>
+    <br>
+    
+    
+    
+    
+    
+    
+     
+    <section>
+    <h2>Type-Bound Procedures</h2>
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set_0d"></span><h3>procedure, public :: <strong>set_0d</strong>  => <a href='../proc/data_set_0d.html'>data_set_0d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/data_set_0d.html'>data_set_0d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set_1d"></span><h3>procedure, public :: <strong>set_1d</strong>  => <a href='../proc/data_set_1d.html'>data_set_1d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/data_set_1d.html'>data_set_1d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong>(:)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set_2d"></span><h3>procedure, public :: <strong>set_2d</strong>  => <a href='../proc/data_set_2d.html'>data_set_2d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/data_set_2d.html'>data_set_2d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong>(:,:)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set_3d"></span><h3>procedure, public :: <strong>set_3d</strong>  => <a href='../proc/data_set_3d.html'>data_set_3d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/data_set_3d.html'>data_set_3d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong>(:,:,:)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-set%7E2"></span><h3>generic, public :: <strong>set</strong>  => <a href='../type/type_nd_data_pointer.html#boundprocedure-set_0d'>set_0d</a>, <a href='../type/type_nd_data_pointer.html#boundprocedure-set_1d'>set_1d</a>, <a href='../type/type_nd_data_pointer.html#boundprocedure-set_2d'>set_2d</a>, <a href='../type/type_nd_data_pointer.html#boundprocedure-set_3d'>set_3d</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+private subroutine <a href='../proc/data_set_0d.html'>data_set_0d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+         
+      
+      </li>
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+private subroutine <a href='../proc/data_set_1d.html'>data_set_1d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong>(:)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+         
+      
+      </li>
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+private subroutine <a href='../proc/data_set_2d.html'>data_set_2d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong>(:,:)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+         
+      
+      </li>
+    
+      <li class="list-group-item">
+      
+         
+            
+    
+    <h3>
+private subroutine <a href='../proc/data_set_3d.html'>data_set_3d</a>(self, data)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(inout)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>real(kind=rk),</td>
+  <td></td>
+  <td></td>
+  
+  <td>target</td><td>::</td>
+  <td><strong>data</strong>(:,:,:)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+         
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-get_extents"></span><h3>procedure, public :: <strong>get_extents</strong>  => <a href='../proc/data_get_extents.html'>data_get_extents</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private subroutine <a href='../proc/data_get_extents.html'>data_get_extents</a>(self, extents)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>integer,</td>
+  <td>intent(out),</td>
+  <td></td>
+  
+  <td>allocatable</td><td>::</td>
+  <td><strong>extents</strong>(:)</td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+     
+<div class="panel panel-default">
+  <div class="panel-heading codesum"><span class="anchor" id="boundprocedure-is_empty"></span><h3>procedure, public :: <strong>is_empty</strong>  => <a href='../proc/data_is_empty.html'>data_is_empty</a> 
+    
+  </h3></div>
+  
+  <ul class="list-group">
+    
+      <li class="list-group-item">
+      
+        
+          
+    
+    <h3>
+private function <a href='../proc/data_is_empty.html'>data_is_empty</a>(self)
+    
+    
+   
+</h3>
+    
+    
+    <h4>Arguments</h4>
+    
+      
+      
+<table class="table table-striped varlist">
+<thead><tr><th>Type</th>
+<th>Intent</th><th>Optional</th>
+<th>Attributes</th><th></th><th>Name</th><th></th></thead>
+
+
+
+<tbody>
+
+  
+  
+  
+  
+<tr>
+  
+  <td><span class="anchor" ></span>class(<a href='../type/type_nd_data_pointer.html'>type_nd_data_pointer</a>),</td>
+  <td>intent(in)</td>
+  <td></td>
+  
+  <td></td><td>::</td>
+  <td><strong>self</strong></td><td></td>
+  
+</tr>
+
+</tbody>
+</table>
+
+      
+    
+    
+
+  
+  
+  
+  
+     <h4>Return Value <small>logical
+  </small></h4>
+  
+    
+
+        
+      
+      </li>
+    
+  </ul>
+</div>
+
+    
+    </section>
+    
+    
+    
+    
+    </div>
+  </div>
+
+
+    <hr>    
+    </div> <!-- /container -->
+    <footer>
+      <div class="container">
+      <div class="row">
+        <div class="col-xs-6 col-md-4"><p>&copy; 2019 <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/80x15.png" /></a>
+                                          </p></div>
+        <div class="col-xs-6 col-md-4 col-md-push-4">
+          <p class="text-right">
+            Documentation generated by 
+            <a href="https://github.com/cmacmackin/ford">FORD</a>
+            
+          </p>
+        </div>
+        <div class="col-xs-12 col-md-4 col-md-pull-4"><p class="text-center"> Fortran Program was developed by Jorn Bruggeman</p></div>
+      </div>
+      <br>
+      </div> <!-- /container -->    
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+<!--
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+-->
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- MathJax JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } },
+        jax: ['input/TeX','input/MathML','output/HTML-CSS'],
+        extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']
+      });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+    <script src="../tipuesearch/tipuesearch_content.js"></script>
+    <script src="../tipuesearch/tipuesearch_set.js"></script>
+    <script src="../tipuesearch/tipuesearch.js"></script>
+    
+    
+  </body>
+</html>
