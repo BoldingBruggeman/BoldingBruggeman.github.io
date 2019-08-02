@@ -62,7 +62,7 @@ contains
 
       call settings%get(self%dimension, 'dimension', 'dimension to interpolate')
 
-      ! Verify target dimension has been registered with field manager
+      !! Verify target dimension has been registered with field manager
       dim => field_manager%first_dimension
       do while (associated(dim))
          if (dim%name==self%dimension) exit
