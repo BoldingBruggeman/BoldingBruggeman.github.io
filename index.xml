@@ -69,16 +69,16 @@ script used to generate and manipulate Fortran namelists - based on XML formatte
     </item>
     
     <item>
-      <title>ACPY</title>
-      <link>https://boldingbruggeman.github.io/portfolio/acpy/</link>
+      <title>ParSAC</title>
+      <link>https://boldingbruggeman.github.io/portfolio/parsac/</link>
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
-      <guid>https://boldingbruggeman.github.io/portfolio/acpy/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;ACPy&lt;/strong&gt; is an auto-calibration utility for
+      <guid>https://boldingbruggeman.github.io/portfolio/parsac/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;ParSAC&lt;/strong&gt; is a sensitivity and calibration utility for
 &lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt;
  and
 &lt;a href=&#34;http://www.fabm.net&#34;&gt;fabm0d&lt;/a&gt;
-. &lt;strong&gt;ACPy&lt;/strong&gt; is written in
+. &lt;strong&gt;ParSAC&lt;/strong&gt; is written in
 &lt;a href=&#34;http://www.python.org&#34;&gt;Python&lt;/a&gt;.&lt;/p&gt;
 
 &lt;p&gt;&lt;/p&gt;</description>
