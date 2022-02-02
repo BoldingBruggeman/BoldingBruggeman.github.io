@@ -83,9 +83,9 @@
     <div class="copyright">
       <p class="credit">
         
-          &copy;2017 BB
+          &copy;2017 BB |
         
-        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
 
 &amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
 
@@ -105,57 +105,36 @@
     <div class="col-lg-8">
       <div class="content-column-content">
          <h1>ParSAC</h1>
-         <p><strong>ParSAC</strong> is a sensitivity and calibration utility for
+         <p><strong>ParSAC</strong> is a sensitivity analysis and calibration tool for
 <a href="http://www.gotm.net">GOTM</a>
- and
+and
 <a href="http://www.fabm.net">fabm0d</a>
 . <strong>ParSAC</strong> is written in
 <a href="http://www.python.org">Python</a>.</p>
-
-<p></p>
-
+<p>Citable version (latest):
+<a href="https://doi.org/10.5281/zenodo.4276111"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.4276111.svg" alt="DOI"></a></p>
+<p><a href="https://github.com/BoldingBruggeman/parsac/graphs/contributors"><img src="https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg" alt="GitHub contributors"></a></p>
 <h4 id="introduction">Introduction</h4>
-
 <p><strong>ParSAC</strong> &ndash; Parallel Sensitivity Analysis and Calibration.</p>
-
 <p>The calibration of complex coupled physical/bio-geochemical numerical models is a very time-consuming task typical requiring a large number of - <em>run model -&gt; compare with observations -&gt; adjust paramters</em> - cycles. The final chosen set of model parameters is the - partly - subjective judgement by the person performing the calibration and do not in anyway assure that even a small part of the global parameter space has been covered. This is mainly due to the <a href="https://en.wikipedia.org/wiki/Curse_of_dimensionality">curse of dimensionality</a> stating that the number of realisations becomes so large that it is impossible due to resource limitations on todays computers. As an example - with only 3 model parameters and 10 subdivisions in each paramter space 1000 simulations are needed if a brute force method is applied. For models counting 10&rsquo;s to 100&rsquo;s a systematic search of the optimal set of parameters in the full space is impossible.</p>
-
 <p>The problem sketched above is by no means unique to the field of numerical models of natural waters and a lot of research has been done during the last decades. As it is not possible to guarantee <strong>the</strong> optimal solution statistical methods have been developed. Many of these methods are based on <a href="https://en.wikipedia.org/wiki/Monte_Carlo_method">Monte Carlo methods</a> - i.e. a statistical method where the optimal solution is based on a choice between a number of tries. The optimal choice is based on the evaluation of an objective function calculating the <em>performance</em> in some way but directly comparable between <strong>model evaluations</strong>. A very important step in the Monte Carlo method is the selection of the parameter sets to be used for the model runs.</p>
-
 <p><strong>ParSAC</strong> is a tool written in Python to perform sensitivity and <em>automatic</em> optimization (in the Maximum Likelihood sense) of a selected set of model paramters in a <a href="www.gotm.net">GOTM</a> simulation. The present version of ParSAC has two different methods included for finding the maximum likelyhood - Nelder-Mead (simplex) from 1965 and Differential Evolution from 1997. In addition to the actual optimisation ParSAC also provides a set of support tools for evaluating the optimization. ParSAC stores all tested parameter sets in a data-base together with the maximum-likely hood value for each of the sets. This allows for further analysis - see below for examples.</p>
-
 <p>The limitations of <strong>ParSAC</strong> - and any optimization software - must be considered. <strong>ParSAC</strong> will in an objective way make an estimate on the optimal value for a set of paramters the user has specified. This is done by evaluating a function comparing model results with observations. <strong>ParSAC</strong> can not account for short-comings in the model itself - i.e. does GOTM - actually describe the processes the observations are a result of. Furthermore, <strong>ParSAC</strong> can not judge the quality of the observations provided but will use them <em>as is</em>. And lastly - the set of parameters to optimize for provided by the user - are they the right ones.</p>
-
 <p><strong>ParSAC</strong> is a statistical method and does not gurantee the <em>correct</em> solution. <strong>ParSAC</strong> comes with an estimate of the <em>correct</em> solution. To gain faith in the reults it is a very good idea to run a number of optimizations to see if similar results are optained between them. This behaviour is facilitated with the <em>&ndash;repeat</em> option shown later.</p>
-
 <p><strong>ParSAC</strong> can be run in serial and parallel mode. If the Python package <a href="https://www.parallelpython.com/">parallel pythoni - pp</a> is installed the auto-calibration task is automatically spread across available local cores. Additional configuration is possible to run on distributed memory machines as well - see the ParallelPython documentation for configuration. This makes sense only for methods supporting it.</p>
-
 <p><strong>ParSAC</strong> combines: 1) a working model (GOTM) setup with 2) a single <a href="https://www.w3.org/XML/">XML</a> formatted configuration file and 3) a set of observations to compute an optimal estimate of the included model parameters.</p>
-
 <h4 id="parsac-operation">ParSAC operation</h4>
-
 <p><strong>ParSAC</strong> is developed as a command line utility with extensive command line help support. This means that for now to get a good workflow the user must be confident working in a terminal window - independent of platform - being on Windows, Mac or Linux. Typical use will have 2 to 3 terminals open to allow for easy use of different sub-modules.</p>
-
 <h4 id="installation">Installation</h4>
-
 <p>ParSAC is available from <a href="https://pypi.python.org/pypi">PyPI</a> and can be installed by simply executing the command:</p>
-
 <pre><code>pip install parsac &lt;--user&gt;
-</code></pre>
-
-<p>Succes of installation can be tested by:</p>
-
+</code></pre><p>Succes of installation can be tested by:</p>
 <pre><code>kb@orca ~ $ parsac -v
 0.5.4
 kb@orca ~ $ 
-</code></pre>
-
-<h4 id="parsac-usage">ParSAC usage</h4>
-
+</code></pre><h4 id="parsac-usage">ParSAC usage</h4>
 <p><strong>ParSAC</strong> is a python wrapper around a number of individual python modules. It only provides common configuration between the modules and set up infrastructure. Each of the individual modules handles their own usage and help. The very modular way <strong>ParSAC</strong> is implemented makes it easy to add new functionally to the main program.</p>
-
 <p>All execution of <strong>ParSAC</strong> commands is done via the &lsquo;parsac&rsquo; command wrapper - see the figure below.</p>
-
 <pre><code>kb@orca ~ $ parsac -h
 usage: parsac [-h] [-v] {sensitivity,calibration,ensemble,service} ...
 
@@ -172,10 +151,7 @@ optional arguments:
   -h, --help            show this help message and exit
   -v, --version         show program's version number and exit
 kb@orca ~ $ 
-</code></pre>
-
-<p>Each of the commands have their own help system - available like:</p>
-
+</code></pre><p>Each of the commands have their own help system - available like:</p>
 <pre><code>kb@orca ~ $ parsac sensitivity -h
 usage: parsac sensitivity [-h] {sample,run,analyze} ...
 
@@ -185,13 +161,9 @@ positional arguments:
 optional arguments:
   -h, --help            show this help message and exit
 kb@orca ~ $ 
-</code></pre>
-
-<h5 id="main-configuration-file">Main configuration file</h5>
-
+</code></pre><h5 id="main-configuration-file">Main configuration file</h5>
 <p><strong>ParSAC</strong> is configured via a xml formatted file. The example below is from the
 Northern North Sea annual standard set-up. The configuration file contains 5 different sections:</p>
-
 <ol>
 <li><em>transports</em> - how are results communicated and stored</li>
 <li><em>executable path</em> - the full path to the executable - in this case <strong>GOTM</strong></li>
@@ -199,46 +171,25 @@ Northern North Sea annual standard set-up. The configuration file contains 5 dif
 <li><em>parameters</em> - list of parameters to use in the calibration</li>
 <li><em>observations</em> - list of observation files - in the format shown further down</li>
 </ol>
-
-
 <figure>
-    
-        <img src="/portfolio/img/parsac_config.png" />
-    
-    
+    <img src="/portfolio/img/parsac_config.png"/> 
 </figure>
-
 
 <p>The configuration has optimized for
 8 parameters in the model. The y-axis is the maximum likelihood value and  the x-axes show the span for the different parameters. <strong>ParSAC</strong> supports logaritmic parameters - as the specification for <em>k_min</em> shows.</p>
-
 <p>Parameters to optimize can specified via Fortran <em>namelist</em> or YAML-formatted syntax.</p>
-
 <h5 id="database-file">Database file</h5>
-
 <p>The autocalibration module - see the &lsquo;run&rsquo; module - with the configuration above creates a <a href="https://www.sqlite.org/">SQLite</a> formatted database with the results of the autocalibration tools. The specific name of this file is specified in the .xml configuration file. Most other modules with use the database file for futher processing.</p>
-
 <h5 id="observation-file-format">Observation file format</h5>
-
 <p>Observations in <strong>ParSAC</strong> are read in from simple ASCII files with one variable in each file. The observation files are listed in the main configuration file and links the file to a output file and model variable. The format is very simple as seen in the figure below. Each observation consists of a time-stamp and a depth (measure from the surface).</p>
-
-
 <figure>
-    
-        <img src="/portfolio/img/acpy_obs_file.png" />
-    
-    
+    <img src="/portfolio/img/acpy_obs_file.png"/> 
 </figure>
 
-
 <p>The observations are used to calculate the maximum likelihood function on which the auto-calibration is based.</p>
-
-<hr />
-
+<hr>
 <h3 id="support-plans">Support plans</h3>
-
 <p><strong>ParSAC</strong> installed from PyPi comes without any support - as shown via:</p>
-
 <pre><code>kb@orca ~ $ parsac service
 Reading service from:
    /home/kb/.local/lib/python3.6/site-packages/parsac/service.txt
@@ -251,32 +202,25 @@ Section: Key
 Section: Features
   parallel = Shared
 kb@orca ~ $ 
-</code></pre>
-
-<p><strong>ParSAC</strong> support can be arranged with Bolding &amp; Bruggeman and will depend on the
+</code></pre><p><strong>ParSAC</strong> support can be arranged with Bolding &amp; Bruggeman and will depend on the
 type and extend of the support requested.</p>
-
 <p>We provide a basic support license of <strong>ParSAC</strong> that can be obtained by contacting BB. This license will provide support to get an already configured GOTM setup ready to do sensitivity and calibration. The license does <em>NOT</em> provide any support in making the basic model setup. Typically the setup will be provided to BB as a <em>.zip</em> for us to work with.
-The license fee is Euro 300,- ex. VAT for a personal license.
-The licensed wheel file is <strong>strictly</strong> personal and must under no circumstances be distributed to third parties.</p>
-
+The license fee is 300,-  EUR ex. VAT for a personal license.</p>
+<p>We also offer a premium support plan that includes up to 20 days for development of tailor-made code (e.g., job submission scripts for a HPC cluster) and/or new functionality. This plan is priced at 15.000,- EUR ex. VAT. Any new functionality developed under this plan would in principle be made publicly available as part of the open source <strong>ParSAC</strong> application.</p>
+<p>With the basic support plan the licensed wheel file is <strong>strictly</strong> personal and must under no circumstances be distributed to third parties.</p>
+<p>With the premium support plan the licensed wheel file is institutional and must under no circumstances be distributed to third parties.</p>
 <p>A support version of <strong>ParSAC</strong> will be provided as a <em>wheel</em> file and must
 be installed on the computer(s) using the command:</p>
-
 <pre><code>pip install &lt;name_of_wheel_file&gt; &lt;--upgrade&gt; &lt;--user&gt;
 
 &lt;--upgrade&gt; &lt;--user&gt; are optional.
 
 &lt;--upgrade&gt; if ParSAC is already installed on the system
 &lt;--user&gt; if installation is not system wide
-</code></pre>
-
-<p>The licensed and non-licensed versions of <strong>ParSAC</strong> will produce the same
+</code></pre><p>The licensed and non-licensed versions of <strong>ParSAC</strong> will produce the same
 results when run on the same configuration (except for differences inherent in
 statistical methods where you draw random numbers from probability distributions).</p>
-
 <p>So what is the difference - and why should I pay for a license:</p>
-
 <ol>
 <li>The development work of <strong>ParSAC</strong> has been considerable and started when Jorn
 Bruggeman worked in Oxford as a personal tool. Since then BB have added new
@@ -287,7 +231,6 @@ features and made it much more generic and user friendly.</li>
 <li>The <em>http</em> transport method requires additional configuration. This transport method
 allows for doing the actual simulations on a remote cluster and obtaining results on your local computer.</li>
 </ol>
-
 <p>The main advantage of automated sensitivity and calibration tools is time saving (and hopefully
 better model simulations). So if time is of any value to you - consider
 buying a support plan - for the time we have saved you.</p>

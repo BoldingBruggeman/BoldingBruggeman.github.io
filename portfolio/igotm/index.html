@@ -83,9 +83,9 @@
     <div class="copyright">
       <p class="credit">
         
-          &copy;2017 BB
+          &copy;2017 BB |
         
-        | Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
+        Template by <a href="https://bootstrapious.com/free-templates" class="external">Bootstrapious.com</a>
 
 &amp; ported to Hugo by <a href="https://github.com/kishaningithub">Kishan B</a>
 
@@ -107,21 +107,15 @@
          <h1>iGOTM</h1>
          <p>A GOTM simulation for any point in the world with only 2 clicks.
 Selecting a geographical position using Google Maps and clicking &lsquo;Simulate&rsquo; will make an one year (2016) GOTM simulation with results presented in the browser.</p>
-
 <p>Try it out <a href="https://igotm.bolding-bruggeman.com">here</a>.</p>
-
-<p></p>
-
 <p>iGOTM is built around GOTM and a number of public datasets. After you pick a
 location, the server retrieves the water depth (from ETOPO1), meteorological
 conditions (ERA-Interim), initial temperature/salinity profiles (World
 Ocean Atlas) and tides (TPXO9). It then runs GOTM on our back-end servers to produce plots of
 temperature, salinity and diffusivity. All typically within 10 seconds.</p>
-
 <p>The aim of this service is to show case the capabilities and performance of
 GOTM, the power of python-based tools for web interactivity, and not in the
 least, our company&rsquo;s ability to build web services such as this. ;-)</p>
-
 <p>Any two-click model comes with caveats. The main ones: (1) Regions strongly
 influenced by horizontal transports will not be simulated correctly as iGOTM
 lacks a mechanism to prescribe horizontal gradients or transports; this
@@ -129,26 +123,19 @@ typically affects salinity in regions near rivers (salinity will drift).
 (2) Regions that are ice covered for part
 of the year will not be simulated correctly as GOTM lacks an ice model
 (instead of ice cover building up you&rsquo;ll typically see strong mixing).</p>
-
 <p>iGOTM currently allows you to simulate one year only (2016). This is a
 conscious decision to reduce the load on our servers. We will expand the
 service in the future with the ability to perform longer simulations
 (ideally the full ERA period, 1979-present) and to include biogeochemistry.
 Given the computational cost of these features, they will be made available
 as a paid, subscription-based service.</p>
-
-<h3 id="the-technical-details">The technical details &hellip;</h3>
-
+<h3 id="the-technical-details-">The technical details &hellip;</h3>
 <p>iGOTM uses <a href="https://nginx.org/en/">nginx</a> as frontend webserver. Nginx reverse proxies simulation tasks to <a href="http://www.tornadoweb.org/en/stable/">tornado</a> servers which are responsible for the actual GOTM simulation via a <a href="http://www.python.org/">python</a> wrapper around the Fortran based GOTM executable. Plots (created with <a href="https://plot.ly/javascript/">Plotly</a>) are fed back to Nginx for presentation.</p>
-
 <p>iGOTM uses a secure connection using <a href="https://letsencrypt.org/">LetsEncrypt</a> issued certificates.</p>
-
 <p>All plots use the <a href="https://matplotlib.org/cmocean/">cmocean</a> color maps.</p>
-
 <h3 id="further-information">Further information</h3>
-
 <p>Bug reports, questions, comments and suggestions are all welcome. Please
-send these to igotm@bolding-bruggeman.com.</p>
+send these to <a href="mailto:igotm@bolding-bruggeman.com">igotm@bolding-bruggeman.com</a>.</p>
          
          <h6><a href="https://boldingbruggeman.github.io/">Home</a></h6>
       </div>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Bolding &amp; Bruggeman on Bolding &amp; Bruggeman (BB)</title>
@@ -17,9 +17,7 @@
       <pubDate>Mon, 01 Jul 2019 12:00:00 +0200</pubDate>
       
       <guid>https://boldingbruggeman.github.io/portfolio/flexout/</guid>
-      <description>&lt;p&gt;Fortran-based flexible output manager with support for NetCDF and text formats applicable for use in numerical models.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>&lt;p&gt;Fortran-based flexible output manager with support for NetCDF and text formats applicable for use in numerical models.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -30,15 +28,11 @@
       <guid>https://boldingbruggeman.github.io/portfolio/yaml/</guid>
       <description>&lt;p&gt;Fortran-YAML implements a sub-set of the YAML specification in a Fortran
 library.&lt;/p&gt;
-
 &lt;p&gt;Used by e.g. &lt;a href=&#34;http://www.fabm.net&#34;&gt;FABM&lt;/a&gt; to read the run-time bio-geochemical
 configuration file &lt;strong&gt;fabm.yaml&lt;/strong&gt; and to read output configuration for the
 &lt;em&gt;flexible_output&lt;/em&gt; system optionally used in &lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt; and
 &lt;a href=&#34;http://www.getm.eu&#34;&gt;GETM&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;The YAML figure is taken from &lt;a href=&#34;http://svgur.com/s/3m&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;The YAML figure is taken from &lt;a href=&#34;http://svgur.com/s/3m&#34;&gt;here&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -49,10 +43,7 @@ configuration file &lt;strong&gt;fabm.yaml&lt;/strong&gt; and to read output con
       <guid>https://boldingbruggeman.github.io/portfolio/igotm/</guid>
       <description>&lt;p&gt;A GOTM simulation for any point in the world with only 2 clicks.
 Selecting a geographical position using Google Maps and clicking &amp;lsquo;Simulate&amp;rsquo; will make an one year (2016) GOTM simulation with results presented in the browser.&lt;/p&gt;
-
-&lt;p&gt;Try it out &lt;a href=&#34;https://igotm.bolding-bruggeman.com&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Try it out &lt;a href=&#34;https://igotm.bolding-bruggeman.com&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -63,9 +54,17 @@ Selecting a geographical position using Google Maps and clicking &amp;lsquo;Simu
       <guid>https://boldingbruggeman.github.io/portfolio/editscenario/</guid>
       <description>&lt;p&gt;EditScenario is a
 &lt;a href=&#34;http://www.python.org&#34;&gt;python&lt;/a&gt; 2 and 3
-script used to generate and manipulate Fortran namelists - based on XML formatted configuration file.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+script used to generate and manipulate Fortran namelists - based on XML formatted configuration file.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>EAT</title>
+      <link>https://boldingbruggeman.github.io/portfolio/eat/</link>
+      <pubDate>Sun, 31 Jan 2021 12:00:00 +0200</pubDate>
+      
+      <guid>https://boldingbruggeman.github.io/portfolio/eat/</guid>
+      <description>EAT
+Fortran code documentation</description>
     </item>
     
     <item>
@@ -74,14 +73,15 @@ script used to generate and manipulate Fortran namelists - based on XML formatte
       <pubDate>Wed, 31 May 2017 13:58:54 +0200</pubDate>
       
       <guid>https://boldingbruggeman.github.io/portfolio/parsac/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;ParSAC&lt;/strong&gt; is a sensitivity and calibration utility for
+      <description>&lt;p&gt;&lt;strong&gt;ParSAC&lt;/strong&gt; is a sensitivity analysis and calibration tool for
 &lt;a href=&#34;http://www.gotm.net&#34;&gt;GOTM&lt;/a&gt;
- and
+and
 &lt;a href=&#34;http://www.fabm.net&#34;&gt;fabm0d&lt;/a&gt;
 . &lt;strong&gt;ParSAC&lt;/strong&gt; is written in
 &lt;a href=&#34;http://www.python.org&#34;&gt;Python&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+&lt;p&gt;Citable version (latest):
+&lt;a href=&#34;https://doi.org/10.5281/zenodo.4276111&#34;&gt;&lt;img src=&#34;https://zenodo.org/badge/DOI/10.5281/zenodo.4276111.svg&#34; alt=&#34;DOI&#34;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/BoldingBruggeman/parsac/graphs/contributors&#34;&gt;&lt;img src=&#34;https://img.shields.io/github/contributors/Naereen/StrapDown.js.svg&#34; alt=&#34;GitHub contributors&#34;&gt;&lt;/a&gt;&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -91,9 +91,7 @@ script used to generate and manipulate Fortran namelists - based on XML formatte
       
       <guid>https://boldingbruggeman.github.io/portfolio/gotm/</guid>
       <description>&lt;p&gt;The General Ocean Turbulence model is both a state-of-the-art turbulence
-library for flows in natural waters and a 1D water column model.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+library for flows in natural waters and a 1D water column model.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -103,9 +101,17 @@ library for flows in natural waters and a 1D water column model.&lt;/p&gt;
       
       <guid>https://boldingbruggeman.github.io/portfolio/getm/</guid>
       <description>&lt;p&gt;The General Estuarine Transport Model &lt;a href=&#34;http://www.getm.eu&#34;&gt;GETM&lt;/a&gt; is a primitive
-equation numerical model for ocean and lake simulations.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+equation numerical model for ocean and lake simulations.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>FLOM</title>
+      <link>https://boldingbruggeman.github.io/portfolio/flom/</link>
+      <pubDate>Fri, 10 Apr 2020 12:00:00 +0000</pubDate>
+      
+      <guid>https://boldingbruggeman.github.io/portfolio/flom/</guid>
+      <description>&lt;p&gt;The Framework for Lake and Ocean  Models (FLOM) provides a set of easy to use
+building blocks for creating advanced numerical models for lakes and oceans.&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -116,9 +122,7 @@ equation numerical model for ocean and lake simulations.&lt;/p&gt;
       <guid>https://boldingbruggeman.github.io/portfolio/fabm/</guid>
       <description>&lt;p&gt;The Framework for Aquatic Biogeochemical Models (FABM) provides a generic, easy
 to use, high performance coupling layer that connects a hydrodynamic model
-(e.g., 1D water column, 3D world ocean) with multiple biogeochemical submodels.&lt;/p&gt;
-
-&lt;p&gt;&lt;/p&gt;</description>
+(e.g., 1D water column, 3D world ocean) with multiple biogeochemical submodels.&lt;/p&gt;</description>
     </item>
     
   </channel>
