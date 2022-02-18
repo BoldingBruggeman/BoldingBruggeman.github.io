@@ -58,6 +58,16 @@ script used to generate and manipulate Fortran namelists - based on XML formatte
     </item>
     
     <item>
+      <title>STIM</title>
+      <link>https://boldingbruggeman.github.io/portfolio/stim/</link>
+      <pubDate>Fri, 18 Feb 2022 12:00:00 +0200</pubDate>
+      
+      <guid>https://boldingbruggeman.github.io/portfolio/stim/</guid>
+      <description>STIM
+Fortran code documentation</description>
+    </item>
+    
+    <item>
       <title>EAT</title>
       <link>https://boldingbruggeman.github.io/portfolio/eat/</link>
       <pubDate>Sun, 31 Jan 2021 12:00:00 +0200</pubDate>
