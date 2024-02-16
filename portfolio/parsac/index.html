@@ -127,15 +127,15 @@ and
 <p><strong>ParSAC</strong> is developed as a command line utility with extensive command line help support. This means that for now to get a good workflow the user must be confident working in a terminal window - independent of platform - being on Windows, Mac or Linux. Typical use will have 2 to 3 terminals open to allow for easy use of different sub-modules.</p>
 <h4 id="installation">Installation</h4>
 <p>ParSAC is available from <a href="https://pypi.python.org/pypi">PyPI</a> and can be installed by simply executing the command:</p>
-<pre><code>pip install parsac &lt;--user&gt;
+<pre tabindex="0"><code>pip install parsac &lt;--user&gt;
 </code></pre><p>Succes of installation can be tested by:</p>
-<pre><code>kb@orca ~ $ parsac -v
+<pre tabindex="0"><code>kb@orca ~ $ parsac -v
 0.5.4
 kb@orca ~ $ 
 </code></pre><h4 id="parsac-usage">ParSAC usage</h4>
 <p><strong>ParSAC</strong> is a python wrapper around a number of individual python modules. It only provides common configuration between the modules and set up infrastructure. Each of the individual modules handles their own usage and help. The very modular way <strong>ParSAC</strong> is implemented makes it easy to add new functionally to the main program.</p>
 <p>All execution of <strong>ParSAC</strong> commands is done via the &lsquo;parsac&rsquo; command wrapper - see the figure below.</p>
-<pre><code>kb@orca ~ $ parsac -h
+<pre tabindex="0"><code>kb@orca ~ $ parsac -h
 usage: parsac [-h] [-v] {sensitivity,calibration,ensemble,service} ...
 
 parsac - Parallel Sensitivity Analysis and Calibration
@@ -152,7 +152,7 @@ optional arguments:
   -v, --version         show program's version number and exit
 kb@orca ~ $ 
 </code></pre><p>Each of the commands have their own help system - available like:</p>
-<pre><code>kb@orca ~ $ parsac sensitivity -h
+<pre tabindex="0"><code>kb@orca ~ $ parsac sensitivity -h
 usage: parsac sensitivity [-h] {sample,run,analyze} ...
 
 positional arguments:
@@ -171,8 +171,7 @@ Northern North Sea annual standard set-up. The configuration file contains 5 dif
 <li><em>parameters</em> - list of parameters to use in the calibration</li>
 <li><em>observations</em> - list of observation files - in the format shown further down</li>
 </ol>
-<figure>
-    <img src="/portfolio/img/parsac_config.png"/> 
+<figure><img src="/portfolio/img/parsac_config.png"/>
 </figure>
 
 <p>The configuration has optimized for
@@ -182,15 +181,14 @@ Northern North Sea annual standard set-up. The configuration file contains 5 dif
 <p>The autocalibration module - see the &lsquo;run&rsquo; module - with the configuration above creates a <a href="https://www.sqlite.org/">SQLite</a> formatted database with the results of the autocalibration tools. The specific name of this file is specified in the .xml configuration file. Most other modules with use the database file for futher processing.</p>
 <h5 id="observation-file-format">Observation file format</h5>
 <p>Observations in <strong>ParSAC</strong> are read in from simple ASCII files with one variable in each file. The observation files are listed in the main configuration file and links the file to a output file and model variable. The format is very simple as seen in the figure below. Each observation consists of a time-stamp and a depth (measure from the surface).</p>
-<figure>
-    <img src="/portfolio/img/acpy_obs_file.png"/> 
+<figure><img src="/portfolio/img/acpy_obs_file.png"/>
 </figure>
 
 <p>The observations are used to calculate the maximum likelihood function on which the auto-calibration is based.</p>
 <hr>
 <h3 id="support-plans">Support plans</h3>
 <p><strong>ParSAC</strong> installed from PyPi comes without any support - as shown via:</p>
-<pre><code>kb@orca ~ $ parsac service
+<pre tabindex="0"><code>kb@orca ~ $ parsac service
 Reading service from:
    /home/kb/.local/lib/python3.6/site-packages/parsac/service.txt
 Section: User
@@ -211,7 +209,7 @@ The license fee is 300,-  EUR ex. VAT for a personal license.</p>
 <p>With the premium support plan the licensed wheel file is institutional and must under no circumstances be distributed to third parties.</p>
 <p>A support version of <strong>ParSAC</strong> will be provided as a <em>wheel</em> file and must
 be installed on the computer(s) using the command:</p>
-<pre><code>pip install &lt;name_of_wheel_file&gt; &lt;--upgrade&gt; &lt;--user&gt;
+<pre tabindex="0"><code>pip install &lt;name_of_wheel_file&gt; &lt;--upgrade&gt; &lt;--user&gt;
 
 &lt;--upgrade&gt; &lt;--user&gt; are optional.
 

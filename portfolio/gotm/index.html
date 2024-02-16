@@ -150,8 +150,7 @@ released for general use - but it will require funds.</p>
 <h4 id="implementation-details">Implementation details</h4>
 <p>The implementation depends on the Fortran YAML library developed by Jorn Bruggeman and briefly described <a href="https://bolding-bruggeman.com/portfolio/yaml/">here</a>.</p>
 <p>To ease the transition from namelist based configuration to YAML-based a method for converting namelists to a YAML-file has been implemented via command line options as seen in the figure below.
-<figure>
-    <img src="/portfolio/img/yaml_config.png"/> 
+<figure><img src="/portfolio/img/yaml_config.png"/>
 </figure>
 </p>
 <p>The default - calling GOTM executable without any options - will read <em>gotm.yaml</em>. Skipping reading <em>gotm.yaml</em> can be achieved by specifying <em>&ndash;no_read_yaml_file</em>. Reading an existing - working - namelist configuration can be done be specifying <em>&ndash;read_nml_files</em>. Saving the final configuration to a new YAML-formatted file can be done by specifying <em>&ndash;save_yaml <!-- raw HTML omitted --></em> where file is the name of the target YAML file.</p>
@@ -173,8 +172,7 @@ Being a class library the functionality can easily be extended to include new op
 The background for the operators is online conversion - and storage - of fields with geo-potential (z) coordinate from sigma-coordinate type of models.</p>
 <h4 id="present-status-1">Present status</h4>
 <p>The <em>output operators</em> have been merged into the master GOTM repository as of <!-- raw HTML omitted -->January 2019nd<!-- raw HTML omitted --> can be used by both GOTM and GETM. Below is an example of a GETM configuration defining a station type output interpolating the sigma-coordinate model field to a z-coordinate field using the sea surface a reference.</p>
-<figure>
-    <img src="/portfolio/img/operators.png"/> 
+<figure><img src="/portfolio/img/operators.png"/>
 </figure>
 
 <p>The example will create a file - middle_station.nc - where the temperature is saved every hour for the center positon in box_cartesian test case. The output will use the <em>interp</em> operator and store interpolated values at the coordinates given using the sea surface as reference (z). The out_of_bounds and target* variables are optional.</p>
@@ -218,8 +216,7 @@ contained in hotstart_file.</p>
 </ul>
 <p>Below is shown the result from the Northern North Sea (nns_annual) standard
 test case. A hot-start has been injected at july 1st in the simulation year.</p>
-<figure>
-    <img src="/portfolio/img/hotstart_md5sum.png"/> 
+<figure><img src="/portfolio/img/hotstart_md5sum.png"/>
 </figure>
 
 <hr>

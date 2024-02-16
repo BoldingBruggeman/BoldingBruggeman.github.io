@@ -126,14 +126,14 @@ configuration file <strong>fabm.yaml</strong> and to read output configuration f
 </ul>
 <p>Comments (starting with #) are allowed. As per the YAML specification, indentation must consist of spaces only (no tabs!)</p>
 <p>For instance:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">instances</span>:
-  <span style="color:#66d9ef">P1</span>:
-    <span style="color:#66d9ef">model</span>: pml/ersem/vphyt
-    <span style="color:#66d9ef">parameters</span>:
-      <span style="color:#66d9ef">mu_max</span>: <span style="color:#ae81ff">2.2</span>
-      <span style="color:#66d9ef">K</span>: <span style="color:#ae81ff">1</span>
-    <span style="color:#66d9ef">coupling</span>:
-      <span style="color:#66d9ef">R</span>: pom/R6
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#f92672">instances</span>:
+  <span style="color:#f92672">P1</span>:
+    <span style="color:#f92672">model</span>: <span style="color:#ae81ff">pml/ersem/vphyt</span>
+    <span style="color:#f92672">parameters</span>:
+      <span style="color:#f92672">mu_max</span>: <span style="color:#ae81ff">2.2</span>
+      <span style="color:#f92672">K</span>: <span style="color:#ae81ff">1</span>
+    <span style="color:#f92672">coupling</span>:
+      <span style="color:#f92672">R</span>: <span style="color:#ae81ff">pom/R6</span>
 </code></pre></div><p>While this is not an attempt to write a complete YAML parser in Fortran, it <em>is</em> meant
 to only accept documents that are valid YAML. If you find that this parser
 permits constructs that the YAML specification disallows (but not vice versa),
