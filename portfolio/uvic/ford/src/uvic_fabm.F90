@@ -1,10 +1,5 @@
 ! Copyright (C) 2024 Bolding & Bruggeman
 
-!> Some native UVic_ESCM variables will have to be converted to be compatible with FABM.
-!> This can either be because of different dimensionality or different units.
-!> This is done by creating module level private variables that will be calculated/updated
-!> based on the original UVic_ECSM variables. Some will only need to be calculated once - like
-!> layer heights - and some will have to be updated every time step - like density.
 !> @warning
 !> This module is still under development.
 !> API and functioning might change without notice.
@@ -13,9 +8,10 @@
 !> @history
 !> A list of important UVic (MOM2) variables used by FABM:  
 !>
-!> - \(t(imt,km,jmt,nt,-1:1)\) - all tracers [source/mom/mw.h]
+!> - \(t(imt,km,jmt,nt,-1:1)\) - all tracers [source/mom/mw.h] -
+!> [T,S] = [1,2]
 !> - \(src(imt,km,jsmw:jemw,nsrc)\): tracers with sources [source/mom/tracer.f]
-!> - \(sbc(imt,jmt,numsbc)\) surftace boundary conditions [source/common/csbc.h]
+!> - \(sbc(imt,jmt,numsbc)\) surface boundary conditions [source/common/csbc.h]
 !> - \(rho(imt,km,jsmw:jmw)\):  density [source/mom/mw.h]
 !>
 !> with
@@ -23,22 +19,26 @@
 !> - \((imt,km,jmt) = (102,19,102)\) [commom/size.h]
 !> - \(nt = 2+??\) number of tracers [commom/size.h]
 !> - \(jsmw:jemw = (2, jmw=jmt) or (2, jmw=(3,4,5)\) [commom/size.h]
-!> - \(nsrc\): number of tracers with source terms [common/csbc.h]
+!> - \(nsrc\): number of tracers with source terms [common/size.h]
 !> - \(numsbc\): total number of surface boundary conditions - 
 !>   list in [common/csbc.h] set in [common/UVic_ESCM.F].
 !>
-!> Updating FABM is done i the tracer subroutine
+!> Updating FABM is done in the tracer() subroutine called like:
 !>
-!> \(call tracer (joff, jstrac, jetrac, is, ie)\)
-
+!> - \(call\ tracer (joff, jstrac, jetrac, is, ie)\)
 !> with
+!> \((joff, jstrac, jetrac, is, ie) = (0,2,101,2,101)\)
 !>
-!> - \((joff, jstrac, jetrac, is, ie) = (0,2,101,2,101)\)
+!> The arguments to tracer() are passed directly to fabm_update(). Note
+!> that potentially jstrac:jetrac does not cover the entire domain.  
+!> Focus - initially - will be on getting it to work with !O_min_window
+!> i.e. the entire domain calculated in one go.
 !>
 !> @endhistory
 !>
 !> @note
-!> The FABM calculation domain in UVic reference is \( (2:imt-1,km,2:jmt-1) \)
+!> The FABM calculation domain in UVic reference is 
+!> \( t(2:imt-1,km,2:jmt-1,3:nt) \)
 !>
 !> Is it best to allocate arrays correspondingly or do the mapping 
 !> in the do-loops?
@@ -49,6 +49,23 @@
 !> Option to be 1D?
 !>
 !> @endnote
+!>
+!> @note
+!> What are the proper links to FABM modules?  
+!> @endnote
+!>
+!> @note
+!> Is there a way to check if a FABM pelagic variable has source terms?
+!>
+!> With UVic model all tracer variables - except T, S and CFC gases.
+!> All respecting #ifdef's.
+!> @endnote
+!>
+!> Some native UVic_ESCM variables will have to be converted to be compatible with FABM.
+!> This can either be because of different dimensionality or different units.
+!> This is done by creating module level private variables that will be calculated/updated
+!> based on the original UVic_ECSM variables. Some will only need to be calculated once - like
+!> layer heights - and some will have to be updated every time step - like density.
 
 module uvic_fabm
 
@@ -150,22 +167,19 @@ public fabm_configure, fabm_link_data, fabm_update, fabm_list, fabm_clean
 
 ! module level variables - static or allocatable? Same goes with e.g. windspeed and rho_fabm
 
-
-#define _DOMAIN_  2:imt-1,km,2:jmt-1
-#define _I_  2:imt-1
-#define _J_  2:jmt-1
-#define _K_  km
-
-real(rke) :: surface_flux(_I_,_J_,nt)
+real(rke) :: pelagic_sms(imt,km,1,nt-2)
+!KB      src(is:ie,:,j,:) = pelagic_sms(is:ie,:,j,:)
+  !! pelagic source-sink terms in one j-stride
+real(rke) :: surface_flux(imt,jmt,nt)
   !! surface fluxes
-real(rke) :: surface_sms(_I_,_J_,nt)
+real(rke) :: surface_sms(imt,jmt,nt)
   !! surface source-sink terms
-real(rke) :: bottom_flux(_I_,_J_,nt)
+real(rke) :: bottom_flux(imt,jmt,nt)
   !! bottom fluxes
-real(rke) :: bottom_sms(_I_,_J_,nt)
+real(rke) :: bottom_sms(imt,jmt,nt)
   !! bottom source-sink terms
 !real(rke) :: w(imt,km,jsmw:jemw,nt)
-real(rke) :: w(_I_,_K_,_J_,nt)
+real(rke) :: w(imt,km,jmt,nt)
   !! vertical velocity in m/s
 
 !-----------------------------------------------------------------------
@@ -174,15 +188,27 @@ contains
 
 !-----------------------------------------------------------------------
 
-subroutine fabm_configure(dt)
+subroutine fabm_configure(dt,yaml_file)
    !! read fabm.yaml and call FABM configuration subroutines
 
    real(rke), intent(in) :: dt
       !! bio-geochemical time step as set by MOM2 [s]
+   character(len=*), intent(in), optional :: yaml_file
+      !! name of alternativ FABM configuration file
 
    print*, '== Initializing FABM component with nt=',nt
 
-   model => fabm_create_model('fabm.yaml')
+!   if (present(yaml_file)) then
+!      model => fabm_create_model(trim(yaml_file))
+!   else
+      model => fabm_create_model('fabm.yaml')
+!   end if
+
+   if (nt-2 .ne. size(model%interior_state_variables)) then
+      print*, 'nt   = ',nt-2
+      print*, 'npel = ',size(model%interior_state_variables)
+      stop 'fabm_configure()'
+   end if
 
    !parameter (jsmw=2, jemw=jmw-1) - parameter (jmw=jmt)
    ! joff,js,je,is,ie 0, 2, 101, 2, 101 - fabm_update()
@@ -195,25 +221,18 @@ subroutine fabm_configure(dt)
    print*, 'rho: ',shape(rho)
    !stop 112
 
-   if (nt-2 .ne. size(model%interior_state_variables)) then
-      print*, nt-2,size(model%interior_state_variables)
-!KB      stop 'aa'
-   end if
-
-!   call model%set_domain(imt,km,jmt,dt)
-   call model%set_domain(imt-2,km,jmt-2,dt) ! jmt or jmw?
+   call model%set_domain(imt,km,jmt,dt)
    call model%set_domain_start(2,1,2)
    call model%set_domain_stop(imt-1,km,jmt-1)
+   call model%set_mask(tmask(:,:,:),tmask(:,1,:))
 
-!   call model%set_mask(tmask(2:jmt-1,:,2:jmt-1),tmask(2:jmt-1,1,2:jmt-1)) 
-   call model%set_mask(tmask(_I_,:,_J_),tmask(_I_,1,_J_)) 
    !> @note
    !! seems tmask is not initialised until called in mom() - 
    !! i.e. after initialization - so all values are 0 here
    !! @endnote
    !KBprint*, tmask(53,:,53)
 
-   call model%set_bottom_index(kmt(_I_,_J_))
+   call model%set_bottom_index(kmt(:,:))
 end subroutine fabm_configure
 
 !-----------------------------------------------------------------------
@@ -227,22 +246,20 @@ subroutine fabm_link_data()
    call link_grid()
 
    ! link to time dependent data that do NOT require transformation
-   call model%link_interior_data(fabm_standard_variables%temperature,t(_I_,:,_J_,itemp,0))
+   call model%link_interior_data(fabm_standard_variables%temperature,t(:,:,:,itemp,0))
 
    ! link to time dependent data that do require transformation
    ! initialize and update time changing environmental variables
-#if 1
    call link_wind()
    call link_mole_fraction_of_carbon_dioxide_in_air()
    call link_surface_downwelling_shortwave_flux()
    call link_bottom_stress()
    call link_salinity()
    call link_density()
-#endif
 
    ! link to FABM's interior state variables
    do n = 1, size(model%interior_state_variables)
-      call model%link_interior_state_data(n, t(_I_,:,_J_,2+n,0))
+      call model%link_interior_state_data(n, t(:,:,:,2+n,0))
       mapt(2+n) = trim(model%interior_state_variables(n)%name)
       !KBmapst(2+n) = 's'//trim(mapt(2+n))
    end do
@@ -331,43 +348,45 @@ subroutine fabm_update(joff, js, je, is, ie)
    stop 'egon'
 #endif
 
-!KB   call model%prepare_inputs(t=real(imal,rk))
+print*, shape(src)
+print*, shape(pelagic_sms)
+   print*, t(53,:,53,itemp,0)
+   print*, shape(kmt)
+   print*, tmask(53,:,53)
+   print*, shape(tmask)
+   stop 1111
    call model%prepare_inputs()
-   stop 111
+   stop 113
 
-   ! here the surface is updated
+   ! update the surface
    surface_flux = 0._rke
    surface_sms = 0._rke
-#if 0
    do j=js,je
       call model%get_surface_sources(is,ie,j, &
                  surface_flux(is:ie,j,:),surface_sms(is:ie,j,:))
    end do
-#endif
 
-   ! here the pelagic is updated
+   ! update the pelagic
    do j=js,je
       do k=1,km
-         call model%get_interior_sources(is,ie,k,j,src(is:ie,k,j,:))
+!KB         call model%get_interior_sources(is,ie,k,j,src(is:ie,k,j,:))
+         call model%get_interior_sources(is,ie,k,j,pelagic_sms(is:ie,1,j,:))
       end do
+      print*, shape(src)
+      print*, shape(pelagic_sms)
+      stop 'kaj'
+      src(is:ie,:,j,:) = pelagic_sms(is:ie,:,1,:)
    end do
+   stop 115
 
-   ! here the bottom is updated
+   ! update the bottom
    bottom_flux = 0._rke
    bottom_sms = 0._rke
-#if 0
    do j=js,je
       call model%get_bottom_sources(is,ie,j, &
                  bottom_flux(is:ie,j,:),bottom_sms(is:ie,j,:))
    end do
-#endif
 
-   print*, shape(bottom_flux)
-   print*, shape(bottom_sms)
-   print*, shape(src)
-   stop 110
-
-#if 1
    ! fold the surface and bottom flux terms - src keeps track on 
    ! which variables actually have sources - itrc(n) and the size
    ! of src reflects this - tracer.F90 line 1122
@@ -385,7 +404,6 @@ subroutine fabm_update(joff, js, je, is, ie)
       end do
    end do
    end do
-#endif
 
    ! vertical velocities
    do j=js,je
@@ -395,9 +413,7 @@ subroutine fabm_update(joff, js, je, is, ie)
    end do
 
    call model%finalize_outputs()
-
-   !stop 120
-
+   stop "update_fabm"
 end subroutine fabm_update
 
 !-----------------------------------------------------------------------
@@ -421,9 +437,13 @@ subroutine update_data(joff)
    !! update all time varying FABM configured external dependencies
    !! by calling individual update routines - tests done in routines
    call update_wind()
+   if (model%variable_needs_values(id_windspeed)) stop 1000
    call update_mole_fraction_of_carbon_dioxide_in_air()
+   if (model%variable_needs_values(id_mole_fraction_of_carbon_dioxide_in_air)) stop 1100
    call update_surface_downwelling_shortwave_flux()
+   if (model%variable_needs_values(id_surface_downwelling_shortwave_flux)) stop 1200
    call update_bottom_stress(joff)
+   if (model%variable_needs_values(id_bottom_stress)) stop 1300
    call update_salinity()
    call update_density()
 end subroutine update_data
@@ -437,31 +457,6 @@ subroutine link_grid()
    integer :: rc
    integer :: i,j,k
 
-#if 1
-   allocate(depth(_I_,_K_,_J_),stat=rc)
-   if (rc /= 0) stop 'link_grid(): Error allocating (depth)'
-   depth = 0._rke
-   allocate(pressure(_I_,_K_,_J_),stat=rc)
-   if (rc /= 0) stop 'link_grid(): Error allocating (pressure)'
-   pressure = 0._rke
-   allocate(dz(_I_,_K_,_J_),stat=rc)
-   if (rc /= 0) stop 'link_grid(): Error allocating (dz)'
-   dz = 0._rke
-#if 0
-   do j=1,jmt
-      do i=1,imt
-#else
-   do j=2,jmt-1
-      do i=2,imt-1
-#endif
-         if (kmt(i,j) > 0) then
-            depth(i,:,j) = zt/100._rke
-            pressure(i,:,j) = depth(i,:,j)/10._rke
-            dz(i,:,j) = dzt/100._rke
-         end if
-      end do
-   end do
-#else
    allocate(depth(imt,km,jmt),stat=rc)
    if (rc /= 0) stop 'link_grid(): Error allocating (depth)'
    depth = 0._rke
@@ -471,8 +466,8 @@ subroutine link_grid()
    allocate(dz(imt,km,jmt),stat=rc)
    if (rc /= 0) stop 'link_grid(): Error allocating (dz)'
    dz = 0._rke
-   do j=1,jmt
-      do i=1,imt
+   do j=2,jmt-1
+      do i=2,imt-1
          if (kmt(i,j) > 0) then
             depth(i,:,j) = zt/100._rke
             pressure(i,:,j) = depth(i,:,j)/10._rke
@@ -480,7 +475,6 @@ subroutine link_grid()
          end if
       end do
    end do
-#endif
    call model%link_interior_data(fabm_standard_variables%depth,depth)
    call model%link_interior_data(fabm_standard_variables%pressure,pressure)
    call model%link_interior_data(fabm_standard_variables%cell_thickness,dz)
@@ -498,7 +492,7 @@ subroutine link_wind()
    integer rc
    id_windspeed = model%get_horizontal_variable_id(standard_variables%wind_speed)
    if (model%variable_needs_values(id_windspeed)) then
-      allocate(windspeed(_I_,_J_),stat=rc)
+      allocate(windspeed(imt,jmt),stat=rc)
       if (rc /= 0) stop 'link_wind(): Error allocating (windspeed)'
       windspeed = 0._rke
       call model%link_horizontal_data(id_windspeed,windspeed)
@@ -514,13 +508,8 @@ subroutine update_wind()
 
    integer i,j
    if (model%variable_needs_values(id_windspeed)) then
-#if 0
-   do j=1,jmt
-      do i=1,imt
-#else
    do j=2,jmt-1
       do i=2,imt-1
-#endif
             if (kmt(i,j) > 0) windspeed(i,j) = sbc(i,j,iws)/100._rke
          end do
       end do
@@ -535,7 +524,7 @@ subroutine link_mole_fraction_of_carbon_dioxide_in_air()
        get_horizontal_variable_id(standard_variables% &
        mole_fraction_of_carbon_dioxide_in_air)
    if (model%variable_needs_values(id_mole_fraction_of_carbon_dioxide_in_air)) then
-      allocate(mole_fraction_of_carbon_dioxide_in_air(_I_,_J_),stat=rc)
+      allocate(mole_fraction_of_carbon_dioxide_in_air(imt,jmt),stat=rc)
       if (rc /= 0) stop 'link_mole_fraction_of_carbon_dioxide_in_air(): Error allocating (mole_fraction_of_carbon_dioxide_in_air)'
       mole_fraction_of_carbon_dioxide_in_air = 0._rke
       call model%link_horizontal_data(id_mole_fraction_of_carbon_dioxide_in_air,mole_fraction_of_carbon_dioxide_in_air)
@@ -548,13 +537,8 @@ subroutine update_mole_fraction_of_carbon_dioxide_in_air()
    !! calculate the ?????? in W/m^2
    integer i,j
    if (model%variable_needs_values(id_mole_fraction_of_carbon_dioxide_in_air)) then
-#if 0
-      do j=1,jmt
-         do i=1,imt
-#else
       do j=2,jmt-1
          do i=2,imt-1
-#endif
             if (kmt(i,j) > 0) mole_fraction_of_carbon_dioxide_in_air(i,j) =  10._rke !KB
          end do
       end do
@@ -569,7 +553,7 @@ subroutine link_surface_downwelling_shortwave_flux()
         get_horizontal_variable_id(standard_variables% &
         surface_downwelling_shortwave_flux)
    if (model%variable_needs_values(id_surface_downwelling_shortwave_flux)) then
-      allocate(surface_downwelling_shortwave_flux(_I_,_J_),stat=rc)
+      allocate(surface_downwelling_shortwave_flux(imt,jmt),stat=rc)
       if (rc /= 0) stop 'link_surface_downwelling_shortwave_flux(): Error allocating (surface_downwelling_shortwave_flux)'
       surface_downwelling_shortwave_flux = 0._rke
       call model%link_horizontal_data(id_surface_downwelling_shortwave_flux,surface_downwelling_shortwave_flux)
@@ -583,13 +567,8 @@ subroutine update_surface_downwelling_shortwave_flux()
 
    integer i,j
    if (model%variable_needs_values(id_surface_downwelling_shortwave_flux)) then
-#if 0
-      do j=1,jmt
-         do i=1,imt
-#else
       do j=2,jmt-1
          do i=2,imt-1
-#endif
             if (kmt(i,j) > 0) surface_downwelling_shortwave_flux(i,j) = 200._rke !KB
          end do
       end do
@@ -604,7 +583,7 @@ subroutine link_bottom_stress()
    integer rc
    id_bottom_stress = model%get_horizontal_variable_id(standard_variables%bottom_stress)
    if (model%variable_needs_values(id_bottom_stress)) then
-      allocate(bottom_stress(_I_,_J_),stat=rc)
+      allocate(bottom_stress(imt,jmt),stat=rc)
       if (rc /= 0) stop 'link_bottom_stress(): Error allocating (bottom_stress)'
       bottom_stress = 0._rke
       call model%link_horizontal_data(id_bottom_stress,bottom_stress)
@@ -620,15 +599,9 @@ subroutine update_bottom_stress(joff)
    real(rke), parameter :: x=10._rke ! dynes/cm2 --> Pa
    integer i,j,jrow
    if (model%variable_needs_values(id_bottom_stress)) then
-#if 0
-      do j=1,jmt
-         jrow = j+joff
-         do i=1,imt
-#else
       do j=2,jmt-1
          jrow = j+joff
          do i=2,imt-1
-#endif
             if (kmt(i,jrow) > 0) bottom_stress(i,j) = x*sqrt( &
                 bmf(i,jrow,1)**2 + bmf(i,jrow,2)**2)
 !            if (kmt(i,j) > 0) bottom_stress(i,j) =  0.001_rke !KB
@@ -645,7 +618,7 @@ subroutine link_salinity()
    integer rc
    id_practical_salinity = model%get_interior_variable_id(fabm_standard_variables%practical_salinity)
    if (model%variable_needs_values(id_practical_salinity)) then
-      allocate(salt(_I_,_K_,_J_),stat=rc)
+      allocate(salt(imt,km,jmt),stat=rc)
       if (rc /= 0) stop 'link_salinity(): Error allocating (salt)'
       salt = 0._rke
       call model%link_interior_data(id_practical_salinity,salt)
@@ -658,15 +631,9 @@ subroutine update_salinity()
    !! calculate salinity in PSU according to $$S = 35 + 1000*S_{UVic}$$
    integer i,j,k
    if (model%variable_needs_values(id_practical_salinity)) then
-#if 0
-      do j=1,jmt
-         do k=1,km
-            do i=1,imt
-#else
       do j=2,jmt-1
          do k=1,km
             do i=2,imt-1
-#endif
                if (kmt(i,j) > 0) salt(i,k,j) = 35._rk+1000._rke*t(i,k,j,isalt,0)
             end do
          end do
@@ -682,7 +649,7 @@ subroutine link_density()
    integer rc
    id_density = model%get_interior_variable_id(fabm_standard_variables%density)
    if (model%variable_needs_values(id_density)) then
-      allocate(rho_fabm(_I_,_K_,_J_),stat=rc)
+      allocate(rho_fabm(imt,km,jmt),stat=rc)
       if (rc /= 0) stop 'link_density(): Error allocating (rho_fabm)'
       rho_fabm = 0._rke
       call model%link_interior_data(id_density,rho_fabm)
@@ -714,11 +681,7 @@ subroutine update_density()
       !do j=1,jmt
       do j=jsmw,jmw ! must be 2:102
          do k=1,km
-#if 0
-            do i=1,imt
-#else
             do i=2,imt-1
-#endif
                if (kmt(i,j) > 0) rho_fabm(i,k,j) = 1000._rke*(rho0+rho(i,k,j))
             end do
          end do
@@ -737,7 +700,3 @@ end subroutine update_density
 end module uvic_fabm
 
 !-----------------------------------------------------------------------
-!MVV: associate( MNV => model%variable_needs_values )
-!MHG: associate( MHGV => model%get_horizontal_variable_id )
-!MIG: associate( MIGV => model%get_horizontal_variable_id )
-
