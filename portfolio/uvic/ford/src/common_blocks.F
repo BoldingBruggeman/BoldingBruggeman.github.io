@@ -1,4 +1,5 @@
-c Copyright (C) 2024 Bolding & Bruggeman
+c> Copyright (C) 2024 Bolding & Bruggeman
+c>
 
 c> @note
 c> We need this F77 file to get the information of array sizes and 

@@ -88,7 +88,8 @@ Jorn Bruggeman" >
                  <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
                  <td>Subroutine</td>
                  <td><p>link all FABM configured external dependencies - and call
-model%start() to assure proper configuration</p></td>
+ model%start() to assure proper configuration
+all model%link_surface_state_data(n, sed(:,:,n))</p></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/fabm_list.html'>fabm_list</a></td>
@@ -100,10 +101,10 @@ model%start() to assure proper configuration</p></td>
                  <td><a href='../proc/fabm_update.html'>fabm_update</a></td>
                  <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
                  <td>Subroutine</td>
-                 <td><p>update the environment and calculate the source/sink terms
-call with the same argument list as mom() calls tracer() i.e.
-the specification on the active UVic window - typically the
-full domain on modern hardware</p></td>
+                 <td><p>update the environment and calculate the source/sink terms -
+is called with the same argument list as mom() calls tracer()
+i.e. the specification of the active UVic window - typically
+the full domain on modern hardware</p></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/link_bottom_stress.html'>link_bottom_stress</a></td>
@@ -117,6 +118,13 @@ allocate memory</p></td>
                  <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
                  <td>Subroutine</td>
                  <td><p>get density FABM standard variable and if needed by FABM allocate
+memory</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/link_downwelling_photosynthetic_radiative_flux.html'>link_downwelling_photosynthetic_radiative_flux</a></td>
+                 <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
+                 <td>Subroutine</td>
+                 <td><p>get salinity FABM standard variable and if needed by FABM allocate
 memory</p></td>
                </tr>
 			   <tr>
@@ -138,6 +146,12 @@ are being transformed from UVic native variables [cm -&gt; m].</p></td>
                  <td>Subroutine</td>
                  <td><p>get salinity FABM standard variable and if needed by FABM allocate
 memory</p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/link_surface_downwelling_photosynthetic_radiative_flux.html'>link_surface_downwelling_photosynthetic_radiative_flux</a></td>
+                 <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
+                 <td>Subroutine</td>
+                 <td></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/link_surface_downwelling_shortwave_flux.html'>link_surface_downwelling_shortwave_flux</a></td>
@@ -162,7 +176,8 @@ allocate memory</p></td>
                  <td><a href='../proc/update_data.html'>update_data</a></td>
                  <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
                  <td>Subroutine</td>
-                 <td></td>
+                 <td><p>update all time varying FABM configured external dependencies
+by calling individual update routines - tests done in routines</p></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/update_density.html'>update_density</a></td>
@@ -171,6 +186,13 @@ allocate memory</p></td>
                  <td><p>calculate density in kg/m³ according to
 <script type="math/tex; mode=display">\rho = 1000*(\rho_0 + \rho_{UVic})</script>
 with <script type="math/tex">\rho_0 = 1.035</script>. MUST match rho0 from UVic_ESCM.F90</p><a href="../proc/update_density.html" class="pull-right"><emph>Read more&hellip;</emph></a></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/update_downwelling_photosynthetic_radiative_flux.html'>update_downwelling_photosynthetic_radiative_flux</a></td>
+                 <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
+                 <td>Subroutine</td>
+                 <td><p>calculate salinity in PSU according to <script type="math/tex; mode=display">S = 35 + 1000*S_{UVic}</script>
+</p></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/update_mole_fraction_of_carbon_dioxide_in_air.html'>update_mole_fraction_of_carbon_dioxide_in_air</a></td>
@@ -184,6 +206,12 @@ with <script type="math/tex">\rho_0 = 1.035</script>. MUST match rho0 from UVic_
                  <td>Subroutine</td>
                  <td><p>calculate salinity in PSU according to <script type="math/tex; mode=display">S = 35 + 1000*S_{UVic}</script>
 </p></td>
+               </tr>
+			   <tr>
+                 <td><a href='../proc/update_surface_downwelling_photosynthetic_radiative_flux.html'>update_surface_downwelling_photosynthetic_radiative_flux</a></td>
+                 <td><a href='../module/uvic_fabm.html'>uvic_fabm</a></td>
+                 <td>Subroutine</td>
+                 <td><p>calculate the ?????????? flux in W/m^2</p></td>
                </tr>
 			   <tr>
                  <td><a href='../proc/update_surface_downwelling_shortwave_flux.html'>update_surface_downwelling_shortwave_flux</a></td>
@@ -206,17 +234,17 @@ with <script type="math/tex">\rho_0 = 1.035</script>. MUST match rho0 from UVic_
 <!-- Generated by graphviz version 2.43.0 (0)
  -->
 <!-- Title: call~~graph~~CallGraph Pages: 1 -->
-<svg id="callgraphCallGraph" width="855pt" height="1050pt"
- viewBox="0.00 0.00 855.00 1050.23" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="call~~graph~~CallGraph" class="graph" transform="scale(1.05 1.05) rotate(0) translate(4 1100.28)">
+<svg id="callgraphCallGraph" width="855pt" height="1165pt"
+ viewBox="0.00 0.00 855.00 1164.61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="call~~graph~~CallGraph" class="graph" transform="scale(1.12 1.12) rotate(0) translate(4 1305)">
 <title>call~~graph~~CallGraph</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-1100.28 895,-1100.28 895,4 -4,4"/>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-1305 957,-1305 957,4 -4,4"/>
 <!-- proc~fabm_clean -->
 <g id="call~~graph~~CallGraph_node1" class="node">
 <title>proc~fabm_clean</title>
 <g id="a_call~~graph~~CallGraph_node1"><a xlink:href="../proc/fabm_clean.html" xlink:title="uvic_fabm::fabm_clean">
-<polygon fill="#d9534f" stroke="#d9534f" points="141,-155.28 4,-155.28 4,-131.28 141,-131.28 141,-155.28"/>
-<text text-anchor="middle" x="72.5" y="-140.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_clean</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="141,-87 4,-87 4,-63 141,-63 141,-87"/>
+<text text-anchor="middle" x="72.5" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_clean</text>
 </a>
 </g>
 </g>
@@ -224,89 +252,89 @@ with <script type="math/tex">\rho_0 = 1.035</script>. MUST match rho0 from UVic_
 <g id="call~~graph~~CallGraph_node2" class="node">
 <title>proc~fabm_configure</title>
 <g id="a_call~~graph~~CallGraph_node2"><a xlink:href="../proc/fabm_configure.html" xlink:title="uvic_fabm::fabm_configure">
-<polygon fill="#d9534f" stroke="#d9534f" points="339,-928.28 181,-928.28 181,-904.28 339,-904.28 339,-928.28"/>
-<text text-anchor="middle" x="260" y="-913.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_configure</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="339,-1175 181,-1175 181,-1151 339,-1151 339,-1175"/>
+<text text-anchor="middle" x="260" y="-1160.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_configure</text>
 </a>
 </g>
 </g>
 <!-- fabm_create_model -->
-<g id="call~~graph~~CallGraph_node22" class="node">
+<g id="call~~graph~~CallGraph_node26" class="node">
 <title>fabm_create_model</title>
-<polygon fill="#777777" stroke="#777777" points="598,-1012.28 480,-1012.28 480,-988.28 598,-988.28 598,-1012.28"/>
-<text text-anchor="middle" x="539" y="-997.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fabm_create_model</text>
+<polygon fill="#777777" stroke="#777777" points="629,-1301 511,-1301 511,-1277 629,-1277 629,-1301"/>
+<text text-anchor="middle" x="570" y="-1286.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">fabm_create_model</text>
 </g>
 <!-- proc~fabm_configure&#45;&gt;fabm_create_model -->
 <g id="call~~graph~~CallGraph_edge1" class="edge">
 <title>proc~fabm_configure&#45;&gt;fabm_create_model</title>
-<path fill="none" stroke="#000000" d="M278.2,-928.52C299.73,-943.18 338.25,-967.25 375,-979.28 405.2,-989.17 439.97,-994.43 469.62,-997.22"/>
-<polygon fill="#000000" stroke="#000000" points="469.62,-1000.73 479.88,-998.1 470.22,-993.75 469.62,-1000.73"/>
+<path fill="none" stroke="#000000" d="M269.72,-1175.05C286.93,-1197.76 327.71,-1246.54 375,-1268 414.22,-1285.8 462.33,-1291.1 500.83,-1291.93"/>
+<polygon fill="#000000" stroke="#000000" points="500.87,-1295.43 510.91,-1292.04 500.95,-1288.43 500.87,-1295.43"/>
 </g>
 <!-- set_bottom_index -->
-<g id="call~~graph~~CallGraph_node34" class="node">
+<g id="call~~graph~~CallGraph_node39" class="node">
 <title>set_bottom_index</title>
-<polygon fill="#777777" stroke="#777777" points="592,-970.28 486,-970.28 486,-946.28 592,-946.28 592,-970.28"/>
-<text text-anchor="middle" x="539" y="-955.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_bottom_index</text>
+<polygon fill="#777777" stroke="#777777" points="623,-1259 517,-1259 517,-1235 623,-1235 623,-1259"/>
+<text text-anchor="middle" x="570" y="-1244.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_bottom_index</text>
 </g>
 <!-- proc~fabm_configure&#45;&gt;set_bottom_index -->
 <g id="call~~graph~~CallGraph_edge2" class="edge">
 <title>proc~fabm_configure&#45;&gt;set_bottom_index</title>
-<path fill="none" stroke="#000000" d="M323.02,-928.33C339.85,-931.43 358.1,-934.64 375,-937.28 408.18,-942.47 445.3,-947.33 475.73,-951.06"/>
-<polygon fill="#000000" stroke="#000000" points="475.43,-954.55 485.78,-952.28 476.27,-947.6 475.43,-954.55"/>
+<path fill="none" stroke="#000000" d="M277.79,-1175.11C299.2,-1189.86 337.92,-1214.27 375,-1226 417.7,-1239.51 468.03,-1244.66 506.72,-1246.49"/>
+<polygon fill="#000000" stroke="#000000" points="506.67,-1249.99 516.8,-1246.91 506.95,-1243 506.67,-1249.99"/>
 </g>
 <!-- set_domain -->
-<g id="call~~graph~~CallGraph_node35" class="node">
+<g id="call~~graph~~CallGraph_node40" class="node">
 <title>set_domain</title>
-<polygon fill="#777777" stroke="#777777" points="576,-928.28 502,-928.28 502,-904.28 576,-904.28 576,-928.28"/>
-<text text-anchor="middle" x="539" y="-913.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_domain</text>
+<polygon fill="#777777" stroke="#777777" points="607,-1217 533,-1217 533,-1193 607,-1193 607,-1217"/>
+<text text-anchor="middle" x="570" y="-1202.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_domain</text>
 </g>
 <!-- proc~fabm_configure&#45;&gt;set_domain -->
 <g id="call~~graph~~CallGraph_edge3" class="edge">
 <title>proc~fabm_configure&#45;&gt;set_domain</title>
-<path fill="none" stroke="#000000" d="M339.27,-916.28C388.38,-916.28 450.04,-916.28 491.55,-916.28"/>
-<polygon fill="#000000" stroke="#000000" points="491.65,-919.78 501.65,-916.28 491.65,-912.78 491.65,-919.78"/>
+<path fill="none" stroke="#000000" d="M321.5,-1175.01C338.74,-1178.2 357.58,-1181.46 375,-1184 425.31,-1191.35 483.31,-1197.3 522.69,-1200.96"/>
+<polygon fill="#000000" stroke="#000000" points="522.51,-1204.46 532.79,-1201.89 523.15,-1197.49 522.51,-1204.46"/>
 </g>
 <!-- set_domain_start -->
-<g id="call~~graph~~CallGraph_node36" class="node">
+<g id="call~~graph~~CallGraph_node41" class="node">
 <title>set_domain_start</title>
-<polygon fill="#777777" stroke="#777777" points="590.5,-886.28 487.5,-886.28 487.5,-862.28 590.5,-862.28 590.5,-886.28"/>
-<text text-anchor="middle" x="539" y="-871.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_domain_start</text>
+<polygon fill="#777777" stroke="#777777" points="621.5,-1175 518.5,-1175 518.5,-1151 621.5,-1151 621.5,-1175"/>
+<text text-anchor="middle" x="570" y="-1160.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_domain_start</text>
 </g>
 <!-- proc~fabm_configure&#45;&gt;set_domain_start -->
 <g id="call~~graph~~CallGraph_edge4" class="edge">
 <title>proc~fabm_configure&#45;&gt;set_domain_start</title>
-<path fill="none" stroke="#000000" d="M323.02,-904.23C339.85,-901.13 358.1,-897.92 375,-895.28 408.68,-890.01 446.44,-885.09 477.12,-881.33"/>
-<polygon fill="#000000" stroke="#000000" points="477.73,-884.78 487.24,-880.1 476.89,-877.83 477.73,-884.78"/>
+<path fill="none" stroke="#000000" d="M339.12,-1163C391.7,-1163 460.01,-1163 508.46,-1163"/>
+<polygon fill="#000000" stroke="#000000" points="508.49,-1166.5 518.49,-1163 508.49,-1159.5 508.49,-1166.5"/>
 </g>
 <!-- set_domain_stop -->
-<g id="call~~graph~~CallGraph_node37" class="node">
+<g id="call~~graph~~CallGraph_node42" class="node">
 <title>set_domain_stop</title>
-<polygon fill="#777777" stroke="#777777" points="590,-802.28 488,-802.28 488,-778.28 590,-778.28 590,-802.28"/>
-<text text-anchor="middle" x="539" y="-787.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_domain_stop</text>
+<polygon fill="#777777" stroke="#777777" points="621,-1133 519,-1133 519,-1109 621,-1109 621,-1133"/>
+<text text-anchor="middle" x="570" y="-1118.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_domain_stop</text>
 </g>
 <!-- proc~fabm_configure&#45;&gt;set_domain_stop -->
 <g id="call~~graph~~CallGraph_edge5" class="edge">
 <title>proc~fabm_configure&#45;&gt;set_domain_stop</title>
-<path fill="none" stroke="#000000" d="M270.03,-903.97C287.46,-881.26 328.18,-833.11 375,-811.28 406.85,-796.43 445.79,-791.01 477.62,-789.38"/>
-<polygon fill="#000000" stroke="#000000" points="477.83,-792.88 487.68,-788.98 477.55,-785.88 477.83,-792.88"/>
+<path fill="none" stroke="#000000" d="M321.5,-1150.99C338.74,-1147.8 357.58,-1144.54 375,-1142 419.62,-1135.48 470.29,-1130.07 508.65,-1126.37"/>
+<polygon fill="#000000" stroke="#000000" points="509,-1129.85 518.63,-1125.42 508.34,-1122.88 509,-1129.85"/>
 </g>
 <!-- set_mask -->
-<g id="call~~graph~~CallGraph_node38" class="node">
+<g id="call~~graph~~CallGraph_node43" class="node">
 <title>set_mask</title>
-<polygon fill="#777777" stroke="#777777" points="570,-760.28 508,-760.28 508,-736.28 570,-736.28 570,-760.28"/>
-<text text-anchor="middle" x="539" y="-745.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_mask</text>
+<polygon fill="#777777" stroke="#777777" points="601,-1091 539,-1091 539,-1067 601,-1067 601,-1091"/>
+<text text-anchor="middle" x="570" y="-1076.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">set_mask</text>
 </g>
 <!-- proc~fabm_configure&#45;&gt;set_mask -->
 <g id="call~~graph~~CallGraph_edge6" class="edge">
 <title>proc~fabm_configure&#45;&gt;set_mask</title>
-<path fill="none" stroke="#000000" d="M266.32,-904.17C279.75,-875.19 318.09,-801.84 375,-769.28 412.59,-747.77 462.92,-744.39 497.65,-745.2"/>
-<polygon fill="#000000" stroke="#000000" points="497.78,-748.7 507.9,-745.57 498.03,-741.71 497.78,-748.7"/>
+<path fill="none" stroke="#000000" d="M277.79,-1150.89C299.2,-1136.14 337.92,-1111.73 375,-1100 426.3,-1083.78 488.61,-1079.6 528.53,-1078.77"/>
+<polygon fill="#000000" stroke="#000000" points="528.72,-1082.26 538.67,-1078.62 528.62,-1075.26 528.72,-1082.26"/>
 </g>
 <!-- proc~fabm_link_data -->
 <g id="call~~graph~~CallGraph_node3" class="node">
 <title>proc~fabm_link_data</title>
 <g id="a_call~~graph~~CallGraph_node3"><a xlink:href="../proc/fabm_link_data.html" xlink:title="uvic_fabm::fabm_link_data">
-<polygon fill="#d9534f" stroke="#d9534f" points="338,-554.28 182,-554.28 182,-530.28 338,-530.28 338,-554.28"/>
-<text text-anchor="middle" x="260" y="-539.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_link_data</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="338,-696 182,-696 182,-672 338,-672 338,-696"/>
+<text text-anchor="middle" x="260" y="-681.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_link_data</text>
 </a>
 </g>
 </g>
@@ -314,568 +342,682 @@ with <script type="math/tex">\rho_0 = 1.035</script>. MUST match rho0 from UVic_
 <g id="call~~graph~~CallGraph_node6" class="node">
 <title>proc~link_bottom_stress</title>
 <g id="a_call~~graph~~CallGraph_node6"><a xlink:href="../proc/link_bottom_stress.html" xlink:title="uvic_fabm::link_bottom_stress">
-<polygon fill="#d9534f" stroke="#d9534f" points="625,-554.28 453,-554.28 453,-530.28 625,-530.28 625,-554.28"/>
-<text text-anchor="middle" x="539" y="-539.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_bottom_stress</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="656,-507 484,-507 484,-483 656,-483 656,-507"/>
+<text text-anchor="middle" x="570" y="-492.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_bottom_stress</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;proc~link_bottom_stress -->
-<g id="call~~graph~~CallGraph_edge10" class="edge">
+<g id="call~~graph~~CallGraph_edge11" class="edge">
 <title>proc~fabm_link_data&#45;&gt;proc~link_bottom_stress</title>
-<path fill="none" stroke="#000000" d="M338.16,-542.28C370.65,-542.28 408.79,-542.28 442.98,-542.28"/>
-<polygon fill="#000000" stroke="#000000" points="442.99,-545.78 452.99,-542.28 442.99,-538.78 442.99,-545.78"/>
+<path fill="none" stroke="#000000" d="M265.23,-671.56C276.87,-639.4 312.77,-553.41 375,-516 404.21,-498.44 440.42,-491.44 473.61,-489.41"/>
+<polygon fill="#000000" stroke="#000000" points="473.98,-492.9 483.81,-488.93 473.66,-485.91 473.98,-492.9"/>
 </g>
 <!-- proc~link_density -->
 <g id="call~~graph~~CallGraph_node7" class="node">
 <title>proc~link_density</title>
 <g id="a_call~~graph~~CallGraph_node7"><a xlink:href="../proc/link_density.html" xlink:title="uvic_fabm::link_density">
-<polygon fill="#d9534f" stroke="#d9534f" points="607.5,-638.28 470.5,-638.28 470.5,-614.28 607.5,-614.28 607.5,-638.28"/>
-<text text-anchor="middle" x="539" y="-623.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_density</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="638.5,-801 501.5,-801 501.5,-777 638.5,-777 638.5,-801"/>
+<text text-anchor="middle" x="570" y="-786.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_density</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;proc~link_density -->
-<g id="call~~graph~~CallGraph_edge11" class="edge">
+<g id="call~~graph~~CallGraph_edge12" class="edge">
 <title>proc~fabm_link_data&#45;&gt;proc~link_density</title>
-<path fill="none" stroke="#000000" d="M278.2,-554.52C299.73,-569.18 338.25,-593.25 375,-605.28 401.93,-614.1 432.5,-619.24 459.82,-622.22"/>
-<polygon fill="#000000" stroke="#000000" points="459.82,-625.74 470.13,-623.26 460.53,-618.77 459.82,-625.74"/>
+<path fill="none" stroke="#000000" d="M272.98,-696.3C292.4,-715.37 332.85,-751.58 375,-768 411.65,-782.27 454.95,-787.92 491.33,-789.83"/>
+<polygon fill="#000000" stroke="#000000" points="491.26,-793.33 501.4,-790.27 491.57,-786.34 491.26,-793.33"/>
+</g>
+<!-- proc~link_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_node8" class="node">
+<title>proc~link_downwelling_photosynthetic_radiative_flux</title>
+<g id="a_call~~graph~~CallGraph_node8"><a xlink:href="../proc/link_downwelling_photosynthetic_radiative_flux.html" xlink:title="uvic_fabm::link_downwelling_photosynthetic_radiative_flux">
+<polygon fill="#d9534f" stroke="#d9534f" points="733,-759 407,-759 407,-735 733,-735 733,-759"/>
+<text text-anchor="middle" x="570" y="-744.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_downwelling_photosynthetic_radiative_flux</text>
+</a>
+</g>
+</g>
+<!-- proc~fabm_link_data&#45;&gt;proc~link_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_edge13" class="edge">
+<title>proc~fabm_link_data&#45;&gt;proc~link_downwelling_photosynthetic_radiative_flux</title>
+<path fill="none" stroke="#000000" d="M288.06,-696.12C310.8,-705.77 344.4,-718.82 375,-726 386.97,-728.81 399.45,-731.24 412.05,-733.35"/>
+<polygon fill="#000000" stroke="#000000" points="411.74,-736.85 422.17,-734.97 412.85,-729.94 411.74,-736.85"/>
 </g>
 <!-- proc~link_grid -->
-<g id="call~~graph~~CallGraph_node8" class="node">
+<g id="call~~graph~~CallGraph_node9" class="node">
 <title>proc~link_grid</title>
-<g id="a_call~~graph~~CallGraph_node8"><a xlink:href="../proc/link_grid.html" xlink:title="uvic_fabm::link_grid">
-<polygon fill="#d9534f" stroke="#d9534f" points="599,-680.28 479,-680.28 479,-656.28 599,-656.28 599,-680.28"/>
-<text text-anchor="middle" x="539" y="-665.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_grid</text>
+<g id="a_call~~graph~~CallGraph_node9"><a xlink:href="../proc/link_grid.html" xlink:title="uvic_fabm::link_grid">
+<polygon fill="#d9534f" stroke="#d9534f" points="630,-923 510,-923 510,-899 630,-899 630,-923"/>
+<text text-anchor="middle" x="570" y="-908.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_grid</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;proc~link_grid -->
-<g id="call~~graph~~CallGraph_edge12" class="edge">
+<g id="call~~graph~~CallGraph_edge14" class="edge">
 <title>proc~fabm_link_data&#45;&gt;proc~link_grid</title>
-<path fill="none" stroke="#000000" d="M270.03,-554.59C287.46,-577.3 328.18,-625.45 375,-647.28 403.8,-660.71 438.39,-666.43 468.28,-668.6"/>
-<polygon fill="#000000" stroke="#000000" points="468.45,-672.12 478.64,-669.23 468.87,-665.13 468.45,-672.12"/>
+<path fill="none" stroke="#000000" d="M263.83,-696.06C272.89,-731.8 304.85,-837.62 375,-885 411.27,-909.5 460.14,-915.93 499.76,-916.27"/>
+<polygon fill="#000000" stroke="#000000" points="499.9,-919.77 509.88,-916.22 499.87,-912.77 499.9,-919.77"/>
 </g>
 <!-- proc~link_mole_fraction_of_carbon_dioxide_in_air -->
-<g id="call~~graph~~CallGraph_node9" class="node">
+<g id="call~~graph~~CallGraph_node10" class="node">
 <title>proc~link_mole_fraction_of_carbon_dioxide_in_air</title>
-<g id="a_call~~graph~~CallGraph_node9"><a xlink:href="../proc/link_mole_fraction_of_carbon_dioxide_in_air.html" xlink:title="uvic_fabm::link_mole_fraction_of_carbon_dioxide_in_air">
-<polygon fill="#d9534f" stroke="#d9534f" points="693.5,-512.28 384.5,-512.28 384.5,-488.28 693.5,-488.28 693.5,-512.28"/>
-<text text-anchor="middle" x="539" y="-497.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_mole_fraction_of_carbon_dioxide_in_air</text>
+<g id="a_call~~graph~~CallGraph_node10"><a xlink:href="../proc/link_mole_fraction_of_carbon_dioxide_in_air.html" xlink:title="uvic_fabm::link_mole_fraction_of_carbon_dioxide_in_air">
+<polygon fill="#d9534f" stroke="#d9534f" points="724.5,-549 415.5,-549 415.5,-525 724.5,-525 724.5,-549"/>
+<text text-anchor="middle" x="570" y="-534.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_mole_fraction_of_carbon_dioxide_in_air</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;proc~link_mole_fraction_of_carbon_dioxide_in_air -->
-<g id="call~~graph~~CallGraph_edge13" class="edge">
+<g id="call~~graph~~CallGraph_edge15" class="edge">
 <title>proc~fabm_link_data&#45;&gt;proc~link_mole_fraction_of_carbon_dioxide_in_air</title>
-<path fill="none" stroke="#000000" d="M323.02,-530.23C339.85,-527.13 358.1,-523.92 375,-521.28 391.97,-518.63 409.97,-516.06 427.57,-513.69"/>
-<polygon fill="#000000" stroke="#000000" points="428.43,-517.1 437.88,-512.31 427.51,-510.16 428.43,-517.1"/>
+<path fill="none" stroke="#000000" d="M267.89,-671.61C283.23,-645.4 322.97,-584.54 375,-558 384.65,-553.08 394.91,-549.06 405.48,-545.8"/>
+<polygon fill="#000000" stroke="#000000" points="406.62,-549.11 415.27,-543 404.7,-542.38 406.62,-549.11"/>
 </g>
 <!-- proc~link_salinity -->
-<g id="call~~graph~~CallGraph_node10" class="node">
+<g id="call~~graph~~CallGraph_node11" class="node">
 <title>proc~link_salinity</title>
-<g id="a_call~~graph~~CallGraph_node10"><a xlink:href="../proc/link_salinity.html" xlink:title="uvic_fabm::link_salinity">
-<polygon fill="#d9534f" stroke="#d9534f" points="607,-596.28 471,-596.28 471,-572.28 607,-572.28 607,-596.28"/>
-<text text-anchor="middle" x="539" y="-581.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_salinity</text>
+<g id="a_call~~graph~~CallGraph_node11"><a xlink:href="../proc/link_salinity.html" xlink:title="uvic_fabm::link_salinity">
+<polygon fill="#d9534f" stroke="#d9534f" points="638,-843 502,-843 502,-819 638,-819 638,-843"/>
+<text text-anchor="middle" x="570" y="-828.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_salinity</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;proc~link_salinity -->
-<g id="call~~graph~~CallGraph_edge14" class="edge">
+<g id="call~~graph~~CallGraph_edge16" class="edge">
 <title>proc~fabm_link_data&#45;&gt;proc~link_salinity</title>
-<path fill="none" stroke="#000000" d="M323.02,-554.33C339.85,-557.43 358.1,-560.64 375,-563.28 402.87,-567.64 433.53,-571.76 460.66,-575.18"/>
-<polygon fill="#000000" stroke="#000000" points="460.51,-578.69 470.87,-576.46 461.38,-571.75 460.51,-578.69"/>
+<path fill="none" stroke="#000000" d="M267.89,-696.39C283.23,-722.6 322.97,-783.46 375,-810 410.59,-828.15 454.55,-834.03 491.62,-835.1"/>
+<polygon fill="#000000" stroke="#000000" points="491.82,-838.61 501.88,-835.28 491.94,-831.61 491.82,-838.61"/>
+</g>
+<!-- proc~link_surface_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_node12" class="node">
+<title>proc~link_surface_downwelling_photosynthetic_radiative_flux</title>
+<g id="a_call~~graph~~CallGraph_node12"><a xlink:href="../proc/link_surface_downwelling_photosynthetic_radiative_flux.html" xlink:title="uvic_fabm::link_surface_downwelling_photosynthetic_radiative_flux">
+<polygon fill="#d9534f" stroke="#d9534f" points="755.5,-465 384.5,-465 384.5,-441 755.5,-441 755.5,-465"/>
+<text text-anchor="middle" x="570" y="-450.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_surface_downwelling_photosynthetic_radiative_flux</text>
+</a>
+</g>
+</g>
+<!-- proc~fabm_link_data&#45;&gt;proc~link_surface_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_edge17" class="edge">
+<title>proc~fabm_link_data&#45;&gt;proc~link_surface_downwelling_photosynthetic_radiative_flux</title>
+<path fill="none" stroke="#000000" d="M263.47,-671.86C271.71,-634.85 301.95,-522.98 375,-474 377.15,-472.56 379.35,-471.18 381.59,-469.87"/>
+<polygon fill="#000000" stroke="#000000" points="383.27,-472.94 390.42,-465.12 379.95,-466.77 383.27,-472.94"/>
 </g>
 <!-- proc~link_surface_downwelling_shortwave_flux -->
-<g id="call~~graph~~CallGraph_node11" class="node">
+<g id="call~~graph~~CallGraph_node13" class="node">
 <title>proc~link_surface_downwelling_shortwave_flux</title>
-<g id="a_call~~graph~~CallGraph_node11"><a xlink:href="../proc/link_surface_downwelling_shortwave_flux.html" xlink:title="uvic_fabm::link_surface_downwelling_shortwave_flux">
-<polygon fill="#d9534f" stroke="#d9534f" points="686.5,-386.28 391.5,-386.28 391.5,-362.28 686.5,-362.28 686.5,-386.28"/>
-<text text-anchor="middle" x="539" y="-371.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_surface_downwelling_shortwave_flux</text>
+<g id="a_call~~graph~~CallGraph_node13"><a xlink:href="../proc/link_surface_downwelling_shortwave_flux.html" xlink:title="uvic_fabm::link_surface_downwelling_shortwave_flux">
+<polygon fill="#d9534f" stroke="#d9534f" points="717.5,-423 422.5,-423 422.5,-399 717.5,-399 717.5,-423"/>
+<text text-anchor="middle" x="570" y="-408.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_surface_downwelling_shortwave_flux</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;proc~link_surface_downwelling_shortwave_flux -->
-<g id="call~~graph~~CallGraph_edge15" class="edge">
+<g id="call~~graph~~CallGraph_edge18" class="edge">
 <title>proc~fabm_link_data&#45;&gt;proc~link_surface_downwelling_shortwave_flux</title>
-<path fill="none" stroke="#000000" d="M266.32,-530.17C279.75,-501.19 318.09,-427.84 375,-395.28 378.06,-393.53 381.21,-391.89 384.43,-390.37"/>
-<polygon fill="#000000" stroke="#000000" points="385.88,-393.56 393.67,-386.38 383.11,-387.13 385.88,-393.56"/>
+<path fill="none" stroke="#000000" d="M262.33,-671.92C267.59,-630.42 291,-492.85 375,-432 386.37,-423.76 399.14,-417.64 412.57,-413.17"/>
+<polygon fill="#000000" stroke="#000000" points="413.88,-416.43 422.44,-410.2 411.86,-409.73 413.88,-416.43"/>
 </g>
 <!-- proc~link_wind -->
-<g id="call~~graph~~CallGraph_node12" class="node">
+<g id="call~~graph~~CallGraph_node14" class="node">
 <title>proc~link_wind</title>
-<g id="a_call~~graph~~CallGraph_node12"><a xlink:href="../proc/link_wind.html" xlink:title="uvic_fabm::link_wind">
-<polygon fill="#d9534f" stroke="#d9534f" points="601,-344.28 477,-344.28 477,-320.28 601,-320.28 601,-344.28"/>
-<text text-anchor="middle" x="539" y="-329.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_wind</text>
+<g id="a_call~~graph~~CallGraph_node14"><a xlink:href="../proc/link_wind.html" xlink:title="uvic_fabm::link_wind">
+<polygon fill="#d9534f" stroke="#d9534f" points="632,-591 508,-591 508,-567 632,-567 632,-591"/>
+<text text-anchor="middle" x="570" y="-576.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::link_wind</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;proc~link_wind -->
-<g id="call~~graph~~CallGraph_edge16" class="edge">
+<g id="call~~graph~~CallGraph_edge19" class="edge">
 <title>proc~fabm_link_data&#45;&gt;proc~link_wind</title>
-<path fill="none" stroke="#000000" d="M264.33,-529.93C274.39,-495.32 307.93,-397.04 375,-353.28 401.73,-335.84 436.22,-329.63 466.59,-328.17"/>
-<polygon fill="#000000" stroke="#000000" points="466.83,-331.66 476.71,-327.85 466.6,-324.67 466.83,-331.66"/>
+<path fill="none" stroke="#000000" d="M272.98,-671.7C292.4,-652.63 332.85,-616.42 375,-600 413.66,-584.94 459.74,-579.48 497.29,-577.89"/>
+<polygon fill="#000000" stroke="#000000" points="497.76,-581.37 507.64,-577.54 497.52,-574.38 497.76,-581.37"/>
 </g>
 <!-- interior_state_variables -->
-<g id="call~~graph~~CallGraph_node29" class="node">
+<g id="call~~graph~~CallGraph_node33" class="node">
 <title>interior_state_variables</title>
-<polygon fill="#777777" stroke="#777777" points="607.5,-844.28 470.5,-844.28 470.5,-820.28 607.5,-820.28 607.5,-844.28"/>
-<text text-anchor="middle" x="539" y="-829.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interior_state_variables</text>
+<polygon fill="#777777" stroke="#777777" points="638.5,-965 501.5,-965 501.5,-941 638.5,-941 638.5,-965"/>
+<text text-anchor="middle" x="570" y="-950.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">interior_state_variables</text>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;interior_state_variables -->
 <g id="call~~graph~~CallGraph_edge7" class="edge">
 <title>proc~fabm_link_data&#45;&gt;interior_state_variables</title>
-<path fill="none" stroke="#000000" d="M262.03,-554.48C266.37,-597.73 287.31,-744.75 375,-811.28 398.99,-829.48 430.91,-836.25 460.14,-837.91"/>
-<polygon fill="#000000" stroke="#000000" points="460.23,-841.41 470.35,-838.29 460.49,-834.42 460.23,-841.41"/>
+<path fill="none" stroke="#000000" d="M262.43,-696.18C267.99,-737.39 292.12,-872.34 375,-932 408.06,-955.8 452.87,-961.87 491.1,-961.62"/>
+<polygon fill="#000000" stroke="#000000" points="491.25,-965.12 501.17,-961.41 491.1,-958.12 491.25,-965.12"/>
+</g>
+<!-- link_bottom_state_data -->
+<g id="call~~graph~~CallGraph_node34" class="node">
+<title>link_bottom_state_data</title>
+<polygon fill="#777777" stroke="#777777" points="638,-717 502,-717 502,-693 638,-693 638,-717"/>
+<text text-anchor="middle" x="570" y="-702.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">link_bottom_state_data</text>
+</g>
+<!-- proc~fabm_link_data&#45;&gt;link_bottom_state_data -->
+<g id="call~~graph~~CallGraph_edge8" class="edge">
+<title>proc~fabm_link_data&#45;&gt;link_bottom_state_data</title>
+<path fill="none" stroke="#000000" d="M338.32,-689.27C385.22,-692.47 444.86,-696.54 491.75,-699.73"/>
+<polygon fill="#000000" stroke="#000000" points="491.63,-703.23 501.85,-700.42 492.11,-696.25 491.63,-703.23"/>
 </g>
 <!-- link_interior_data -->
-<g id="call~~graph~~CallGraph_node31" class="node">
+<g id="call~~graph~~CallGraph_node36" class="node">
 <title>link_interior_data</title>
-<polygon fill="#777777" stroke="#777777" points="867.5,-669.28 762.5,-669.28 762.5,-645.28 867.5,-645.28 867.5,-669.28"/>
-<text text-anchor="middle" x="815" y="-654.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">link_interior_data</text>
+<polygon fill="#777777" stroke="#777777" points="929.5,-843 824.5,-843 824.5,-819 929.5,-819 929.5,-843"/>
+<text text-anchor="middle" x="877" y="-828.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">link_interior_data</text>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;link_interior_data -->
-<g id="call~~graph~~CallGraph_edge8" class="edge">
+<g id="call~~graph~~CallGraph_edge9" class="edge">
 <title>proc~fabm_link_data&#45;&gt;link_interior_data</title>
-<path fill="none" stroke="#000000" d="M265.88,-554.42C278.57,-584.16 315.84,-660.29 375,-689.28 509.09,-754.98 694.23,-701.75 774.38,-672.86"/>
-<polygon fill="#000000" stroke="#000000" points="775.9,-676.03 784.08,-669.3 773.48,-669.46 775.9,-676.03"/>
+<path fill="none" stroke="#000000" d="M264.84,-696.35C275.78,-729.08 310.53,-817.84 375,-852 451.58,-892.58 678.71,-860.09 765,-852 781.02,-850.5 798.17,-847.8 814.08,-844.83"/>
+<polygon fill="#000000" stroke="#000000" points="815.18,-848.18 824.33,-842.85 813.85,-841.31 815.18,-848.18"/>
 </g>
 <!-- link_interior_state_data -->
-<g id="call~~graph~~CallGraph_node32" class="node">
+<g id="call~~graph~~CallGraph_node37" class="node">
 <title>link_interior_state_data</title>
-<polygon fill="#777777" stroke="#777777" points="607,-470.28 471,-470.28 471,-446.28 607,-446.28 607,-470.28"/>
-<text text-anchor="middle" x="539" y="-455.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">link_interior_state_data</text>
+<polygon fill="#777777" stroke="#777777" points="638,-675 502,-675 502,-651 638,-651 638,-675"/>
+<text text-anchor="middle" x="570" y="-660.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">link_interior_state_data</text>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;link_interior_state_data -->
-<g id="call~~graph~~CallGraph_edge9" class="edge">
+<g id="call~~graph~~CallGraph_edge10" class="edge">
 <title>proc~fabm_link_data&#45;&gt;link_interior_state_data</title>
-<path fill="none" stroke="#000000" d="M278.2,-530.04C299.73,-515.38 338.25,-491.32 375,-479.28 402.29,-470.34 433.31,-465.19 460.92,-462.22"/>
-<polygon fill="#000000" stroke="#000000" points="461.32,-465.7 470.92,-461.22 460.62,-458.73 461.32,-465.7"/>
+<path fill="none" stroke="#000000" d="M338.32,-678.73C385.22,-675.53 444.86,-671.46 491.75,-668.27"/>
+<polygon fill="#000000" stroke="#000000" points="492.11,-671.75 501.85,-667.58 491.63,-664.77 492.11,-671.75"/>
 </g>
 <!-- start -->
-<g id="call~~graph~~CallGraph_node39" class="node">
+<g id="call~~graph~~CallGraph_node44" class="node">
 <title>start</title>
-<polygon fill="#777777" stroke="#777777" points="566,-428.28 512,-428.28 512,-404.28 566,-404.28 566,-428.28"/>
-<text text-anchor="middle" x="539" y="-413.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">start</text>
+<polygon fill="#777777" stroke="#777777" points="597,-633 543,-633 543,-609 597,-609 597,-633"/>
+<text text-anchor="middle" x="570" y="-618.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">start</text>
 </g>
 <!-- proc~fabm_link_data&#45;&gt;start -->
-<g id="call~~graph~~CallGraph_edge17" class="edge">
+<g id="call~~graph~~CallGraph_edge20" class="edge">
 <title>proc~fabm_link_data&#45;&gt;start</title>
-<path fill="none" stroke="#000000" d="M270.03,-529.97C287.46,-507.26 328.18,-459.11 375,-437.28 415.54,-418.38 467.56,-414.75 501.8,-414.78"/>
-<polygon fill="#000000" stroke="#000000" points="501.78,-418.28 511.82,-414.89 501.86,-411.28 501.78,-418.28"/>
+<path fill="none" stroke="#000000" d="M288.06,-671.88C310.8,-662.23 344.4,-649.18 375,-642 429.08,-629.31 493.47,-624.26 532.78,-622.27"/>
+<polygon fill="#000000" stroke="#000000" points="533.1,-625.76 542.93,-621.8 532.78,-618.77 533.1,-625.76"/>
 </g>
 <!-- proc~fabm_list -->
 <g id="call~~graph~~CallGraph_node4" class="node">
 <title>proc~fabm_list</title>
 <g id="a_call~~graph~~CallGraph_node4"><a xlink:href="../proc/fabm_list.html" xlink:title="uvic_fabm::fabm_list">
-<polygon fill="#d9534f" stroke="#d9534f" points="321.5,-1012.28 198.5,-1012.28 198.5,-988.28 321.5,-988.28 321.5,-1012.28"/>
-<text text-anchor="middle" x="260" y="-997.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_list</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="321.5,-1028 198.5,-1028 198.5,-1004 321.5,-1004 321.5,-1028"/>
+<text text-anchor="middle" x="260" y="-1013.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_list</text>
 </a>
 </g>
 </g>
 <!-- bottom_state_variables -->
-<g id="call~~graph~~CallGraph_node21" class="node">
+<g id="call~~graph~~CallGraph_node25" class="node">
 <title>bottom_state_variables</title>
-<polygon fill="#777777" stroke="#777777" points="607,-1096.28 471,-1096.28 471,-1072.28 607,-1072.28 607,-1096.28"/>
-<text text-anchor="middle" x="539" y="-1081.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">bottom_state_variables</text>
+<polygon fill="#777777" stroke="#777777" points="638,-1049 502,-1049 502,-1025 638,-1025 638,-1049"/>
+<text text-anchor="middle" x="570" y="-1034.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">bottom_state_variables</text>
 </g>
 <!-- proc~fabm_list&#45;&gt;bottom_state_variables -->
-<g id="call~~graph~~CallGraph_edge18" class="edge">
+<g id="call~~graph~~CallGraph_edge21" class="edge">
 <title>proc~fabm_list&#45;&gt;bottom_state_variables</title>
-<path fill="none" stroke="#000000" d="M278.2,-1012.52C299.73,-1027.18 338.25,-1051.25 375,-1063.28 402.29,-1072.22 433.31,-1077.37 460.92,-1080.34"/>
-<polygon fill="#000000" stroke="#000000" points="460.62,-1083.83 470.92,-1081.34 461.32,-1076.86 460.62,-1083.83"/>
+<path fill="none" stroke="#000000" d="M321.85,-1020.15C370.5,-1023.47 439.02,-1028.14 491.57,-1031.72"/>
+<polygon fill="#000000" stroke="#000000" points="491.65,-1035.23 501.86,-1032.42 492.12,-1028.25 491.65,-1035.23"/>
 </g>
 <!-- proc~fabm_list&#45;&gt;interior_state_variables -->
-<g id="call~~graph~~CallGraph_edge19" class="edge">
+<g id="call~~graph~~CallGraph_edge22" class="edge">
 <title>proc~fabm_list&#45;&gt;interior_state_variables</title>
-<path fill="none" stroke="#000000" d="M280.91,-988.2C298.2,-976.87 322.92,-958.51 339,-937.28 363.52,-904.9 342.59,-877.76 375,-853.28 399.03,-835.13 430.96,-828.37 460.18,-826.7"/>
-<polygon fill="#000000" stroke="#000000" points="460.53,-830.19 470.39,-826.32 460.26,-823.2 460.53,-830.19"/>
+<path fill="none" stroke="#000000" d="M288.06,-1003.88C310.8,-994.23 344.4,-981.18 375,-974 412.67,-965.16 455.35,-960.03 491.07,-957.06"/>
+<polygon fill="#000000" stroke="#000000" points="491.73,-960.52 501.43,-956.24 491.18,-953.54 491.73,-960.52"/>
 </g>
 <!-- surface_state_variables -->
-<g id="call~~graph~~CallGraph_node40" class="node">
+<g id="call~~graph~~CallGraph_node45" class="node">
 <title>surface_state_variables</title>
-<polygon fill="#777777" stroke="#777777" points="608,-1054.28 470,-1054.28 470,-1030.28 608,-1030.28 608,-1054.28"/>
-<text text-anchor="middle" x="539" y="-1039.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">surface_state_variables</text>
+<polygon fill="#777777" stroke="#777777" points="639,-1007 501,-1007 501,-983 639,-983 639,-1007"/>
+<text text-anchor="middle" x="570" y="-992.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">surface_state_variables</text>
 </g>
 <!-- proc~fabm_list&#45;&gt;surface_state_variables -->
-<g id="call~~graph~~CallGraph_edge20" class="edge">
+<g id="call~~graph~~CallGraph_edge23" class="edge">
 <title>proc~fabm_list&#45;&gt;surface_state_variables</title>
-<path fill="none" stroke="#000000" d="M321.54,-1012.06C338.78,-1015.24 357.6,-1018.56 375,-1021.28 402.5,-1025.58 432.7,-1029.65 459.56,-1033.05"/>
-<polygon fill="#000000" stroke="#000000" points="459.32,-1036.54 469.68,-1034.31 460.19,-1029.6 459.32,-1036.54"/>
+<path fill="none" stroke="#000000" d="M321.85,-1011.85C370.17,-1008.56 438.09,-1003.93 490.5,-1000.35"/>
+<polygon fill="#000000" stroke="#000000" points="491.03,-1003.82 500.77,-999.65 490.56,-996.84 491.03,-1003.82"/>
 </g>
 <!-- proc~fabm_update -->
 <g id="call~~graph~~CallGraph_node5" class="node">
 <title>proc~fabm_update</title>
 <g id="a_call~~graph~~CallGraph_node5"><a xlink:href="../proc/fabm_update.html" xlink:title="uvic_fabm::fabm_update">
-<polygon fill="#d9534f" stroke="#d9534f" points="145,-197.28 0,-197.28 0,-173.28 145,-173.28 145,-197.28"/>
-<text text-anchor="middle" x="72.5" y="-182.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_update</text>
+<polygon fill="#d9534f" stroke="#d9534f" points="145,-129 0,-129 0,-105 145,-105 145,-129"/>
+<text text-anchor="middle" x="72.5" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::fabm_update</text>
 </a>
 </g>
 </g>
 <!-- proc~update_data -->
-<g id="call~~graph~~CallGraph_node14" class="node">
+<g id="call~~graph~~CallGraph_node16" class="node">
 <title>proc~update_data</title>
-<g id="a_call~~graph~~CallGraph_node14"><a xlink:href="../proc/update_data.html" xlink:title="uvic_fabm::update_data">
-<polygon fill="#d9534f" stroke="#d9534f" points="331,-176.28 189,-176.28 189,-152.28 331,-152.28 331,-176.28"/>
-<text text-anchor="middle" x="260" y="-161.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_data</text>
+<g id="a_call~~graph~~CallGraph_node16"><a xlink:href="../proc/update_data.html" xlink:title="uvic_fabm::update_data">
+<polygon fill="#d9534f" stroke="#d9534f" points="331,-234 189,-234 189,-210 331,-210 331,-234"/>
+<text text-anchor="middle" x="260" y="-219.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_data</text>
 </a>
 </g>
 </g>
 <!-- proc~fabm_update&#45;&gt;proc~update_data -->
-<g id="call~~graph~~CallGraph_edge26" class="edge">
+<g id="call~~graph~~CallGraph_edge29" class="edge">
 <title>proc~fabm_update&#45;&gt;proc~update_data</title>
-<path fill="none" stroke="#000000" d="M145.22,-177.16C156.23,-175.92 167.65,-174.62 178.82,-173.36"/>
-<polygon fill="#000000" stroke="#000000" points="179.45,-176.81 189,-172.21 178.67,-169.85 179.45,-176.81"/>
+<path fill="none" stroke="#000000" d="M85.59,-129.17C104.37,-147.41 142.43,-181.74 181,-201 185.06,-203.03 189.34,-204.88 193.73,-206.57"/>
+<polygon fill="#000000" stroke="#000000" points="192.83,-209.96 203.43,-210 195.17,-203.36 192.83,-209.96"/>
 </g>
 <!-- finalize_outputs -->
-<g id="call~~graph~~CallGraph_node23" class="node">
+<g id="call~~graph~~CallGraph_node27" class="node">
 <title>finalize_outputs</title>
-<polygon fill="#777777" stroke="#777777" points="308,-134.28 212,-134.28 212,-110.28 308,-110.28 308,-134.28"/>
-<text text-anchor="middle" x="260" y="-119.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">finalize_outputs</text>
+<polygon fill="#777777" stroke="#777777" points="308,-192 212,-192 212,-168 308,-168 308,-192"/>
+<text text-anchor="middle" x="260" y="-177.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">finalize_outputs</text>
 </g>
 <!-- proc~fabm_update&#45;&gt;finalize_outputs -->
-<g id="call~~graph~~CallGraph_edge21" class="edge">
+<g id="call~~graph~~CallGraph_edge24" class="edge">
 <title>proc~fabm_update&#45;&gt;finalize_outputs</title>
-<path fill="none" stroke="#000000" d="M120.62,-173.21C128.87,-170.6 137.28,-167.61 145,-164.28 162.01,-156.95 163.91,-150.42 181,-143.28 187.67,-140.49 194.82,-137.98 201.98,-135.74"/>
-<polygon fill="#000000" stroke="#000000" points="203.12,-139.05 211.72,-132.85 201.13,-132.34 203.12,-139.05"/>
+<path fill="none" stroke="#000000" d="M101.94,-129.09C123.43,-137.99 153.78,-150.05 181,-159 187.78,-161.23 194.94,-163.4 202.07,-165.45"/>
+<polygon fill="#000000" stroke="#000000" points="201.16,-168.83 211.73,-168.17 203.05,-162.09 201.16,-168.83"/>
 </g>
 <!-- get_bottom_sources -->
-<g id="call~~graph~~CallGraph_node24" class="node">
+<g id="call~~graph~~CallGraph_node28" class="node">
 <title>get_bottom_sources</title>
-<polygon fill="#777777" stroke="#777777" points="320,-92.28 200,-92.28 200,-68.28 320,-68.28 320,-92.28"/>
-<text text-anchor="middle" x="260" y="-77.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_bottom_sources</text>
+<polygon fill="#777777" stroke="#777777" points="320,-150 200,-150 200,-126 320,-126 320,-150"/>
+<text text-anchor="middle" x="260" y="-135.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_bottom_sources</text>
 </g>
 <!-- proc~fabm_update&#45;&gt;get_bottom_sources -->
-<g id="call~~graph~~CallGraph_edge22" class="edge">
+<g id="call~~graph~~CallGraph_edge25" class="edge">
 <title>proc~fabm_update&#45;&gt;get_bottom_sources</title>
-<path fill="none" stroke="#000000" d="M130.2,-173.19C135.49,-170.75 140.53,-167.81 145,-164.28 170.3,-144.29 155.47,-120.98 181,-101.28 184.01,-98.96 187.25,-96.89 190.65,-95.06"/>
-<polygon fill="#000000" stroke="#000000" points="192.37,-98.11 199.95,-90.71 189.4,-91.77 192.37,-98.11"/>
+<path fill="none" stroke="#000000" d="M145.22,-125.12C159.74,-126.76 174.99,-128.49 189.43,-130.12"/>
+<polygon fill="#000000" stroke="#000000" points="189.46,-133.65 199.79,-131.3 190.24,-126.69 189.46,-133.65"/>
 </g>
 <!-- get_interior_sources -->
-<g id="call~~graph~~CallGraph_node26" class="node">
+<g id="call~~graph~~CallGraph_node30" class="node">
 <title>get_interior_sources</title>
-<polygon fill="#777777" stroke="#777777" points="320.5,-302.28 199.5,-302.28 199.5,-278.28 320.5,-278.28 320.5,-302.28"/>
-<text text-anchor="middle" x="260" y="-287.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_interior_sources</text>
+<polygon fill="#777777" stroke="#777777" points="320.5,-108 199.5,-108 199.5,-84 320.5,-84 320.5,-108"/>
+<text text-anchor="middle" x="260" y="-93.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_interior_sources</text>
 </g>
 <!-- proc~fabm_update&#45;&gt;get_interior_sources -->
-<g id="call~~graph~~CallGraph_edge23" class="edge">
+<g id="call~~graph~~CallGraph_edge26" class="edge">
 <title>proc~fabm_update&#45;&gt;get_interior_sources</title>
-<path fill="none" stroke="#000000" d="M85.59,-197.45C104.37,-215.69 142.43,-250.02 181,-269.28 185.06,-271.31 189.34,-273.16 193.73,-274.85"/>
-<polygon fill="#000000" stroke="#000000" points="192.83,-278.24 203.43,-278.28 195.17,-271.64 192.83,-278.24"/>
+<path fill="none" stroke="#000000" d="M145.22,-108.88C159.66,-107.25 174.82,-105.53 189.19,-103.9"/>
+<polygon fill="#000000" stroke="#000000" points="189.95,-107.34 199.49,-102.74 189.16,-100.38 189.95,-107.34"/>
 </g>
 <!-- get_surface_sources -->
-<g id="call~~graph~~CallGraph_node28" class="node">
+<g id="call~~graph~~CallGraph_node32" class="node">
 <title>get_surface_sources</title>
-<polygon fill="#777777" stroke="#777777" points="320.5,-260.28 199.5,-260.28 199.5,-236.28 320.5,-236.28 320.5,-260.28"/>
-<text text-anchor="middle" x="260" y="-245.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_surface_sources</text>
+<polygon fill="#777777" stroke="#777777" points="320.5,-66 199.5,-66 199.5,-42 320.5,-42 320.5,-66"/>
+<text text-anchor="middle" x="260" y="-51.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_surface_sources</text>
 </g>
 <!-- proc~fabm_update&#45;&gt;get_surface_sources -->
-<g id="call~~graph~~CallGraph_edge24" class="edge">
+<g id="call~~graph~~CallGraph_edge27" class="edge">
 <title>proc~fabm_update&#45;&gt;get_surface_sources</title>
-<path fill="none" stroke="#000000" d="M101.94,-197.37C123.43,-206.27 153.78,-218.33 181,-227.28 187.44,-229.4 194.24,-231.47 201.02,-233.43"/>
-<polygon fill="#000000" stroke="#000000" points="200.33,-236.87 210.9,-236.22 202.23,-230.13 200.33,-236.87"/>
+<path fill="none" stroke="#000000" d="M120.62,-104.93C128.87,-102.32 137.28,-99.33 145,-96 162.01,-88.67 163.91,-82.14 181,-75 186.1,-72.87 191.47,-70.9 196.91,-69.09"/>
+<polygon fill="#000000" stroke="#000000" points="198.25,-72.34 206.75,-66.01 196.16,-65.66 198.25,-72.34"/>
 </g>
 <!-- prepare_inputs -->
-<g id="call~~graph~~CallGraph_node33" class="node">
+<g id="call~~graph~~CallGraph_node38" class="node">
 <title>prepare_inputs</title>
-<polygon fill="#777777" stroke="#777777" points="305.5,-218.28 214.5,-218.28 214.5,-194.28 305.5,-194.28 305.5,-218.28"/>
-<text text-anchor="middle" x="260" y="-203.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">prepare_inputs</text>
+<polygon fill="#777777" stroke="#777777" points="305.5,-24 214.5,-24 214.5,0 305.5,0 305.5,-24"/>
+<text text-anchor="middle" x="260" y="-9.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">prepare_inputs</text>
 </g>
 <!-- proc~fabm_update&#45;&gt;prepare_inputs -->
-<g id="call~~graph~~CallGraph_edge25" class="edge">
+<g id="call~~graph~~CallGraph_edge28" class="edge">
 <title>proc~fabm_update&#45;&gt;prepare_inputs</title>
-<path fill="none" stroke="#000000" d="M145.22,-193.4C164.83,-195.62 185.77,-197.99 204.27,-200.08"/>
-<polygon fill="#000000" stroke="#000000" points="203.94,-203.57 214.27,-201.22 204.73,-196.61 203.94,-203.57"/>
+<path fill="none" stroke="#000000" d="M130.2,-104.91C135.49,-102.47 140.53,-99.53 145,-96 170.3,-76.01 155.47,-52.7 181,-33 187.94,-27.65 196.13,-23.65 204.56,-20.68"/>
+<polygon fill="#000000" stroke="#000000" points="205.6,-24.02 214.12,-17.73 203.54,-17.33 205.6,-24.02"/>
 </g>
 <!-- get_horizontal_variable_id -->
-<g id="call~~graph~~CallGraph_node25" class="node">
+<g id="call~~graph~~CallGraph_node29" class="node">
 <title>get_horizontal_variable_id</title>
-<polygon fill="#777777" stroke="#777777" points="891,-491.28 739,-491.28 739,-467.28 891,-467.28 891,-491.28"/>
-<text text-anchor="middle" x="815" y="-476.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_horizontal_variable_id</text>
+<polygon fill="#777777" stroke="#777777" points="953,-486 801,-486 801,-462 953,-462 953,-486"/>
+<text text-anchor="middle" x="877" y="-471.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_horizontal_variable_id</text>
 </g>
 <!-- proc~link_bottom_stress&#45;&gt;get_horizontal_variable_id -->
-<g id="call~~graph~~CallGraph_edge27" class="edge">
+<g id="call~~graph~~CallGraph_edge30" class="edge">
 <title>proc~link_bottom_stress&#45;&gt;get_horizontal_variable_id</title>
-<path fill="none" stroke="#000000" d="M625.3,-535.1C650.54,-531.95 678.09,-527.51 703,-521.28 728.65,-514.87 756.49,-504.33 777.86,-495.41"/>
-<polygon fill="#000000" stroke="#000000" points="779.36,-498.58 787.2,-491.45 776.63,-492.13 779.36,-498.58"/>
+<path fill="none" stroke="#000000" d="M656.37,-489.12C698.29,-486.24 748.67,-482.77 790.6,-479.88"/>
+<polygon fill="#000000" stroke="#000000" points="791.05,-483.36 800.78,-479.18 790.57,-476.37 791.05,-483.36"/>
 </g>
 <!-- link_horizontal_data -->
-<g id="call~~graph~~CallGraph_node30" class="node">
+<g id="call~~graph~~CallGraph_node35" class="node">
 <title>link_horizontal_data</title>
-<polygon fill="#777777" stroke="#777777" points="874.5,-407.28 755.5,-407.28 755.5,-383.28 874.5,-383.28 874.5,-407.28"/>
-<text text-anchor="middle" x="815" y="-392.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">link_horizontal_data</text>
+<polygon fill="#777777" stroke="#777777" points="936.5,-528 817.5,-528 817.5,-504 936.5,-504 936.5,-528"/>
+<text text-anchor="middle" x="877" y="-513.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">link_horizontal_data</text>
 </g>
 <!-- proc~link_bottom_stress&#45;&gt;link_horizontal_data -->
-<g id="call~~graph~~CallGraph_edge28" class="edge">
+<g id="call~~graph~~CallGraph_edge31" class="edge">
 <title>proc~link_bottom_stress&#45;&gt;link_horizontal_data</title>
-<path fill="none" stroke="#000000" d="M625.17,-545.74C651.92,-543.21 680.36,-536.44 703,-521.28 729.8,-503.34 718.33,-483.04 739,-458.28 753.34,-441.1 772.77,-424.93 788.25,-413.28"/>
-<polygon fill="#000000" stroke="#000000" points="790.41,-416.03 796.39,-407.29 786.26,-410.39 790.41,-416.03"/>
+<path fill="none" stroke="#000000" d="M656.37,-500.88C703.94,-504.15 762.41,-508.18 807.06,-511.25"/>
+<polygon fill="#000000" stroke="#000000" points="807.01,-514.76 817.23,-511.95 807.49,-507.77 807.01,-514.76"/>
 </g>
 <!-- variable_needs_values -->
-<g id="call~~graph~~CallGraph_node41" class="node">
+<g id="call~~graph~~CallGraph_node46" class="node">
 <title>variable_needs_values</title>
-<polygon fill="#777777" stroke="#777777" points="881.5,-302.28 748.5,-302.28 748.5,-278.28 881.5,-278.28 881.5,-302.28"/>
-<text text-anchor="middle" x="815" y="-287.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">variable_needs_values</text>
+<polygon fill="#777777" stroke="#777777" points="943.5,-402 810.5,-402 810.5,-378 943.5,-378 943.5,-402"/>
+<text text-anchor="middle" x="877" y="-387.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">variable_needs_values</text>
 </g>
 <!-- proc~link_bottom_stress&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge29" class="edge">
+<g id="call~~graph~~CallGraph_edge32" class="edge">
 <title>proc~link_bottom_stress&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M625.38,-549.48C653.08,-547.43 682.05,-540.01 703,-521.28 753.15,-476.46 707.67,-433.8 739,-374.28 752.3,-349.01 774.85,-325.22 791.75,-309.46"/>
-<polygon fill="#000000" stroke="#000000" points="794.49,-311.71 799.54,-302.39 789.78,-306.52 794.49,-311.71"/>
+<path fill="none" stroke="#000000" d="M656.45,-495.59C691.15,-493.34 730.99,-487.5 765,-474 784.26,-466.36 827.5,-431.28 853.97,-408.94"/>
+<polygon fill="#000000" stroke="#000000" points="856.57,-411.32 861.93,-402.18 852.04,-405.99 856.57,-411.32"/>
 </g>
 <!-- get_interior_variable_id -->
-<g id="call~~graph~~CallGraph_node27" class="node">
+<g id="call~~graph~~CallGraph_node31" class="node">
 <title>get_interior_variable_id</title>
-<polygon fill="#777777" stroke="#777777" points="884,-617.28 746,-617.28 746,-593.28 884,-593.28 884,-617.28"/>
-<text text-anchor="middle" x="815" y="-602.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_interior_variable_id</text>
+<polygon fill="#777777" stroke="#777777" points="946,-801 808,-801 808,-777 946,-777 946,-801"/>
+<text text-anchor="middle" x="877" y="-786.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">get_interior_variable_id</text>
 </g>
 <!-- proc~link_density&#45;&gt;get_interior_variable_id -->
-<g id="call~~graph~~CallGraph_edge30" class="edge">
+<g id="call~~graph~~CallGraph_edge33" class="edge">
 <title>proc~link_density&#45;&gt;get_interior_variable_id</title>
-<path fill="none" stroke="#000000" d="M607.73,-621.09C646.45,-618.12 695.18,-614.39 735.55,-611.29"/>
-<polygon fill="#000000" stroke="#000000" points="735.92,-614.77 745.62,-610.52 735.38,-607.8 735.92,-614.77"/>
+<path fill="none" stroke="#000000" d="M638.69,-789C685.71,-789 748.51,-789 797.7,-789"/>
+<polygon fill="#000000" stroke="#000000" points="797.97,-792.5 807.97,-789 797.97,-785.5 797.97,-792.5"/>
 </g>
 <!-- proc~link_density&#45;&gt;link_interior_data -->
-<g id="call~~graph~~CallGraph_edge31" class="edge">
+<g id="call~~graph~~CallGraph_edge34" class="edge">
 <title>proc~link_density&#45;&gt;link_interior_data</title>
-<path fill="none" stroke="#000000" d="M607.73,-633.94C651.89,-638.94 709.08,-645.41 752.04,-650.27"/>
-<polygon fill="#000000" stroke="#000000" points="751.75,-653.76 762.08,-651.41 752.54,-646.8 751.75,-653.76"/>
+<path fill="none" stroke="#000000" d="M638.5,-794.98C675.88,-798.63 723.11,-803.78 765,-810 781.15,-812.4 798.53,-815.46 814.63,-818.49"/>
+<polygon fill="#000000" stroke="#000000" points="813.99,-821.93 824.47,-820.37 815.31,-815.06 813.99,-821.93"/>
 </g>
 <!-- proc~link_density&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge32" class="edge">
+<g id="call~~graph~~CallGraph_edge35" class="edge">
 <title>proc~link_density&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M607.54,-635.02C640.5,-635.38 678.27,-629.37 703,-605.28 777.44,-532.79 694.58,-468.21 739,-374.28 751.14,-348.61 773.64,-325.03 790.85,-309.43"/>
-<polygon fill="#000000" stroke="#000000" points="793.6,-311.67 798.8,-302.44 788.97,-306.42 793.6,-311.67"/>
+<path fill="none" stroke="#000000" d="M638.78,-801.01C680.77,-804.29 732.68,-800.12 765,-768 814.97,-718.33 767.66,-515.07 801,-453 811.12,-434.17 829.39,-418.64 845.36,-407.71"/>
+<polygon fill="#000000" stroke="#000000" points="847.47,-410.51 853.93,-402.12 843.64,-404.65 847.47,-410.51"/>
+</g>
+<!-- proc~link_downwelling_photosynthetic_radiative_flux&#45;&gt;get_interior_variable_id -->
+<g id="call~~graph~~CallGraph_edge36" class="edge">
+<title>proc~link_downwelling_photosynthetic_radiative_flux&#45;&gt;get_interior_variable_id</title>
+<path fill="none" stroke="#000000" d="M695.64,-759.02C718.74,-761.66 742.63,-764.68 765,-768 778.66,-770.03 793.2,-772.53 807.11,-775.09"/>
+<polygon fill="#000000" stroke="#000000" points="806.63,-778.56 817.1,-776.96 807.91,-771.68 806.63,-778.56"/>
+</g>
+<!-- proc~link_downwelling_photosynthetic_radiative_flux&#45;&gt;link_interior_data -->
+<g id="call~~graph~~CallGraph_edge37" class="edge">
+<title>proc~link_downwelling_photosynthetic_radiative_flux&#45;&gt;link_interior_data</title>
+<path fill="none" stroke="#000000" d="M733.15,-755.02C744.23,-758.44 754.96,-762.71 765,-768 786.75,-779.46 780.27,-796.78 801,-810 805.31,-812.75 809.98,-815.14 814.81,-817.22"/>
+<polygon fill="#000000" stroke="#000000" points="813.66,-820.53 824.25,-820.86 816.17,-814 813.66,-820.53"/>
+</g>
+<!-- proc~link_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values -->
+<g id="call~~graph~~CallGraph_edge38" class="edge">
+<title>proc~link_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values</title>
+<path fill="none" stroke="#000000" d="M641.41,-759.02C682.82,-761.82 733.13,-757.13 765,-726 852.54,-640.47 742.15,-560.31 801,-453 811.28,-434.26 829.55,-418.73 845.48,-407.78"/>
+<polygon fill="#000000" stroke="#000000" points="847.59,-410.58 854.03,-402.17 843.75,-404.73 847.59,-410.58"/>
 </g>
 <!-- proc~link_grid&#45;&gt;link_interior_data -->
-<g id="call~~graph~~CallGraph_edge33" class="edge">
+<g id="call~~graph~~CallGraph_edge39" class="edge">
 <title>proc~link_grid&#45;&gt;link_interior_data</title>
-<path fill="none" stroke="#000000" d="M599.12,-665.91C644.31,-664.09 706.44,-661.6 752.27,-659.76"/>
-<polygon fill="#000000" stroke="#000000" points="752.52,-663.25 762.37,-659.35 752.24,-656.26 752.52,-663.25"/>
+<path fill="none" stroke="#000000" d="M630.18,-907.98C669.15,-904.8 720.92,-898.3 765,-885 794.26,-876.17 825.37,-860.42 847.19,-848.2"/>
+<polygon fill="#000000" stroke="#000000" points="848.99,-851.2 855.94,-843.21 845.52,-845.12 848.99,-851.2"/>
 </g>
 <!-- proc~link_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;get_horizontal_variable_id -->
-<g id="call~~graph~~CallGraph_edge34" class="edge">
+<g id="call~~graph~~CallGraph_edge40" class="edge">
 <title>proc~link_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;get_horizontal_variable_id</title>
-<path fill="none" stroke="#000000" d="M693.82,-488.49C705.77,-487.57 717.56,-486.67 728.79,-485.81"/>
-<polygon fill="#000000" stroke="#000000" points="729.24,-489.29 738.95,-485.03 728.71,-482.31 729.24,-489.29"/>
+<path fill="none" stroke="#000000" d="M724.52,-526.48C738.37,-523.7 752.05,-520.26 765,-516 782.59,-510.21 783.94,-502.22 801,-495 805.98,-492.89 811.24,-490.93 816.56,-489.12"/>
+<polygon fill="#000000" stroke="#000000" points="817.72,-492.42 826.17,-486.02 815.57,-485.76 817.72,-492.42"/>
 </g>
 <!-- proc~link_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;link_horizontal_data -->
-<g id="call~~graph~~CallGraph_edge35" class="edge">
+<g id="call~~graph~~CallGraph_edge41" class="edge">
 <title>proc~link_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;link_horizontal_data</title>
-<path fill="none" stroke="#000000" d="M676.16,-488.23C685.38,-485.74 694.42,-482.79 703,-479.28 722.18,-471.44 765.45,-436.43 791.95,-414.15"/>
-<polygon fill="#000000" stroke="#000000" points="794.53,-416.55 799.91,-407.42 790.01,-411.21 794.53,-416.55"/>
+<path fill="none" stroke="#000000" d="M724.84,-526.41C753.73,-524.42 782.55,-522.43 807.16,-520.74"/>
+<polygon fill="#000000" stroke="#000000" points="807.71,-524.21 817.44,-520.03 807.23,-517.23 807.71,-524.21"/>
 </g>
 <!-- proc~link_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge36" class="edge">
+<g id="call~~graph~~CallGraph_edge42" class="edge">
 <title>proc~link_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M690.01,-488.21C694.56,-485.58 698.91,-482.62 703,-479.28 741.23,-448.09 714.08,-416.86 739,-374.28 753.51,-349.49 776.08,-325.48 792.67,-309.52"/>
-<polygon fill="#000000" stroke="#000000" points="795.39,-311.77 800.27,-302.37 790.59,-306.67 795.39,-311.77"/>
+<path fill="none" stroke="#000000" d="M724.61,-534.3C738.93,-530.01 752.67,-524.07 765,-516 791.98,-498.33 780.33,-477.76 801,-453 815.34,-435.82 834.77,-419.65 850.25,-408"/>
+<polygon fill="#000000" stroke="#000000" points="852.41,-410.75 858.39,-402.01 848.26,-405.11 852.41,-410.75"/>
 </g>
 <!-- proc~link_salinity&#45;&gt;get_interior_variable_id -->
-<g id="call~~graph~~CallGraph_edge37" class="edge">
+<g id="call~~graph~~CallGraph_edge43" class="edge">
 <title>proc~link_salinity&#45;&gt;get_interior_variable_id</title>
-<path fill="none" stroke="#000000" d="M607.03,-589.42C645.88,-592.39 694.99,-596.16 735.62,-599.27"/>
-<polygon fill="#000000" stroke="#000000" points="735.52,-602.78 745.76,-600.05 736.06,-595.8 735.52,-602.78"/>
+<path fill="none" stroke="#000000" d="M638.06,-825.06C675.5,-821.41 722.95,-816.24 765,-810 778.66,-807.97 793.2,-805.47 807.11,-802.91"/>
+<polygon fill="#000000" stroke="#000000" points="807.91,-806.32 817.1,-801.04 806.63,-799.44 807.91,-806.32"/>
 </g>
 <!-- proc~link_salinity&#45;&gt;link_interior_data -->
-<g id="call~~graph~~CallGraph_edge38" class="edge">
+<g id="call~~graph~~CallGraph_edge44" class="edge">
 <title>proc~link_salinity&#45;&gt;link_interior_data</title>
-<path fill="none" stroke="#000000" d="M607.19,-586.89C637.14,-589.58 672.48,-594.89 703,-605.28 720.54,-611.25 722.4,-618.06 739,-626.28 749.74,-631.6 761.63,-636.81 772.71,-641.39"/>
-<polygon fill="#000000" stroke="#000000" points="771.61,-644.72 782.19,-645.25 774.25,-638.24 771.61,-644.72"/>
+<path fill="none" stroke="#000000" d="M638.31,-831C690.83,-831 763.2,-831 814.24,-831"/>
+<polygon fill="#000000" stroke="#000000" points="814.48,-834.5 824.48,-831 814.48,-827.5 814.48,-834.5"/>
 </g>
 <!-- proc~link_salinity&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge39" class="edge">
+<g id="call~~graph~~CallGraph_edge45" class="edge">
 <title>proc~link_salinity&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M607.21,-592.67C640.08,-592.93 677.87,-586.95 703,-563.28 765.25,-504.66 701.15,-450.96 739,-374.28 751.57,-348.82 774.01,-325.21 791.09,-309.55"/>
-<polygon fill="#000000" stroke="#000000" points="793.83,-311.79 798.97,-302.53 789.17,-306.57 793.83,-311.79"/>
+<path fill="none" stroke="#000000" d="M637.52,-843.04C679.82,-846.58 732.54,-842.7 765,-810 821.17,-753.41 763.73,-523.49 801,-453 810.99,-434.1 829.26,-418.57 845.26,-407.66"/>
+<polygon fill="#000000" stroke="#000000" points="847.37,-410.46 853.85,-402.08 843.56,-404.59 847.37,-410.46"/>
+</g>
+<!-- proc~link_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;get_horizontal_variable_id -->
+<g id="call~~graph~~CallGraph_edge46" class="edge">
+<title>proc~link_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;get_horizontal_variable_id</title>
+<path fill="none" stroke="#000000" d="M745.33,-465C760.89,-466.07 776.15,-467.13 790.44,-468.11"/>
+<polygon fill="#000000" stroke="#000000" points="790.44,-471.62 800.65,-468.81 790.92,-464.63 790.44,-471.62"/>
+</g>
+<!-- proc~link_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;link_horizontal_data -->
+<g id="call~~graph~~CallGraph_edge47" class="edge">
+<title>proc~link_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;link_horizontal_data</title>
+<path fill="none" stroke="#000000" d="M731.73,-465.03C743.11,-467.52 754.3,-470.48 765,-474 782.59,-479.79 783.94,-487.78 801,-495 805.98,-497.11 811.24,-499.07 816.56,-500.88"/>
+<polygon fill="#000000" stroke="#000000" points="815.57,-504.24 826.17,-503.98 817.72,-497.58 815.57,-504.24"/>
+</g>
+<!-- proc~link_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values -->
+<g id="call~~graph~~CallGraph_edge48" class="edge">
+<title>proc~link_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values</title>
+<path fill="none" stroke="#000000" d="M718.65,-440.99C734.39,-438.53 750.09,-435.57 765,-432 790.89,-425.81 818.93,-415.17 840.34,-406.14"/>
+<polygon fill="#000000" stroke="#000000" points="841.87,-409.3 849.68,-402.14 839.11,-402.86 841.87,-409.3"/>
 </g>
 <!-- proc~link_surface_downwelling_shortwave_flux&#45;&gt;get_horizontal_variable_id -->
-<g id="call~~graph~~CallGraph_edge40" class="edge">
+<g id="call~~graph~~CallGraph_edge49" class="edge">
 <title>proc~link_surface_downwelling_shortwave_flux&#45;&gt;get_horizontal_variable_id</title>
-<path fill="none" stroke="#000000" d="M676.16,-386.33C685.38,-388.82 694.42,-391.77 703,-395.28 722.18,-403.12 765.45,-438.13 791.95,-460.41"/>
-<polygon fill="#000000" stroke="#000000" points="790.01,-463.36 799.91,-467.14 794.53,-458.01 790.01,-463.36"/>
+<path fill="none" stroke="#000000" d="M717.6,-422.85C733.7,-425.34 749.76,-428.36 765,-432 790.89,-438.19 818.93,-448.83 840.34,-457.86"/>
+<polygon fill="#000000" stroke="#000000" points="839.11,-461.14 849.68,-461.86 841.87,-454.7 839.11,-461.14"/>
 </g>
 <!-- proc~link_surface_downwelling_shortwave_flux&#45;&gt;link_horizontal_data -->
-<g id="call~~graph~~CallGraph_edge41" class="edge">
+<g id="call~~graph~~CallGraph_edge50" class="edge">
 <title>proc~link_surface_downwelling_shortwave_flux&#45;&gt;link_horizontal_data</title>
-<path fill="none" stroke="#000000" d="M686.63,-385.52C707.04,-387.08 727.16,-388.62 745.17,-390.01"/>
-<polygon fill="#000000" stroke="#000000" points="745,-393.5 755.24,-390.78 745.53,-386.52 745,-393.5"/>
+<path fill="none" stroke="#000000" d="M717.66,-411.75C734.47,-416.14 750.69,-422.63 765,-432 791.98,-449.67 775.57,-475.17 801,-495 803.3,-496.79 805.74,-498.43 808.29,-499.93"/>
+<polygon fill="#000000" stroke="#000000" points="806.8,-503.1 817.3,-504.51 809.97,-496.86 806.8,-503.1"/>
 </g>
 <!-- proc~link_surface_downwelling_shortwave_flux&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge42" class="edge">
+<g id="call~~graph~~CallGraph_edge51" class="edge">
 <title>proc~link_surface_downwelling_shortwave_flux&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M670.05,-362.19C681.32,-359.74 692.44,-356.8 703,-353.28 734.59,-342.74 767.35,-322.86 789.01,-308.24"/>
-<polygon fill="#000000" stroke="#000000" points="791.05,-311.09 797.3,-302.54 787.08,-305.32 791.05,-311.09"/>
+<path fill="none" stroke="#000000" d="M717.69,-400.9C746.26,-398.93 775.1,-396.95 800.2,-395.22"/>
+<polygon fill="#000000" stroke="#000000" points="800.61,-398.7 810.35,-394.52 800.13,-391.72 800.61,-398.7"/>
 </g>
 <!-- proc~link_wind&#45;&gt;get_horizontal_variable_id -->
-<g id="call~~graph~~CallGraph_edge43" class="edge">
+<g id="call~~graph~~CallGraph_edge52" class="edge">
 <title>proc~link_wind&#45;&gt;get_horizontal_variable_id</title>
-<path fill="none" stroke="#000000" d="M601.08,-327.56C633.8,-327.97 673.36,-333.44 703,-353.28 729.8,-371.22 718.33,-391.52 739,-416.28 753.34,-433.46 772.77,-449.63 788.25,-461.28"/>
-<polygon fill="#000000" stroke="#000000" points="786.26,-464.17 796.39,-467.27 790.41,-458.53 786.26,-464.17"/>
+<path fill="none" stroke="#000000" d="M632.17,-586.07C672.96,-587.68 726.03,-583.52 765,-558 791.98,-540.33 775.57,-514.83 801,-495 802.82,-493.58 804.73,-492.26 806.71,-491.02"/>
+<polygon fill="#000000" stroke="#000000" points="808.62,-493.97 815.78,-486.17 805.31,-487.8 808.62,-493.97"/>
 </g>
 <!-- proc~link_wind&#45;&gt;link_horizontal_data -->
-<g id="call~~graph~~CallGraph_edge44" class="edge">
+<g id="call~~graph~~CallGraph_edge53" class="edge">
 <title>proc~link_wind&#45;&gt;link_horizontal_data</title>
-<path fill="none" stroke="#000000" d="M601.01,-336.73C631.89,-339.84 669.78,-344.98 703,-353.28 728.65,-359.69 756.49,-370.23 777.86,-379.15"/>
-<polygon fill="#000000" stroke="#000000" points="776.63,-382.43 787.2,-383.11 779.36,-375.98 776.63,-382.43"/>
+<path fill="none" stroke="#000000" d="M632.41,-576.34C670.91,-573.7 721.34,-568.44 765,-558 790.89,-551.81 818.93,-541.17 840.34,-532.14"/>
+<polygon fill="#000000" stroke="#000000" points="841.87,-535.3 849.68,-528.14 839.11,-528.86 841.87,-535.3"/>
 </g>
 <!-- proc~link_wind&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge45" class="edge">
+<g id="call~~graph~~CallGraph_edge54" class="edge">
 <title>proc~link_wind&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M601.27,-325.25C631.89,-321.52 669.47,-316.61 703,-311.28 716.2,-309.18 730.23,-306.72 743.72,-304.22"/>
-<polygon fill="#000000" stroke="#000000" points="744.73,-307.6 753.91,-302.32 743.44,-300.71 744.73,-307.6"/>
+<path fill="none" stroke="#000000" d="M632.02,-588.24C673.79,-591.09 728.08,-587.5 765,-558 803.54,-527.2 773.09,-493.68 801,-453 813.34,-435.02 832.14,-419.24 847.83,-407.97"/>
+<polygon fill="#000000" stroke="#000000" points="849.94,-410.77 856.16,-402.19 845.95,-405.01 849.94,-410.77"/>
 </g>
 <!-- proc~update_bottom_stress -->
-<g id="call~~graph~~CallGraph_node13" class="node">
+<g id="call~~graph~~CallGraph_node15" class="node">
 <title>proc~update_bottom_stress</title>
-<g id="a_call~~graph~~CallGraph_node13"><a xlink:href="../proc/update_bottom_stress.html" xlink:title="uvic_fabm::update_bottom_stress">
-<polygon fill="#d9534f" stroke="#d9534f" points="634.5,-92.28 443.5,-92.28 443.5,-68.28 634.5,-68.28 634.5,-92.28"/>
-<text text-anchor="middle" x="539" y="-77.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_bottom_stress</text>
+<g id="a_call~~graph~~CallGraph_node15"><a xlink:href="../proc/update_bottom_stress.html" xlink:title="uvic_fabm::update_bottom_stress">
+<polygon fill="#d9534f" stroke="#d9534f" points="665.5,-255 474.5,-255 474.5,-231 665.5,-231 665.5,-255"/>
+<text text-anchor="middle" x="570" y="-240.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_bottom_stress</text>
 </a>
 </g>
 </g>
 <!-- proc~update_bottom_stress&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge46" class="edge">
+<g id="call~~graph~~CallGraph_edge55" class="edge">
 <title>proc~update_bottom_stress&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M634.79,-78.09C658.58,-81.26 683,-88.07 703,-101.28 763.91,-141.53 795.87,-227.6 808.06,-268.21"/>
-<polygon fill="#000000" stroke="#000000" points="804.73,-269.3 810.86,-277.94 811.46,-267.36 804.73,-269.3"/>
+<path fill="none" stroke="#000000" d="M665.81,-239.52C698.74,-241.8 734.92,-248.41 765,-264 811.04,-287.87 846.69,-339.4 864.16,-368.63"/>
+<polygon fill="#000000" stroke="#000000" points="861.33,-370.73 869.38,-377.62 867.39,-367.21 861.33,-370.73"/>
 </g>
 <!-- proc~update_data&#45;&gt;proc~update_bottom_stress -->
-<g id="call~~graph~~CallGraph_edge47" class="edge">
+<g id="call~~graph~~CallGraph_edge56" class="edge">
 <title>proc~update_data&#45;&gt;proc~update_bottom_stress</title>
-<path fill="none" stroke="#000000" d="M320.93,-152.17C327.27,-149.73 333.42,-146.8 339,-143.28 359.8,-130.17 353.37,-112.96 375,-101.28 392.8,-91.67 413.24,-85.77 433.5,-82.26"/>
-<polygon fill="#000000" stroke="#000000" points="434.07,-85.72 443.42,-80.73 433,-78.8 434.07,-85.72"/>
+<path fill="none" stroke="#000000" d="M331.28,-226.79C370.56,-229.47 420.29,-232.86 464.1,-235.85"/>
+<polygon fill="#000000" stroke="#000000" points="464,-239.35 474.22,-236.54 464.48,-232.37 464,-239.35"/>
 </g>
 <!-- proc~update_density -->
-<g id="call~~graph~~CallGraph_node15" class="node">
+<g id="call~~graph~~CallGraph_node17" class="node">
 <title>proc~update_density</title>
-<g id="a_call~~graph~~CallGraph_node15"><a xlink:href="../proc/update_density.html" xlink:title="uvic_fabm::update_density">
-<polygon fill="#d9534f" stroke="#d9534f" points="617,-302.28 461,-302.28 461,-278.28 617,-278.28 617,-302.28"/>
-<text text-anchor="middle" x="539" y="-287.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_density</text>
+<g id="a_call~~graph~~CallGraph_node17"><a xlink:href="../proc/update_density.html" xlink:title="uvic_fabm::update_density">
+<polygon fill="#d9534f" stroke="#d9534f" points="648,-213 492,-213 492,-189 648,-189 648,-213"/>
+<text text-anchor="middle" x="570" y="-198.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_density</text>
 </a>
 </g>
 </g>
 <!-- proc~update_data&#45;&gt;proc~update_density -->
-<g id="call~~graph~~CallGraph_edge48" class="edge">
+<g id="call~~graph~~CallGraph_edge57" class="edge">
 <title>proc~update_data&#45;&gt;proc~update_density</title>
-<path fill="none" stroke="#000000" d="M325.6,-176.43C330.42,-178.87 334.97,-181.79 339,-185.28 369.68,-211.89 342.59,-244.8 375,-269.28 396.5,-285.52 424.32,-292.64 450.87,-295.15"/>
-<polygon fill="#000000" stroke="#000000" points="450.73,-298.65 460.96,-295.9 451.25,-291.67 450.73,-298.65"/>
+<path fill="none" stroke="#000000" d="M331.28,-217.21C375.95,-214.16 434.12,-210.2 481.74,-206.95"/>
+<polygon fill="#000000" stroke="#000000" points="481.99,-210.44 491.73,-206.27 481.52,-203.46 481.99,-210.44"/>
+</g>
+<!-- proc~update_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_node18" class="node">
+<title>proc~update_downwelling_photosynthetic_radiative_flux</title>
+<g id="a_call~~graph~~CallGraph_node18"><a xlink:href="../proc/update_downwelling_photosynthetic_radiative_flux.html" xlink:title="uvic_fabm::update_downwelling_photosynthetic_radiative_flux">
+<polygon fill="#d9534f" stroke="#d9534f" points="742.5,-171 397.5,-171 397.5,-147 742.5,-147 742.5,-171"/>
+<text text-anchor="middle" x="570" y="-156.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_downwelling_photosynthetic_radiative_flux</text>
+</a>
+</g>
+</g>
+<!-- proc~update_data&#45;&gt;proc~update_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_edge58" class="edge">
+<title>proc~update_data&#45;&gt;proc~update_downwelling_photosynthetic_radiative_flux</title>
+<path fill="none" stroke="#000000" d="M313.25,-209.99C321.98,-207.4 330.85,-204.4 339,-201 356.09,-193.86 357.41,-185.79 375,-180 382.61,-177.5 390.46,-175.28 398.46,-173.31"/>
+<polygon fill="#000000" stroke="#000000" points="399.32,-176.7 408.27,-171.03 397.74,-169.88 399.32,-176.7"/>
 </g>
 <!-- proc~update_mole_fraction_of_carbon_dioxide_in_air -->
-<g id="call~~graph~~CallGraph_node16" class="node">
+<g id="call~~graph~~CallGraph_node19" class="node">
 <title>proc~update_mole_fraction_of_carbon_dioxide_in_air</title>
-<g id="a_call~~graph~~CallGraph_node16"><a xlink:href="../proc/update_mole_fraction_of_carbon_dioxide_in_air.html" xlink:title="uvic_fabm::update_mole_fraction_of_carbon_dioxide_in_air">
-<polygon fill="#d9534f" stroke="#d9534f" points="703,-260.28 375,-260.28 375,-236.28 703,-236.28 703,-260.28"/>
-<text text-anchor="middle" x="539" y="-245.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_mole_fraction_of_carbon_dioxide_in_air</text>
+<g id="a_call~~graph~~CallGraph_node19"><a xlink:href="../proc/update_mole_fraction_of_carbon_dioxide_in_air.html" xlink:title="uvic_fabm::update_mole_fraction_of_carbon_dioxide_in_air">
+<polygon fill="#d9534f" stroke="#d9534f" points="734,-129 406,-129 406,-105 734,-105 734,-129"/>
+<text text-anchor="middle" x="570" y="-114.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_mole_fraction_of_carbon_dioxide_in_air</text>
 </a>
 </g>
 </g>
 <!-- proc~update_data&#45;&gt;proc~update_mole_fraction_of_carbon_dioxide_in_air -->
-<g id="call~~graph~~CallGraph_edge49" class="edge">
+<g id="call~~graph~~CallGraph_edge59" class="edge">
 <title>proc~update_data&#45;&gt;proc~update_mole_fraction_of_carbon_dioxide_in_air</title>
-<path fill="none" stroke="#000000" d="M320.93,-176.39C327.27,-178.83 333.42,-181.76 339,-185.28 359.8,-198.39 353.37,-215.6 375,-227.28 378.5,-229.17 382.1,-230.92 385.79,-232.53"/>
-<polygon fill="#000000" stroke="#000000" points="384.52,-235.79 395.1,-236.27 387.13,-229.3 384.52,-235.79"/>
+<path fill="none" stroke="#000000" d="M324.01,-209.88C329.35,-207.44 334.45,-204.51 339,-201 364.53,-181.3 348.02,-155.67 375,-138 381.68,-133.63 388.77,-129.88 396.14,-126.69"/>
+<polygon fill="#000000" stroke="#000000" points="397.61,-129.87 405.61,-122.93 395.03,-123.36 397.61,-129.87"/>
 </g>
 <!-- proc~update_salinity -->
-<g id="call~~graph~~CallGraph_node17" class="node">
+<g id="call~~graph~~CallGraph_node20" class="node">
 <title>proc~update_salinity</title>
-<g id="a_call~~graph~~CallGraph_node17"><a xlink:href="../proc/update_salinity.html" xlink:title="uvic_fabm::update_salinity">
-<polygon fill="#d9534f" stroke="#d9534f" points="616.5,-218.28 461.5,-218.28 461.5,-194.28 616.5,-194.28 616.5,-218.28"/>
-<text text-anchor="middle" x="539" y="-203.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_salinity</text>
+<g id="a_call~~graph~~CallGraph_node20"><a xlink:href="../proc/update_salinity.html" xlink:title="uvic_fabm::update_salinity">
+<polygon fill="#d9534f" stroke="#d9534f" points="647.5,-87 492.5,-87 492.5,-63 647.5,-63 647.5,-87"/>
+<text text-anchor="middle" x="570" y="-72.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_salinity</text>
 </a>
 </g>
 </g>
 <!-- proc~update_data&#45;&gt;proc~update_salinity -->
-<g id="call~~graph~~CallGraph_edge50" class="edge">
+<g id="call~~graph~~CallGraph_edge60" class="edge">
 <title>proc~update_data&#45;&gt;proc~update_salinity</title>
-<path fill="none" stroke="#000000" d="M323.02,-176.33C339.85,-179.43 358.1,-182.64 375,-185.28 399.65,-189.14 426.48,-192.81 451.13,-195.97"/>
-<polygon fill="#000000" stroke="#000000" points="450.82,-199.46 461.18,-197.25 451.7,-192.52 450.82,-199.46"/>
+<path fill="none" stroke="#000000" d="M326.26,-209.97C330.89,-207.5 335.21,-204.54 339,-201 375.04,-167.31 336.46,-126.8 375,-96 404.63,-72.32 445.46,-65.34 482.02,-64.98"/>
+<polygon fill="#000000" stroke="#000000" points="482.18,-68.48 492.2,-65.04 482.22,-61.48 482.18,-68.48"/>
+</g>
+<!-- proc~update_surface_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_node21" class="node">
+<title>proc~update_surface_downwelling_photosynthetic_radiative_flux</title>
+<g id="a_call~~graph~~CallGraph_node21"><a xlink:href="../proc/update_surface_downwelling_photosynthetic_radiative_flux.html" xlink:title="uvic_fabm::update_surface_downwelling_photosynthetic_radiative_flux">
+<polygon fill="#d9534f" stroke="#d9534f" points="765,-381 375,-381 375,-357 765,-357 765,-381"/>
+<text text-anchor="middle" x="570" y="-366.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_surface_downwelling_photosynthetic_radiative_flux</text>
+</a>
+</g>
+</g>
+<!-- proc~update_data&#45;&gt;proc~update_surface_downwelling_photosynthetic_radiative_flux -->
+<g id="call~~graph~~CallGraph_edge61" class="edge">
+<title>proc~update_data&#45;&gt;proc~update_surface_downwelling_photosynthetic_radiative_flux</title>
+<path fill="none" stroke="#000000" d="M267.89,-234.39C283.23,-260.6 322.97,-321.46 375,-348 378.63,-349.85 382.35,-351.58 386.14,-353.18"/>
+<polygon fill="#000000" stroke="#000000" points="385.11,-356.53 395.69,-356.93 387.66,-350.02 385.11,-356.53"/>
 </g>
 <!-- proc~update_surface_downwelling_shortwave_flux -->
-<g id="call~~graph~~CallGraph_node18" class="node">
+<g id="call~~graph~~CallGraph_node22" class="node">
 <title>proc~update_surface_downwelling_shortwave_flux</title>
-<g id="a_call~~graph~~CallGraph_node18"><a xlink:href="../proc/update_surface_downwelling_shortwave_flux.html" xlink:title="uvic_fabm::update_surface_downwelling_shortwave_flux">
-<polygon fill="#d9534f" stroke="#d9534f" points="695.5,-176.28 382.5,-176.28 382.5,-152.28 695.5,-152.28 695.5,-176.28"/>
-<text text-anchor="middle" x="539" y="-161.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_surface_downwelling_shortwave_flux</text>
+<g id="a_call~~graph~~CallGraph_node22"><a xlink:href="../proc/update_surface_downwelling_shortwave_flux.html" xlink:title="uvic_fabm::update_surface_downwelling_shortwave_flux">
+<polygon fill="#d9534f" stroke="#d9534f" points="726.5,-339 413.5,-339 413.5,-315 726.5,-315 726.5,-339"/>
+<text text-anchor="middle" x="570" y="-324.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_surface_downwelling_shortwave_flux</text>
 </a>
 </g>
 </g>
 <!-- proc~update_data&#45;&gt;proc~update_surface_downwelling_shortwave_flux -->
-<g id="call~~graph~~CallGraph_edge51" class="edge">
+<g id="call~~graph~~CallGraph_edge62" class="edge">
 <title>proc~update_data&#45;&gt;proc~update_surface_downwelling_shortwave_flux</title>
-<path fill="none" stroke="#000000" d="M331.26,-164.28C344.03,-164.28 357.83,-164.28 372.03,-164.28"/>
-<polygon fill="#000000" stroke="#000000" points="372.43,-167.78 382.43,-164.28 372.43,-160.78 372.43,-167.78"/>
+<path fill="none" stroke="#000000" d="M272.98,-234.3C292.4,-253.37 332.85,-289.58 375,-306 384.17,-309.57 393.77,-312.61 403.56,-315.17"/>
+<polygon fill="#000000" stroke="#000000" points="402.87,-318.61 413.42,-317.59 404.54,-311.81 402.87,-318.61"/>
 </g>
 <!-- proc~update_wind -->
-<g id="call~~graph~~CallGraph_node19" class="node">
+<g id="call~~graph~~CallGraph_node23" class="node">
 <title>proc~update_wind</title>
-<g id="a_call~~graph~~CallGraph_node19"><a xlink:href="../proc/update_wind.html" xlink:title="uvic_fabm::update_wind">
-<polygon fill="#d9534f" stroke="#d9534f" points="610,-134.28 468,-134.28 468,-110.28 610,-110.28 610,-134.28"/>
-<text text-anchor="middle" x="539" y="-119.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_wind</text>
+<g id="a_call~~graph~~CallGraph_node23"><a xlink:href="../proc/update_wind.html" xlink:title="uvic_fabm::update_wind">
+<polygon fill="#d9534f" stroke="#d9534f" points="641,-297 499,-297 499,-273 641,-273 641,-297"/>
+<text text-anchor="middle" x="570" y="-282.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">uvic_fabm::update_wind</text>
 </a>
 </g>
 </g>
 <!-- proc~update_data&#45;&gt;proc~update_wind -->
-<g id="call~~graph~~CallGraph_edge52" class="edge">
+<g id="call~~graph~~CallGraph_edge63" class="edge">
 <title>proc~update_data&#45;&gt;proc~update_wind</title>
-<path fill="none" stroke="#000000" d="M323.02,-152.23C339.85,-149.13 358.1,-145.92 375,-143.28 401.87,-139.08 431.33,-135.09 457.73,-131.75"/>
-<polygon fill="#000000" stroke="#000000" points="458.19,-135.22 467.68,-130.5 457.32,-128.27 458.19,-135.22"/>
-</g>
-<!-- proc~update_data&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge53" class="edge">
-<title>proc~update_data&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M325.6,-152.13C330.42,-149.69 334.97,-146.77 339,-143.28 369.68,-116.67 341.09,-81.64 375,-59.28 496.7,20.97 579.6,18.33 703,-59.28 777.95,-106.42 803.45,-219.86 811.09,-268.03"/>
-<polygon fill="#000000" stroke="#000000" points="807.64,-268.66 812.56,-278.04 814.57,-267.64 807.64,-268.66"/>
+<path fill="none" stroke="#000000" d="M288.06,-234.12C310.8,-243.77 344.4,-256.82 375,-264 411.77,-272.63 453.31,-277.72 488.49,-280.73"/>
+<polygon fill="#000000" stroke="#000000" points="488.46,-284.23 498.71,-281.56 489.03,-277.26 488.46,-284.23"/>
 </g>
 <!-- proc~update_density&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge54" class="edge">
+<g id="call~~graph~~CallGraph_edge64" class="edge">
 <title>proc~update_density&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M617.05,-290.28C654.82,-290.28 700.15,-290.28 737.8,-290.28"/>
-<polygon fill="#000000" stroke="#000000" points="738.2,-293.78 748.2,-290.28 738.2,-286.78 738.2,-293.78"/>
+<path fill="none" stroke="#000000" d="M648.16,-194.57C685.86,-194.96 730.43,-200.93 765,-222 821.21,-256.26 854.78,-331.01 868.61,-368.15"/>
+<polygon fill="#000000" stroke="#000000" points="865.32,-369.34 871.99,-377.57 871.9,-366.97 865.32,-369.34"/>
+</g>
+<!-- proc~update_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values -->
+<g id="call~~graph~~CallGraph_edge65" class="edge">
+<title>proc~update_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values</title>
+<path fill="none" stroke="#000000" d="M742.69,-167.82C750.5,-171.22 757.99,-175.24 765,-180 831.69,-225.25 861.25,-323.8 871.5,-367.9"/>
+<polygon fill="#000000" stroke="#000000" points="868.13,-368.86 873.7,-377.87 874.96,-367.35 868.13,-368.86"/>
 </g>
 <!-- proc~update_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge55" class="edge">
+<g id="call~~graph~~CallGraph_edge66" class="edge">
 <title>proc~update_mole_fraction_of_carbon_dioxide_in_air&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M640.56,-260.29C661.24,-263.03 682.85,-266.08 703,-269.28 716.2,-271.38 730.23,-273.84 743.72,-276.34"/>
-<polygon fill="#000000" stroke="#000000" points="743.44,-279.85 753.91,-278.24 744.73,-272.97 743.44,-279.85"/>
+<path fill="none" stroke="#000000" d="M734.2,-121.45C745.16,-125.67 755.57,-131.1 765,-138 842.47,-194.7 866.7,-317.51 873.55,-367.82"/>
+<polygon fill="#000000" stroke="#000000" points="870.1,-368.45 874.82,-377.93 877.05,-367.57 870.1,-368.45"/>
 </g>
 <!-- proc~update_salinity&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge56" class="edge">
+<g id="call~~graph~~CallGraph_edge67" class="edge">
 <title>proc~update_salinity&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M616.84,-210.02C644.53,-212.96 675.66,-218.16 703,-227.28 734.59,-237.82 767.35,-257.7 789.01,-272.32"/>
-<polygon fill="#000000" stroke="#000000" points="787.08,-275.24 797.3,-278.02 791.05,-269.47 787.08,-275.24"/>
+<path fill="none" stroke="#000000" d="M647.95,-65.44C686.73,-64.74 732.32,-70.7 765,-96 853.39,-164.43 871.4,-311.64 875.06,-367.7"/>
+<polygon fill="#000000" stroke="#000000" points="871.58,-368.15 875.63,-377.93 878.57,-367.75 871.58,-368.15"/>
+</g>
+<!-- proc~update_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values -->
+<g id="call~~graph~~CallGraph_edge68" class="edge">
+<title>proc~update_surface_downwelling_photosynthetic_radiative_flux&#45;&gt;variable_needs_values</title>
+<path fill="none" stroke="#000000" d="M745.33,-381C764.44,-382.32 783.09,-383.6 800.04,-384.77"/>
+<polygon fill="#000000" stroke="#000000" points="800.14,-388.29 810.36,-385.48 800.63,-381.3 800.14,-388.29"/>
 </g>
 <!-- proc~update_surface_downwelling_shortwave_flux&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge57" class="edge">
+<g id="call~~graph~~CallGraph_edge69" class="edge">
 <title>proc~update_surface_downwelling_shortwave_flux&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M679.98,-176.3C687.92,-178.83 695.65,-181.8 703,-185.28 744.16,-204.8 780.06,-245.39 799.22,-269.99"/>
-<polygon fill="#000000" stroke="#000000" points="796.45,-272.12 805.28,-277.97 802.02,-267.89 796.45,-272.12"/>
+<path fill="none" stroke="#000000" d="M718.65,-339.01C734.39,-341.47 750.09,-344.43 765,-348 790.89,-354.19 818.93,-364.83 840.34,-373.86"/>
+<polygon fill="#000000" stroke="#000000" points="839.11,-377.14 849.68,-377.86 841.87,-370.7 839.11,-377.14"/>
 </g>
 <!-- proc~update_wind&#45;&gt;variable_needs_values -->
-<g id="call~~graph~~CallGraph_edge58" class="edge">
+<g id="call~~graph~~CallGraph_edge70" class="edge">
 <title>proc~update_wind&#45;&gt;variable_needs_values</title>
-<path fill="none" stroke="#000000" d="M610.06,-119.48C640.4,-121.15 675.24,-127.16 703,-143.28 753.88,-172.82 788.95,-235.82 804.67,-268.93"/>
-<polygon fill="#000000" stroke="#000000" points="801.56,-270.55 808.92,-278.18 807.92,-267.63 801.56,-270.55"/>
+<path fill="none" stroke="#000000" d="M641.4,-283.63C679.22,-285.09 725.95,-290.5 765,-306 801.65,-320.55 836.67,-350.67 857.25,-370.61"/>
+<polygon fill="#000000" stroke="#000000" points="854.84,-373.14 864.41,-377.7 859.77,-368.17 854.84,-373.14"/>
 </g>
 <!-- program~uvic_escm_fabm -->
-<g id="call~~graph~~CallGraph_node20" class="node">
+<g id="call~~graph~~CallGraph_node24" class="node">
 <title>program~uvic_escm_fabm</title>
-<g id="a_call~~graph~~CallGraph_node20"><a xlink:href="../program/uvic_escm_fabm.html" xlink:title="UVic_ESCM_FABM">
-<polygon fill="#f0ad4e" stroke="#f0ad4e" points="125,-970.28 20,-970.28 20,-946.28 125,-946.28 125,-970.28"/>
-<text text-anchor="middle" x="72.5" y="-955.88" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UVic_ESCM_FABM</text>
+<g id="a_call~~graph~~CallGraph_node24"><a xlink:href="../program/uvic_escm_fabm.html" xlink:title="UVic_ESCM_FABM">
+<polygon fill="#f0ad4e" stroke="#f0ad4e" points="125,-1112 20,-1112 20,-1088 125,-1088 125,-1112"/>
+<text text-anchor="middle" x="72.5" y="-1097.6" font-family="Helvetica,sans-Serif" font-size="10.50" fill="white">UVic_ESCM_FABM</text>
 </a>
 </g>
 </g>
 <!-- program~uvic_escm_fabm&#45;&gt;proc~fabm_configure -->
-<g id="call~~graph~~CallGraph_edge59" class="edge">
+<g id="call~~graph~~CallGraph_edge71" class="edge">
 <title>program~uvic_escm_fabm&#45;&gt;proc~fabm_configure</title>
-<path fill="none" stroke="#000000" d="M125.17,-946.58C147.12,-941.61 172.91,-935.77 195.96,-930.55"/>
-<polygon fill="#000000" stroke="#000000" points="197.01,-933.9 205.99,-928.28 195.47,-927.08 197.01,-933.9"/>
+<path fill="none" stroke="#000000" d="M109.27,-1112.15C139.13,-1122.29 181.86,-1136.8 214.04,-1147.73"/>
+<polygon fill="#000000" stroke="#000000" points="213.06,-1151.1 223.66,-1151 215.32,-1144.47 213.06,-1151.1"/>
 </g>
 <!-- program~uvic_escm_fabm&#45;&gt;proc~fabm_list -->
-<g id="call~~graph~~CallGraph_edge60" class="edge">
+<g id="call~~graph~~CallGraph_edge72" class="edge">
 <title>program~uvic_escm_fabm&#45;&gt;proc~fabm_list</title>
-<path fill="none" stroke="#000000" d="M125.17,-969.98C147.12,-974.95 172.91,-980.79 195.96,-986.01"/>
-<polygon fill="#000000" stroke="#000000" points="195.47,-989.48 205.99,-988.28 197.01,-982.66 195.47,-989.48"/>
+<path fill="none" stroke="#000000" d="M100.08,-1087.96C132.45,-1073.31 187.26,-1048.49 223.29,-1032.17"/>
+<polygon fill="#000000" stroke="#000000" points="224.81,-1035.33 232.47,-1028.01 221.92,-1028.95 224.81,-1035.33"/>
 </g>
 </g>
 </svg>

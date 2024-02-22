@@ -1,5 +1,5 @@
-! Copyright (C) 2024 Bolding & Bruggeman
-
+!> Copyright (C) 2024 Bolding & Bruggeman
+!>
 !> @warning
 !> This module is still under development.
 !> API and functioning might change without notice.
@@ -87,101 +87,116 @@ class (type_fabm_model), pointer :: model
    !! This variable will contain all FABM configuration and
    !! give access to FABM routines
 
-#if 1
 ! The following is a list of all FABM standard variables - the definitions can be updated
 ! during the implementation. The order of the variables is mainained from:
 ! https://github.com/fabm-model/fabm/wiki/List-of-standard-variables
 ! For mandatory variables - e.g. cell thinkness it is not necessary to obtain an id.
 
 ! Interior variables
-!! id_alkalinity_expressed_as_mole_equivalent
-!! id_attenuation_coefficient_of_photosynthetic_radiative_flux
-!! id_attenuation_coefficient_of_shortwave_flux
+
+! id_alkalinity_expressed_as_mole_equivalent
+! id_attenuation_coefficient_of_photosynthetic_radiative_flux
+! id_attenuation_coefficient_of_shortwave_flux
 !type (type_fabm_interior_variable_id) :: id_cell_thickness
 real(rke), allocatable, target :: dz(:,:,:)
 type (type_fabm_interior_variable_id) :: id_density
 real(rke), allocatable, target :: rho_fabm(:,:,:)
 !type (type_fabm_interior_variable_id) :: id_depth
 real(rke), allocatable, target :: depth(:,:,:)
-!! id_downwelling_photosynthetic_radiative_flux
-!! id_downwelling_shortwave_flux
-!! id_fractional_saturation_of_oxygen
-!! id_mass_concentration_of_suspended_matter
-!! id_mole_concentration_of_ammonium
-!! id_mole_concentration_of_carbonate_expressed_as_carbon
-!! id_mole_concentration_of_dissolved_inorganic_carbon
-!! id_mole_concentration_of_dissolved_iron
-!! id_mole_concentration_of_nitrate
-!! id_mole_concentration_of_phosphate
-!! id_mole_concentration_of_silicate
-!! id_net_rate_of_absorption_of_shortwave_energy_in_layer
-!! id_ph_reported_on_total_scale
+type (type_fabm_interior_variable_id) id_downwelling_photosynthetic_radiative_flux
+real(rke), allocatable, target :: downwelling_photosynthetic_radiative_flux(:,:,:)
+! id_downwelling_shortwave_flux
+! id_fractional_saturation_of_oxygen
+! id_mass_concentration_of_suspended_matter
+! id_mole_concentration_of_ammonium
+! id_mole_concentration_of_carbonate_expressed_as_carbon
+! id_mole_concentration_of_dissolved_inorganic_carbon
+! id_mole_concentration_of_dissolved_iron
+! id_mole_concentration_of_nitrate
+! id_mole_concentration_of_phosphate
+! id_mole_concentration_of_silicate
+! id_net_rate_of_absorption_of_shortwave_energy_in_layer
+! id_ph_reported_on_total_scale
 type (type_fabm_interior_variable_id) :: id_practical_salinity
 real(rke), allocatable, target :: salt(:,:,:)
 type (type_fabm_interior_variable_id) :: id_pressure
 real(rke), allocatable, target :: pressure(:,:,:)
-!! id_secchi_depth
+! id_secchi_depth
 !type (type_fabm_interior_variable_id) :: id_temperature
 
 ! Surface variables
-!! id_cloud_area_fraction
-!! id_ice_area_fraction
+! id_cloud_area_fraction
+! id_ice_area_fraction
 type (type_fabm_horizontal_variable_id) :: id_mole_fraction_of_carbon_dioxide_in_air
 real(rke), allocatable, target :: mole_fraction_of_carbon_dioxide_in_air(:,:)
-!! id_surface_air_pressure
-!! id_surface_albedo
-!! id_surface_downwelling_photosynthetic_radiative_flux
-!! id_surface_downwelling_photosynthetic_radiative_flux_in_air
+! id_surface_air_pressure
+! id_surface_albedo
+!KB ipsw - 1 cal cm-2 s-1 = 41868 W/m2
+type (type_fabm_horizontal_variable_id) :: id_surface_downwelling_photosynthetic_radiative_flux
+real(rke), allocatable, target :: surface_downwelling_photosynthetic_radiative_flux(:,:)
+! id_surface_downwelling_photosynthetic_radiative_flux_in_air
 type (type_fabm_horizontal_variable_id) :: id_surface_downwelling_shortwave_flux
 real(rke), allocatable, target :: surface_downwelling_shortwave_flux(:,:)
-!! id_surface_downwelling_shortwave_flux_in_air
-!! id_surface_drag_coefficient_in_air
-!! id_surface_specific_humidity
-!! id_surface_temperature
+! id_surface_downwelling_shortwave_flux_in_air
+! id_surface_drag_coefficient_in_air
+! id_surface_specific_humidity
+! id_surface_temperature
 type (type_fabm_horizontal_variable_id) :: id_windspeed
 real(rke), allocatable, target :: windspeed(:,:)
 
 ! Bottom variables
-!! id_bottom_depth
-!! id_bottom_depth_below_geoid
-!! id_bottom_roughness_length
+! id_bottom_depth
+! id_bottom_depth_below_geoid
+! id_bottom_roughness_length
 type (type_fabm_horizontal_variable_id) :: id_bottom_stress
 real(rke), allocatable, target :: bottom_stress(:,:)
 
 ! Global variables
-!! id_number_of_days_since_start_of_the_year
+! id_number_of_days_since_start_of_the_year
 
 ! Universal variables
-!! id_total_carbon
-!! id_total_iron
-!! id_total_nitrogen
-!! id_total_phosphorus
-!! id_total_silicate
+! id_total_carbon
+! id_total_iron
+! id_total_nitrogen
+! id_total_phosphorus
+! id_total_silicate
 ! horizontal FABM ids
 ! interior FABM variables - calculated from UVic_ESCM variables
 ! horizontal FABM variables
-#endif
 
 ! public available routines
-public fabm_configure, fabm_link_data, fabm_update, fabm_list, fabm_clean
+public fabm_configure
+public fabm_link_data
+public fabm_update
+public fabm_list
+public fabm_clean
 
 ! module level variables - static or allocatable? Same goes with e.g. windspeed and rho_fabm
 
+!integer, parameter :: npel=nt-2
+
 real(rke) :: pelagic_sms(imt,km,1,nt-2)
-!KB      src(is:ie,:,j,:) = pelagic_sms(is:ie,:,j,:)
   !! pelagic source-sink terms in one j-stride
-real(rke) :: surface_flux(imt,jmt,nt)
+real(rke) :: surface_flux(imt,jmt,nt-2)
   !! surface fluxes
-real(rke) :: surface_sms(imt,jmt,nt)
+real(rke) :: surface_sms(imt,jmt,nt-2)
   !! surface source-sink terms
-real(rke) :: bottom_flux(imt,jmt,nt)
+real(rke) :: bottom_flux(imt,jmt,nt-2)
   !! bottom fluxes
-real(rke) :: bottom_sms(imt,jmt,nt)
+real(rke) :: bottom_sms(imt,jmt,nt-2)
   !! bottom source-sink terms
 !real(rke) :: w(imt,km,jsmw:jemw,nt)
-real(rke) :: w(imt,km,jmt,nt)
+real(rke) :: w(imt,km,jmt,nt-2)
   !! vertical velocity in m/s
 
+integer :: nsurface
+integer :: npelagic
+integer :: nsediment
+
+!> @note
+!> The variables to hold surface, pelagic and bottom state variables
+!> comes from mw.h - included in a O_fabm compilation clause
+!> @endnote
 !-----------------------------------------------------------------------
 
 contains
@@ -196,23 +211,30 @@ subroutine fabm_configure(dt,yaml_file)
    character(len=*), intent(in), optional :: yaml_file
       !! name of alternativ FABM configuration file
 
-   print*, '== Initializing FABM component with nt=',nt
+   print*, '==> Initializing FABM component with nt=',nt
 
-!   if (present(yaml_file)) then
-!      model => fabm_create_model(trim(yaml_file))
-!   else
+   if (present(yaml_file)) then
+      model => fabm_create_model(trim(yaml_file))
+   else
       model => fabm_create_model('fabm.yaml')
-!   end if
+   end if
 
-   if (nt-2 .ne. size(model%interior_state_variables)) then
-      print*, 'nt   = ',nt-2
-      print*, 'npel = ',size(model%interior_state_variables)
+   nsurface = size(model%surface_state_variables)
+   npelagic = size(model%interior_state_variables)
+   nsediment = size(model%bottom_state_variables)
+
+   if (nt-2 .ne. npelagic) then
+      print*, 'nt (UVic) = ',nt-2
+      print*, 'nsurface  = ',nsurface
+      print*, 'npelagic  = ',npelagic
+      print*, 'nsediment = ',nsediment
       stop 'fabm_configure()'
    end if
 
    !parameter (jsmw=2, jemw=jmw-1) - parameter (jmw=jmt)
-   ! joff,js,je,is,ie 0, 2, 101, 2, 101 - fabm_update()
+#ifdef DEBUG
    print*, imt,jmt,jmw
+   !print*, jrow,js,je,is,ie
    print*, 'zt: ',shape(zt)
    print*, 't: ',shape(t)
    print*, 'sbc: ',shape(sbc)
@@ -220,19 +242,18 @@ subroutine fabm_configure(dt,yaml_file)
    print*, 'source: ',shape(source) ! imt,km,jsmw:jemw
    print*, 'rho: ',shape(rho)
    !stop 112
+#endif   
 
    call model%set_domain(imt,km,jmt,dt)
    call model%set_domain_start(2,1,2)
    call model%set_domain_stop(imt-1,km,jmt-1)
-   call model%set_mask(tmask(:,:,:),tmask(:,1,:))
+   call model%set_mask(tmask,tmask(:,1,:))
+   call model%set_bottom_index(kmt)
 
-   !> @note
+   !! @note
    !! seems tmask is not initialised until called in mom() - 
    !! i.e. after initialization - so all values are 0 here
    !! @endnote
-   !KBprint*, tmask(53,:,53)
-
-   call model%set_bottom_index(kmt(:,:))
 end subroutine fabm_configure
 
 !-----------------------------------------------------------------------
@@ -240,7 +261,7 @@ end subroutine fabm_configure
 subroutine fabm_link_data()
    !! link all FABM configured external dependencies - and call
    !! model%start() to assure proper configuration
-   integer :: n
+   integer :: j,k,n
 
    ! link to time in-dependent data that do require transformation
    call link_grid()
@@ -252,20 +273,38 @@ subroutine fabm_link_data()
    ! initialize and update time changing environmental variables
    call link_wind()
    call link_mole_fraction_of_carbon_dioxide_in_air()
+   call link_surface_downwelling_photosynthetic_radiative_flux()
    call link_surface_downwelling_shortwave_flux()
    call link_bottom_stress()
+   call link_downwelling_photosynthetic_radiative_flux()
    call link_salinity()
    call link_density()
+
+   ! link to FABM's surface state variables
+   do n = 1,nsurface
+      !call model%link_surface_state_data(n, sed(:,:,n))
+   end do
 
    ! link to FABM's interior state variables
    do n = 1, size(model%interior_state_variables)
       call model%link_interior_state_data(n, t(:,:,:,2+n,0))
       mapt(2+n) = trim(model%interior_state_variables(n)%name)
+      itrc(n+2) = n+2
       !KBmapst(2+n) = 's'//trim(mapt(2+n))
    end do
 
-   call model%start()
+   ! link to FABM's bottom state variables
+   do n = 1,nsediment
+      call model%link_bottom_state_data(n, sed(:,:,n))
+   end do
 
+   do j = 2, jmt-1
+      do k = 1, km
+!         call model%initialize_interior_state(2, imt-1, k, j)
+      end do
+   end do
+
+   call model%start()
 end subroutine fabm_link_data
 
 !-----------------------------------------------------------------------
@@ -320,11 +359,10 @@ end subroutine fabm_list
 !-----------------------------------------------------------------------
 
 subroutine fabm_update(joff, js, je, is, ie)
-   !! update the environment and calculate the source/sink terms
-   !! call with the same argument list as mom() calls tracer() i.e. 
-   !! the specification on the active UVic window - typically the 
-   !! full domain on modern hardware
-
+   !! update the environment and calculate the source/sink terms -
+   !! is called with the same argument list as mom() calls tracer()
+   !! i.e. the specification of the active UVic window - typically
+   !! the full domain on modern hardware
    integer, intent(in) :: joff
      !! offset row in global window
    integer, intent(in) :: js
@@ -339,70 +377,61 @@ subroutine fabm_update(joff, js, je, is, ie)
    integer :: i,j,k,n
      ! local loop counters
 
-   print*, 'fabm_update',joff,js,je,is,ie
-   ! t(:,:,:,var,0) is updated in loadmw() in mom()
-   call update_data(joff)
-#if 0
-   print*, 'wind ',sbc(53,53,iws)/100._rke
-   print*, 'salt ',35.+ 1000*t(53,:,53,isalt,0)
-   stop 'egon'
+#ifdef DEBUG
+   print*, 'fabm_update:',joff,js,je,is,ie
 #endif
 
-print*, shape(src)
-print*, shape(pelagic_sms)
-   print*, t(53,:,53,itemp,0)
-   print*, shape(kmt)
-   print*, tmask(53,:,53)
-   print*, shape(tmask)
-   stop 1111
+   ! t(:,:,:,var,0) is updated in loadmw() in mom()
+   ! this is done before the call to tracer() - and thus
+   ! data are ready here
+   call update_data(joff)
+
    call model%prepare_inputs()
-   stop 113
 
    ! update the surface
    surface_flux = 0._rke
    surface_sms = 0._rke
-   do j=js,je
-      call model%get_surface_sources(is,ie,j, &
-                 surface_flux(is:ie,j,:),surface_sms(is:ie,j,:))
-   end do
+   if (nsurface > 0) then
+      do j=js,je
+         call model%get_surface_sources(is,ie,j, &
+                    surface_flux(is:ie,j,:),surface_sms(is:ie,j,:))
+      end do
+   end if
 
    ! update the pelagic
    do j=js,je
       do k=1,km
-!KB         call model%get_interior_sources(is,ie,k,j,src(is:ie,k,j,:))
-         call model%get_interior_sources(is,ie,k,j,pelagic_sms(is:ie,1,j,:))
+         call model%get_interior_sources(is,ie,k,j,pelagic_sms(is:ie,k,1,:))
       end do
-      print*, shape(src)
-      print*, shape(pelagic_sms)
-      stop 'kaj'
-      src(is:ie,:,j,:) = pelagic_sms(is:ie,:,1,:)
+      src(is:ie,:,j,3:) = pelagic_sms(is:ie,:,1,:)
    end do
-   stop 115
 
    ! update the bottom
    bottom_flux = 0._rke
    bottom_sms = 0._rke
-   do j=js,je
-      call model%get_bottom_sources(is,ie,j, &
-                 bottom_flux(is:ie,j,:),bottom_sms(is:ie,j,:))
-   end do
+   if (nsediment > 0) then
+      do j=js,je
+         call model%get_bottom_sources(is,ie,j, &
+                    bottom_flux(is:ie,j,:),bottom_sms(is:ie,j,:))
+      end do
+   end if
 
    ! fold the surface and bottom flux terms - src keeps track on 
    ! which variables actually have sources - itrc(n) and the size
    ! of src reflects this - tracer.F90 line 1122
-   do n=1,nt
-   do j=js,je
-      do i=is,ie
-         if (kmt(i,j) > 0) then
-            ! surface
-            k=1
-            src(i,k,j,:)=src(i,k,j,n)+surface_flux(i,j,n)/dz(i,k,j)
-            ! bottom
-            k=kmt(i,j)
-            src(i,k,j,:)=src(i,k,j,n)+bottom_flux(i,j,n)/dz(i,k,j)
-         end if
+   do n=1,nt-2
+      do j=js,je
+         do i=is,ie
+            if (kmt(i,j) > 0) then
+               ! surface
+               k=1
+               src(i,k,j,3:)=src(i,k,j,n)+surface_flux(i,j,n)/dz(i,k,j)
+               ! bottom
+               k=kmt(i,j)
+               src(i,k,j,3:)=src(i,k,j,n)+bottom_flux(i,j,n)/dz(i,k,j)
+            end if
+         end do
       end do
-   end do
    end do
 
    ! vertical velocities
@@ -413,7 +442,7 @@ print*, shape(pelagic_sms)
    end do
 
    call model%finalize_outputs()
-   stop "update_fabm"
+   stop "fabm_update"
 end subroutine fabm_update
 
 !-----------------------------------------------------------------------
@@ -421,9 +450,16 @@ end subroutine fabm_update
 subroutine fabm_clean()
    !! de-allocate all allocated arrays
    if (allocated(windspeed)) deallocate(windspeed)
-   !if (allocated(windspeed)) deallocate(windspeed)
-   !if (allocated(windspeed)) deallocate(windspeed)
+   if (allocated(mole_fraction_of_carbon_dioxide_in_air)) &
+           deallocate(mole_fraction_of_carbon_dioxide_in_air)
+   if (allocated(surface_downwelling_photosynthetic_radiative_flux)) &
+           deallocate(surface_downwelling_photosynthetic_radiative_flux)
+   if (allocated(surface_downwelling_shortwave_flux)) &
+           deallocate(surface_downwelling_shortwave_flux)
+   if (allocated(bottom_stress)) deallocate(bottom_stress)
    if (allocated(salt)) deallocate(salt)
+   if (allocated(downwelling_photosynthetic_radiative_flux)) &
+           deallocate(downwelling_photosynthetic_radiative_flux)
    if (allocated(rho_fabm)) deallocate(rho_fabm)
    ! :
    ! :
@@ -432,18 +468,17 @@ end subroutine fabm_clean
 !-----------------------------------------------------------------------
 
 subroutine update_data(joff)
-   integer, intent(in) :: joff
-     !! offset row in global window
    !! update all time varying FABM configured external dependencies
    !! by calling individual update routines - tests done in routines
+   integer, intent(in) :: joff
+     !! offset row in global window
+
    call update_wind()
-   if (model%variable_needs_values(id_windspeed)) stop 1000
    call update_mole_fraction_of_carbon_dioxide_in_air()
-   if (model%variable_needs_values(id_mole_fraction_of_carbon_dioxide_in_air)) stop 1100
+   call update_surface_downwelling_photosynthetic_radiative_flux()
    call update_surface_downwelling_shortwave_flux()
-   if (model%variable_needs_values(id_surface_downwelling_shortwave_flux)) stop 1200
    call update_bottom_stress(joff)
-   if (model%variable_needs_values(id_bottom_stress)) stop 1300
+   call update_downwelling_photosynthetic_radiative_flux()
    call update_salinity()
    call update_density()
 end subroutine update_data
@@ -547,6 +582,39 @@ end subroutine update_mole_fraction_of_carbon_dioxide_in_air
 
 !-----------------------------------------------------------------------
 
+subroutine link_surface_downwelling_photosynthetic_radiative_flux()
+   integer rc
+   id_surface_downwelling_photosynthetic_radiative_flux = model% &
+        get_horizontal_variable_id(standard_variables% &
+        surface_downwelling_photosynthetic_radiative_flux)
+   if (model%variable_needs_values(id_surface_downwelling_photosynthetic_radiative_flux)) then
+      allocate(surface_downwelling_photosynthetic_radiative_flux(imt,jmt),stat=rc)
+      if (rc /= 0) stop 'link_surface_downwelling_photosynthetic_radiative_flux(): &
+              Error allocating (surface_downwelling_photosynthetic_radiative_flux)'
+      surface_downwelling_photosynthetic_radiative_flux = 0._rke
+      call model%link_horizontal_data( &
+              id_surface_downwelling_photosynthetic_radiative_flux, &
+              surface_downwelling_photosynthetic_radiative_flux)
+   end if
+end subroutine link_surface_downwelling_photosynthetic_radiative_flux
+
+!-----------------------------------------------------------------------
+
+subroutine update_surface_downwelling_photosynthetic_radiative_flux()
+   !! calculate the ?????????? flux in W/m^2
+
+   integer i,j
+   if (model%variable_needs_values(id_surface_downwelling_photosynthetic_radiative_flux)) then
+      do j=2,jmt-1
+         do i=2,imt-1
+            if (kmt(i,j) > 0) surface_downwelling_photosynthetic_radiative_flux(i,j) = 200._rke !KB
+         end do
+      end do
+   end if
+end subroutine update_surface_downwelling_photosynthetic_radiative_flux
+
+!-----------------------------------------------------------------------
+
 subroutine link_surface_downwelling_shortwave_flux()
    integer rc
    id_surface_downwelling_shortwave_flux = model% &
@@ -610,6 +678,40 @@ subroutine update_bottom_stress(joff)
    end if
 end subroutine update_bottom_stress
 
+!-----------------------------------------------------------------------
+
+subroutine link_downwelling_photosynthetic_radiative_flux()
+   !! get salinity FABM standard variable and if needed by FABM allocate
+   !! memory
+   integer rc
+   id_downwelling_photosynthetic_radiative_flux = &
+   model%get_interior_variable_id(fabm_standard_variables%downwelling_photosynthetic_radiative_flux)
+   if (model%variable_needs_values(id_downwelling_photosynthetic_radiative_flux)) then
+      allocate(downwelling_photosynthetic_radiative_flux(imt,km,jmt),stat=rc)
+      if (rc /= 0) stop 'link_salinity(): Error allocating (downwelling_photosynthetic_radiative_flux)'
+      downwelling_photosynthetic_radiative_flux = 0._rke
+      call model%link_interior_data( &
+              id_downwelling_photosynthetic_radiative_flux, &
+              downwelling_photosynthetic_radiative_flux)
+   end if
+end subroutine link_downwelling_photosynthetic_radiative_flux
+
+!-----------------------------------------------------------------------
+
+subroutine update_downwelling_photosynthetic_radiative_flux()
+   !! calculate salinity in PSU according to $$S = 35 + 1000*S_{UVic}$$
+   integer i,j,k
+   if (model%variable_needs_values(id_downwelling_photosynthetic_radiative_flux)) then
+      do j=2,jmt-1
+         do k=1,km
+            do i=2,imt-1
+               if (kmt(i,j) > 0) downwelling_photosynthetic_radiative_flux(i,k,j) = &
+                            35._rk+1000._rke*t(i,k,j,isalt,0)
+            end do
+         end do
+      end do
+   end if
+end subroutine update_downwelling_photosynthetic_radiative_flux
 !-----------------------------------------------------------------------
 
 subroutine link_salinity()

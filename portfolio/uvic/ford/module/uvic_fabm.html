@@ -78,7 +78,7 @@ Jorn Bruggeman" >
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="68.8% of total for modules and submodules.">315 statements</a>
+                 title="73.1% of total for modules and submodules.">384 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -122,12 +122,16 @@ Jorn Bruggeman" >
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_density">id_density</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-rho_fabm">rho_fabm</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-depth">depth</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_downwelling_photosynthetic_radiative_flux">id_downwelling_photosynthetic_radiative_flux</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#variable-downwelling_photosynthetic_radiative_flux">downwelling_photosynthetic_radiative_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_practical_salinity">id_practical_salinity</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-salt">salt</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_pressure">id_pressure</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-pressure">pressure</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_mole_fraction_of_carbon_dioxide_in_air">id_mole_fraction_of_carbon_dioxide_in_air</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-mole_fraction_of_carbon_dioxide_in_air">mole_fraction_of_carbon_dioxide_in_air</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_surface_downwelling_photosynthetic_radiative_flux">id_surface_downwelling_photosynthetic_radiative_flux</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#variable-surface_downwelling_photosynthetic_radiative_flux">surface_downwelling_photosynthetic_radiative_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_surface_downwelling_shortwave_flux">id_surface_downwelling_shortwave_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-surface_downwelling_shortwave_flux">surface_downwelling_shortwave_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-id_windspeed">id_windspeed</a>
@@ -140,6 +144,9 @@ Jorn Bruggeman" >
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-bottom_flux">bottom_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-bottom_sms">bottom_sms</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#variable-w">w</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#variable-nsurface">nsurface</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#variable-npelagic">npelagic</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#variable-nsediment">nsediment</a>
         </div>
       </div>
     </div>
@@ -172,10 +179,14 @@ Jorn Bruggeman" >
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-update_wind">update_wind</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-link_mole_fraction_of_carbon_dioxide_in_air">link_mole_fraction_of_carbon_dioxide_in_air</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-update_mole_fraction_of_carbon_dioxide_in_air">update_mole_fraction_of_carbon_dioxide_in_air</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#proc-link_surface_downwelling_photosynthetic_radiative_flux">link_surface_downwelling_photosynthetic_radiative_flux</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#proc-update_surface_downwelling_photosynthetic_radiative_flux">update_surface_downwelling_photosynthetic_radiative_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-link_surface_downwelling_shortwave_flux">link_surface_downwelling_shortwave_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-update_surface_downwelling_shortwave_flux">update_surface_downwelling_shortwave_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-link_bottom_stress">link_bottom_stress</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-update_bottom_stress">update_bottom_stress</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#proc-link_downwelling_photosynthetic_radiative_flux">link_downwelling_photosynthetic_radiative_flux</a>
+            <a class="list-group-item" href="../module/uvic_fabm.html#proc-update_downwelling_photosynthetic_radiative_flux">update_downwelling_photosynthetic_radiative_flux</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-link_salinity">link_salinity</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-update_salinity">update_salinity</a>
             <a class="list-group-item" href="../module/uvic_fabm.html#proc-link_density">link_density</a>
@@ -198,7 +209,8 @@ Jorn Bruggeman" >
     </div>
 
     <div class="col-md-9" id='text'>
-      <div class="alert alert-warning">
+      <p>Copyright (C) 2024 Bolding &amp; Bruggeman</p>
+<div class="alert alert-warning">
 <p class="alert-title h4">Warning</p>
 <p>This module is still under development.
 API and functioning might change without notice.</p>
@@ -272,16 +284,21 @@ This can either be because of different dimensionality or different units.
 This is done by creating module level private variables that will be calculated/updated
 based on the original UVic_ECSM variables. Some will only need to be calculated once - like
 layer heights - and some will have to be updated every time step - like density.</p>
+<div class="alert alert-info">
+<p class="alert-title h4">Note</p>
+<p>The variables to hold surface, pelagic and bottom state variables
+comes from mw.h - included in a 1 compilation clause</p>
+</div>
 <br>          <div class="card mb-4">
       <h3 class="card-header card-title bg-light">Uses</h3>
       <div class="card-body">
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='https://github.com/fabm-model/fabm/blob/master/src/fabm_debug.F90'>fabm_debug</a></li>
-                  <li class="list-inline-item"><a href='uvic_common_blocks.html'>uvic_common_blocks</a></li>
                   <li class="list-inline-item"><a href='https://github.com/fabm-model/fabm/blob/master/src/fabm.F90'>fabm</a></li>
+                  <li class="list-inline-item"><a href='uvic_common_blocks.html'>uvic_common_blocks</a></li>
                   <li class="list-inline-item"><a href='https://github.com/fabm-model/fabm/blob/master/src/fabm_types.F90'>fabm_types</a></li>
+                  <li class="list-inline-item"><a href='https://github.com/fabm-model/fabm/blob/master/src/fabm_debug.F90'>fabm_debug</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -575,9 +592,6 @@ modules which it uses.
             <td>
                 <p>This variable will contain all FABM configuration and
 give access to FABM routines</p>
-<p>id_alkalinity_expressed_as_mole_equivalent
-id_attenuation_coefficient_of_photosynthetic_radiative_flux
-id_attenuation_coefficient_of_shortwave_flux</p>
             </td>
         </tr>
         <tr>
@@ -645,19 +659,41 @@ id_attenuation_coefficient_of_shortwave_flux</p>
                 <td></td>
                 <td></td>
             <td>
-                <p>id_downwelling_photosynthetic_radiative_flux
-id_downwelling_shortwave_flux
-id_fractional_saturation_of_oxygen
-id_mass_concentration_of_suspended_matter
-id_mole_concentration_of_ammonium
-id_mole_concentration_of_carbonate_expressed_as_carbon
-id_mole_concentration_of_dissolved_inorganic_carbon
-id_mole_concentration_of_dissolved_iron
-id_mole_concentration_of_nitrate
-id_mole_concentration_of_phosphate
-id_mole_concentration_of_silicate
-id_net_rate_of_absorption_of_shortwave_energy_in_layer
-id_ph_reported_on_total_scale</p>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-id_downwelling_photosynthetic_radiative_flux"></span>
+              type(type_fabm_interior_variable_id),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>id_downwelling_photosynthetic_radiative_flux</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-downwelling_photosynthetic_radiative_flux"></span>
+              real(kind=rke),
+            </td>
+              <td>private,</td>
+            <td>
+              allocatable, target
+            </td>
+            <td>::</td>
+            <td><strong>downwelling_photosynthetic_radiative_flux</strong>(:,:,:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
             </td>
         </tr>
         <tr>
@@ -725,9 +761,7 @@ id_ph_reported_on_total_scale</p>
                 <td></td>
                 <td></td>
             <td>
-                <p>id_secchi_depth</p>
-<p>id_cloud_area_fraction
-id_ice_area_fraction</p>
+                
             </td>
         </tr>
         <tr>
@@ -761,10 +795,41 @@ id_ice_area_fraction</p>
                 <td></td>
                 <td></td>
             <td>
-                <p>id_surface_air_pressure
-id_surface_albedo
-id_surface_downwelling_photosynthetic_radiative_flux
-id_surface_downwelling_photosynthetic_radiative_flux_in_air</p>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-id_surface_downwelling_photosynthetic_radiative_flux"></span>
+              type(type_fabm_horizontal_variable_id),
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>id_surface_downwelling_photosynthetic_radiative_flux</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-surface_downwelling_photosynthetic_radiative_flux"></span>
+              real(kind=rke),
+            </td>
+              <td>private,</td>
+            <td>
+              allocatable, target
+            </td>
+            <td>::</td>
+            <td><strong>surface_downwelling_photosynthetic_radiative_flux</strong>(:,:)</td>
+                <td></td>
+                <td></td>
+            <td>
+                
             </td>
         </tr>
         <tr>
@@ -798,10 +863,7 @@ id_surface_downwelling_photosynthetic_radiative_flux_in_air</p>
                 <td></td>
                 <td></td>
             <td>
-                <p>id_surface_downwelling_shortwave_flux_in_air
-id_surface_drag_coefficient_in_air
-id_surface_specific_humidity
-id_surface_temperature</p>
+                
             </td>
         </tr>
         <tr>
@@ -835,9 +897,7 @@ id_surface_temperature</p>
                 <td></td>
                 <td></td>
             <td>
-                <p>id_bottom_depth
-id_bottom_depth_below_geoid
-id_bottom_roughness_length</p>
+                
             </td>
         </tr>
         <tr>
@@ -871,12 +931,7 @@ id_bottom_roughness_length</p>
                 <td></td>
                 <td></td>
             <td>
-                <p>id_number_of_days_since_start_of_the_year</p>
-<p>id_total_carbon
-id_total_iron
-id_total_nitrogen
-id_total_phosphorus
-id_total_silicate</p>
+                
             </td>
         </tr>
         <tr>
@@ -906,7 +961,7 @@ id_total_silicate</p>
               
             </td>
             <td>::</td>
-            <td><strong>surface_flux</strong>(imt,jmt,nt)</td>
+            <td><strong>surface_flux</strong>(imt,jmt,nt-2)</td>
                 <td></td>
                 <td></td>
             <td>
@@ -923,7 +978,7 @@ id_total_silicate</p>
               
             </td>
             <td>::</td>
-            <td><strong>surface_sms</strong>(imt,jmt,nt)</td>
+            <td><strong>surface_sms</strong>(imt,jmt,nt-2)</td>
                 <td></td>
                 <td></td>
             <td>
@@ -940,7 +995,7 @@ id_total_silicate</p>
               
             </td>
             <td>::</td>
-            <td><strong>bottom_flux</strong>(imt,jmt,nt)</td>
+            <td><strong>bottom_flux</strong>(imt,jmt,nt-2)</td>
                 <td></td>
                 <td></td>
             <td>
@@ -957,7 +1012,7 @@ id_total_silicate</p>
               
             </td>
             <td>::</td>
-            <td><strong>bottom_sms</strong>(imt,jmt,nt)</td>
+            <td><strong>bottom_sms</strong>(imt,jmt,nt-2)</td>
                 <td></td>
                 <td></td>
             <td>
@@ -974,11 +1029,62 @@ id_total_silicate</p>
               
             </td>
             <td>::</td>
-            <td><strong>w</strong>(imt,km,jmt,nt)</td>
+            <td><strong>w</strong>(imt,km,jmt,nt-2)</td>
                 <td></td>
                 <td></td>
             <td>
                 <p>vertical velocity in m/s</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsurface"></span>
+              integer,
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nsurface</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-npelagic"></span>
+              integer,
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>npelagic</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
+            </td>
+        </tr>
+        <tr>
+            <td>
+              <span class="anchor" id="variable-nsediment"></span>
+              integer,
+            </td>
+              <td>private</td>
+            <td>
+              
+            </td>
+            <td>::</td>
+            <td><strong>nsediment</strong></td>
+                <td></td>
+                <td></td>
+            <td>
+                
             </td>
         </tr>
     </tbody>
@@ -1055,7 +1161,8 @@ id_total_silicate</p>
     <div class="card-body">
           
   <p>link all FABM configured external dependencies - and call
-model%start() to assure proper configuration</p>
+ model%start() to assure proper configuration
+all model%link_surface_state_data(n, sed(:,:,n))</p>
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -1081,10 +1188,10 @@ model%start() to assure proper configuration</p>
 </h3></div>
     <div class="card-body">
           
-  <p>update the environment and calculate the source/sink terms
-call with the same argument list as mom() calls tracer() i.e.
-the specification on the active UVic window - typically the
-full domain on modern hardware</p>
+  <p>update the environment and calculate the source/sink terms -
+is called with the same argument list as mom() calls tracer()
+i.e. the specification of the active UVic window - typically
+the full domain on modern hardware</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1197,7 +1304,8 @@ full domain on modern hardware</p>
 </h3></div>
     <div class="card-body">
           
-  
+  <p>update all time varying FABM configured external dependencies
+by calling individual update routines - tests done in routines</p>
 
   <h4>Arguments</h4>
       <table class="table table-striped varlist">
@@ -1222,9 +1330,7 @@ full domain on modern hardware</p>
             <td>::</td>
             <td><strong>joff</strong></td>
             <td>
-<p>offset row in global window
-update all time varying FABM configured external dependencies
-by calling individual update routines - tests done in routines</p>
+<p>offset row in global window</p>
             </td>
         </tr>
     </tbody>
@@ -1296,6 +1402,32 @@ allocate memory</p>
     <div class="card-body">
           
   <p>calculate the ?????? in W/m^2</p>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-link_surface_downwelling_photosynthetic_radiative_flux"></span> <h3>private  subroutine <a href='../proc/link_surface_downwelling_photosynthetic_radiative_flux.html'>link_surface_downwelling_photosynthetic_radiative_flux</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-update_surface_downwelling_photosynthetic_radiative_flux"></span> <h3>private  subroutine <a href='../proc/update_surface_downwelling_photosynthetic_radiative_flux.html'>update_surface_downwelling_photosynthetic_radiative_flux</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>calculate the ?????????? flux in W/m^2</p>
 
   <h4>Arguments</h4>
     <em>None</em>
@@ -1379,6 +1511,34 @@ allocate memory</p>
     </tbody>
   </table>
 
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-link_downwelling_photosynthetic_radiative_flux"></span> <h3>private  subroutine <a href='../proc/link_downwelling_photosynthetic_radiative_flux.html'>link_downwelling_photosynthetic_radiative_flux</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>get salinity FABM standard variable and if needed by FABM allocate
+memory</p>
+
+  <h4>Arguments</h4>
+    <em>None</em>
+
+    </div>
+  </div>
+
+              <div class="card">
+    <div class="card-header codesum"><span class="anchor" id="proc-update_downwelling_photosynthetic_radiative_flux"></span> <h3>private  subroutine <a href='../proc/update_downwelling_photosynthetic_radiative_flux.html'>update_downwelling_photosynthetic_radiative_flux</a>()  
+</h3></div>
+    <div class="card-body">
+          
+  <p>calculate salinity in PSU according to <script type="math/tex; mode=display">S = 35 + 1000*S_{UVic}</script>
+</p>
+
+  <h4>Arguments</h4>
+    <em>None</em>
 
     </div>
   </div>

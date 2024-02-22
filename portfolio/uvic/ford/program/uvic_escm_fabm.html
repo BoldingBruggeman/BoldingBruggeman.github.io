@@ -77,7 +77,7 @@ Jorn Bruggeman" >
             <li class="list-inline-item" id="statements"><i class="fa fa-list-ol"></i>
               <a data-bs-toggle="tooltip"
                  data-bs-placement="bottom" data-html="true"
-                 title="100.0% of total for programs.">27 statements</a>
+                 title="100.0% of total for programs.">24 statements</a>
             </li>
 
             <li class="list-inline-item" id="source-file">
@@ -116,9 +116,9 @@ Jorn Bruggeman" >
       </a>
       <div id="vars-0" class="collapse">
         <div class="list-group list-group-flush">
-            <a class="list-group-item" href="../program/uvic_escm_fabm.html#variable-n">n</a>
+            <a class="list-group-item" href="../program/uvic_escm_fabm.html#variable-n~4">n</a>
             <a class="list-group-item" href="../program/uvic_escm_fabm.html#variable-fname">fname</a>
-            <a class="list-group-item" href="../program/uvic_escm_fabm.html#variable-file_exists">file_exists</a>
+            <a class="list-group-item" href="../program/uvic_escm_fabm.html#variable-exists">exists</a>
         </div>
       </div>
     </div>
@@ -154,8 +154,8 @@ Jorn Bruggeman" >
         <ul class="list-group list-group-flush">
             <li class="list-group-item">
               <ul class="list-inline">
-                  <li class="list-inline-item"><a href='../module/uvic_common_blocks.html'>uvic_common_blocks</a></li>
                   <li class="list-inline-item"><a href='../module/uvic_fabm.html'>uvic_fabm</a></li>
+                  <li class="list-inline-item"><a href='../module/uvic_common_blocks.html'>uvic_common_blocks</a></li>
               </ul>
             </li>
             <li class="list-group-item">
@@ -325,16 +325,20 @@ modules which it uses.
       </div>
     </div>
 
-    <p>This program is used to assure that the sizes of arrays
+    <p>Copyright (C) 2024 Bolding &amp; Bruggeman</p>
+<p>This program is used to assure that the sizes of arrays
 specified in size.h and the size deducted from fabm.yaml
-are in aggreement.</p>
+are in agreement.</p>
 <div class="alert alert-info">
 <p class="alert-title h4">Note</p>
 <p>The way the include files are formatted does not
-allow to be included in F90 free format source code files.
-Still to be solved is the issue of getting the variables in mw.h to
+allow to be included in F90 free format source code files.</p>
+<p>Still to be solved is the issue of getting the variables in mw.h to
 double precission - for now mw.h in the base UVic source code folder
 has a kind=8 on all real arguments</p>
+<p>An alternative method is to provide CMake with options to compile
+in 8 (4) byte. This is used for now - and no changes to mw.h
+are necessary</p>
 </div>
     <br>
     <div class="card">
@@ -594,7 +598,7 @@ implementation in a submodule of an interface in a parent module.
     <tbody>
         <tr>
             <td>
-              <span class="anchor" id="variable-n"></span>
+              <span class="anchor" id="variable-n~4"></span>
               integer
             </td>
             <td>
@@ -626,14 +630,14 @@ implementation in a submodule of an interface in a parent module.
         </tr>
         <tr>
             <td>
-              <span class="anchor" id="variable-file_exists"></span>
+              <span class="anchor" id="variable-exists"></span>
               logical
             </td>
             <td>
               
             </td>
             <td>::</td>
-            <td><strong>file_exists</strong></td>
+            <td><strong>exists</strong></td>
                 <td></td>
                 <td></td>
             <td>
