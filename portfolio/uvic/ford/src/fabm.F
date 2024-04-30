@@ -174,6 +174,8 @@
 
       ! public available routines
       public fabm_configure
+      public fabm_sbc_init
+      public fabm_tracer_init
       public fabm_link_data
       public fabm_initialize_state
       public ta_fabm_tsi
@@ -187,20 +189,22 @@
       ! module level variables - static or allocatable? Same goes
       ! with e.g. windspeed and rho_fabm
 
+      integer, parameter :: offset = nsrc-nfabm+1
 cinteger, parameter :: npel=nt-2
 
-      real(rke) :: pelagic_sms(imt,km,1,nt-2)
+      real(rke) :: pelagic_sms(imt,km,1,nfabm)
          !! pelagic source-sink terms in one j-stride
-      real(rke) :: surface_flux(imt,jmt,nt-2)
+      real(rke) :: surface_flux(imt,jmt,nfabm)
          !! surface fluxes
-      real(rke) :: surface_sms(imt,jmt,nt-2)
+      real(rke) :: surface_sms(imt,jmt,nfabm)
          !! surface source-sink terms
-      real(rke) :: bottom_flux(imt,jmt,nt-2)
+      real(rke) :: bottom_flux(imt,jmt,nfabm)
          !! bottom fluxes
-      real(rke) :: bottom_sms(imt,jmt,nt-2)
+      real(rke) :: bottom_sms(imt,jmt,nfabm)
          !! bottom source-sink terms
-creal(rke) :: w(imt,km,jsmw:jemw,nt)
-      real(rke) :: w(imt,km,jmt,nt-2)
+creal(rke) :: w(imt,km,jsmw:jemw,nfabm)
+      !KBreal(rke) :: w(imt,km,jmt,nt-2)
+      real(rke) :: w(imt,km,nt-2)
          !! vertical velocity in m/s
 
       real(rke) :: tai_fabm(nt-2)
@@ -233,7 +237,8 @@ c-----------------------------------------------------------------------
 
         integer :: n
 
-         print*, '==> Initializing FABM component with nt=',nt
+         print*, '==> Initializing FABM with (nt, nsrc, numbsc) =',
+     &                                        nt, nsrc, numsbc
 
          if (present(yaml_file)) then
             model => fabm_create_model(trim(yaml_file))
@@ -245,11 +250,13 @@ c-----------------------------------------------------------------------
          npelagic = size(model%interior_state_variables)
          nbottom = size(model%bottom_state_variables)
 
-         if (nt .ne. npelagic+2) then
+         if (nfabm .ne. npelagic) then
             print*, 'nt (UVic)     = ',nt
+            print*, 'nsrc (UVic)   = ',nsrc
+            print*, 'numsbc (UVic) = ',numsbc
             print*, 'nsurface      = ',nsurface
-            print*, 'npelagic (+2) = ',npelagic+2
-            print*, 'nbottom =       ',nbottom
+            print*, 'npelagic      = ',npelagic
+            print*, 'nbottom       = ',nbottom
             stop 'fabm_configure()'
          end if
 
@@ -264,23 +271,65 @@ c-----------------------------------------------------------------------
          print*, 'rho: ',shape(rho)
          !stop 112
 #endif   
-
          call model%set_domain(imt,km,jmt,dt)
          call model%set_domain_start(2,1,2)
          call model%set_domain_stop(imt-1,km,jmt-1)
          call model%set_mask(tmask,tmask(:,1,:))
          call model%set_bottom_index(kmt)
 
-         ! need to get mapt populated early - setmom() -> mom_rest_in()
-         do n = 1, size(model%interior_state_variables)
-            mapt(2+n) = trim(model%interior_state_variables(n)%name)
-         end do
-
          !! @note
          !! seems tmask is not initialised until called in mom() - 
          !! i.e. after initialization - so all values are 0 here
          !! @endnote
       end subroutine fabm_configure
+
+c-----------------------------------------------------------------------
+
+      subroutine fabm_sbc_init(m)
+         !! surface boundary data are handled via sbc(imt,jmt,numsbc) in
+         !! setmom.F, tracer.F, gosbc.F, embmio.F
+         integer, intent(inout) :: m
+            !! number of handled variables handled so far
+
+         integer :: n,nn
+
+         associate(VAR => model%interior_state_variables)
+         nn=m
+         do n=1,size(model%interior_state_variables)
+            mapsbc(nn) = 'ss'//trim(VAR(n)%name)
+            mapsbc(nn+1) = trim(VAR(n)%name)//'flx'
+            nn = nn+2
+            !mapsbc(m+n) = m+n
+         end do
+         end associate
+         m = m+2*numsbc_fabm
+      end subroutine fabm_sbc_init
+
+c-----------------------------------------------------------------------
+
+      subroutine fabm_tracer_init(m)
+         !! surface boundary data are handled via sbc(imt,jmt,numsbc) in
+         !! setmom.F, tracer.F, gosbc.F, embmio.F
+         integer, intent(inout) :: m
+            !! number of handled variables handled so far
+
+         integer :: n
+
+         ! need to get mapt populated early - setmom() -> mom_rest_in()
+         associate(VAR => model%interior_state_variables)
+!KB         print*, 'AAA ', mapt
+         do n = 1, size(model%interior_state_variables)
+            mapt(m+n) = trim(VAR(n)%name)
+            mapst(m+n-4) = 's'//trim(VAR(n)%name)
+            itrc(m+n-4) = m+n
+         end do
+#if 0
+         print*, 'AAA ',mapt
+         print*, mapst
+         stop 'kaj'
+#endif
+         end associate
+      end subroutine fabm_tracer_init
 
 c-----------------------------------------------------------------------
 
@@ -668,7 +717,7 @@ c-----------------------------------------------------------------------
                call model%initialize_interior_state(2, imt-1, k, j)
             end do
          end do
-         t(:,:,:,3:,1) = t(:,:,:,3:,0) ! initial values must be in tau+1 slice
+         t(:,:,:,offset:,1) = t(:,:,:,offset:,0) ! initial values must be in tau+1 slice
 
          ! fill the bottom state
          if (nbottom > 0) then
@@ -748,6 +797,8 @@ c-----------------------------------------------------------------------
 
          integer :: i,j,k,n
             ! local loop counters
+         real :: wloc
+         real :: flux
 
 #ifdef DEBUG
         !print*, 'fabm_update:',joff,js,je,is,ie
@@ -806,7 +857,7 @@ c-----------------------------------------------------------------------
                call model%get_interior_sources(is,ie,k,j,
      &              pelagic_sms(is:ie,k,1,:))
             end do
-            src(is:ie,:,j,3:) = pelagic_sms(is:ie,:,1,:)
+            src(is:ie,:,j,offset:) = pelagic_sms(is:ie,:,1,:)
          end do
 
          ! update the bottom
@@ -822,10 +873,10 @@ c-----------------------------------------------------------------------
             do i=is,ie
                if (kmt(i,j) > 0) then
                   k=1 ! surface
-                  src(i,k,j,3:)=src(i,k,j,3:)+
+                  src(i,k,j,offset:)=src(i,k,j,offset:)+
      &                          surface_flux(i,j,:)/dz(i,k,j)
                   k=kmt(i,j) ! bottom
-                  src(i,k,j,3:)=src(i,k,j,3:)+
+                  src(i,k,j,offset:)=src(i,k,j,offset:)+
      &                          bottom_flux(i,j,:)/dz(i,k,j)
                end if
             end do
@@ -834,13 +885,27 @@ c-----------------------------------------------------------------------
          ! vertical velocities
          do j=js,je
             do k=1,km
-               call model%get_vertical_movement(is,ie,k,j,
-     &                         w(is:ie,k,j,:))
+               call model%get_vertical_movement(is,ie,k,j,w(is:ie,k,:))
+            end do
+            ! do vertical advection - first-order upstream
+            do n=1,npelagic
+               if ( .not. (any(w(is:ie,:,n) /= 0.0_rke))) cycle
+               do i=is,ie
+                  do k=1,kmt(i,j)-1
+                     wloc = -0.5_rke*(w(i,k,n) + w(i,k+1,n))
+                     if (wloc > 0.0_rke) then
+                        flux = wloc*t(i,k  ,j,n,0)
+                     else
+                        flux = wloc*t(i,k+1,j,n,0)
+                     end if
+                     t(i,k  ,j,n,0) = t(i,k  ,j,n,0) - flux/dz(i,k  ,j)
+                     t(i,k+1,j,n,0) = t(i,k+1,j,n,0) + flux/dz(i,k+1,j)
+                  end do
+               end do
             end do
          end do
 
          call model%finalize_outputs()
-         ! stop "fabm_update"
       end subroutine fabm_update
 
 c-----------------------------------------------------------------------
@@ -868,6 +933,7 @@ c-----------------------------------------------------------------------
          integer, intent(in) :: joff
             !! offset row in global window
 
+         ! dic, carbon_14, alk, n03, 02, n2?
          call update_wind()
          call update_mole_fraction_of_carbon_dioxide_in_air()
 c         call update_surface_downwelling_photosynthetic_radiative_flux()
@@ -889,6 +955,11 @@ c-----------------------------------------------------------------------
          integer :: i,j,k
             ! local loop counters
 
+!            print*, zt/100._rke
+!            print*, (dzt/100._rke)
+!            print*, zw/100._rke
+!            print*, dzw/100._rke
+!            stop 'egon'
          allocate(depth(imt,km,jmt),stat=rc)
          if (rc /= 0) stop 'link_grid(): Error allocating (depth)'
          depth = 0._rke
@@ -1080,6 +1151,8 @@ c-----------------------------------------------------------------------
          !! calculate the short wave flux in \(W/m^2\) according to
          !! $$I_0 = 41868\ (W/m²)/(cal/cm²/s)\ I_{0_{UVic}}\ 
          !! cal/cm²/s¹$$
+         !!
+         !! carefull with the time averaged value
 
          integer i,j
             ! local loop counters
